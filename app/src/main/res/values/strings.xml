@@ -1,0 +1,139 @@
+<resources>
+	<!-- App text configuration -->
+    <string name="app_name">FOOD TRUCK</string>
+    
+    <!--  App About Information -->
+    <string name="app_version">Версия 1.0.0</string>
+    <string name="copyright">Copyright &#169; FOOD TRUCK \n All rights reserved</string>
+    <string name="email_address">dmitrydlj@gmail.com</string>
+
+	<!-- Parse push notification -->
+	<string name="parse_application_id">V0c7q2d6VCVuc0LXZmk3ZZbUjI4UMhIrgWmekZxP</string>
+	<string name="parse_client_key">VjtLo0qel4L3hpWSModBkBB4oPEUUEZHikHOVo7z</string>
+    
+    <!-- play store application in more apps -->
+    <string name="more_apps"></string>
+    
+    <string name="yes">ДА</string>
+    <string name="no">Нет</string>
+    <string name="no_phone">Your device does not support phone call feature</string>
+    <string name="no_internet">Пожалуйста, включите подключение к Интернету перед использованием этого приложения</string>
+    <string name="category_list">Выбор категории</string>
+    <string name="search">Поиск</string>
+	<string name="detail">Подробно</string>
+	<string name="add">Добавить к моему заказу</string>
+	<string name="share_btn">Поделиться этим</string>
+	<string name="share">Поделиться</string>
+	<string name="contact">Связь с нами</string>
+	<string name="callus">Позвоните нам</string>
+    <string name="alert">Отсуствует связь с интернетом!</string>
+    <string name="not_found">Не найдена!</string>
+    <string name="number_order">Введите количество (цифру): </string>
+    <string name="order">Заказ</string>
+    <string name="my_order">Информация заказа</string>
+    <string name="total_order">Всего:</string>
+    <string name="clear_order">Очистить заказы</string>
+    <string name="clear_all_order">Вы хотите очистить все заказы?</string>
+	<string name="clear_one_order">Вы хотите очистить заказ?</string>
+	<string name="db_exist_alert">Вы хотите удалить предыдущий заказ?</string>
+	<string name="confirm">подтверждение</string>
+	<string name="reservation">Резервация</string>
+	<string name="your_name">Ваше имя</string>
+	<string name="address">Адрес доставки</string>
+	<string name="city">Город</string>
+
+	<string name="email">Ваш Email</string>
+	<string name="number_of_people">Число людей</string>
+	<string name="date">Установить дату</string>
+	<string name="time">Установить время</string>
+	<string name="phone_number">Телефон</string>
+	<string name="order_list">Список заказов</string>
+	<string name="send_reservation">Отправить</string>
+	<string name="form_alert">Пожалуйста, заполните форму.</string>
+	<string name="sending_alert">Sending data. Please wait &#8230;</string>
+	<string name="ok_alert">Ваш заказ успешно отправлен.</string>
+	<string name="failed_alert">Ваш заказ не отправлен.</string>
+	<string name="no_order">Ваша корзина пуста. Сделайте свой первый заказ.</string>
+	<string name="check_order_later">Check if you want to order later</string>
+	<string name="order_later">#Заказать позже</string>
+	 <string name="desc_list_item_icon">Значок элемента</string>
+	<string name="no_order_menu">Нет заказов</string>
+	<string name="order_alert">У вас нет заказов</string>
+	<string name="add_comment">Коментарий (Необязательно)</string>
+	<string name="menu_settings">Настройки</string>
+	<string name="app_info">Информация о приложении</string>
+	<string name="main_menu">Главное меню</string>
+	<string name="title_activity_home">Главная</string>
+	<string name="more">Страница приложения</string>
+	<string name="rate">Оценить приложение</string>
+	<string-array name="main_menu_list">
+        <item >Меню</item>
+        <item >Ваш заказ</item>
+        <item >Подтверждение</item>
+    </string-array>
+    
+	<string name="drawer_open">Открыто меню слайдера</string>
+    <string name="drawer_close">Меню слайдера закрыто</string>
+    
+	<string name="menu_product">Меню</string>
+	<string name="menu_cart">Корзина</string>
+	<string name="menu_checkout">Заказы</string>
+	<string name="menu_profile">Информация</string>
+
+
+    <!-- Nav Drawer Menu Items -->
+    <string-array name="nav_drawer_items">
+        <item>Главная</item>
+        <item>Меню</item>
+        <item>Корзина</item>
+        <item>Заказы</item>
+        <item>Профиль</item>
+        <item>Информация</item>
+        <item>О программе</item>
+        <item>Поделиться</item>
+        <item>Связь с нами</item>
+        <item>Выход</item>
+    </string-array>
+    
+    <!-- Nav Drawer List Item Icons, keep them in order as the titles are in -->
+    <array name="nav_drawer_icons">
+        <item>@drawable/ic_home</item>       
+        <item>@drawable/ic_product</item>
+        <item>@drawable/ic_cart</item>
+        <item>@drawable/ic_checkout</item>
+        <item>@drawable/ic_profile</item>
+        <item>@drawable/ic_info</item>
+        <item>@drawable/ic_about</item>
+        <item>@drawable/ic_share</item>
+        <item>@drawable/ic_contact</item>
+        <item>@drawable/ic_exit</item>
+    </array>
+      
+	<!-- Write your description about profile menu for tab 1 and tab 2 -->
+	<string name="profile_tab1">
+		Добро пожаловать в “FOOD TRUCK”. Первый и единственный специализированный доставщик домашней еды на строительные объекты Одессы.
+	</string>
+	<string name="profile_tab2">
+		<p><strong>Как заказать. </strong>
+  Для того чтобы заказать товар: 1) Перейдите в нужную категорию и выберите товар. 2) После того, как выбрали товар, нажмите на кнопку купить. 3) Как только ваш товар будет добавлен в корзину, перейдите в неё, нажмите на кнопку «галочка» и оформите заказ. Все поля оформления обязательны к заполнению. Выберите форму оплаты. 4) После оформления нажмите на кнопку «отправить» и мы свяжемся с Вами для доставки товаров в удобное для Вас время.  </p>
+<p><strong>Как оплатить. </strong>
+При оформлении заказа выберите удобный для Вас способ оплаты. По умолчанию выбор оплаты: Оплата наличными курьеру. Оплачиваете прямо при приёме товаров курьеру. При выборе других методов оплаты, Вам следует до приезда курьера оплатить заказ по квитанции, который получили от нашего менеджера. </p>
+	</string>
+
+	
+	<!-- Write your description about information menu for tab 1, tab 2 and tab 3 -->
+	<string name="information_tab1">
+		Добро пожаловать в “Student Shop”. Интернет-магазин “Student Shop” первый и единственный специализированный магазин для студентов. В нашем онлайн магазине Вы можете купить товары дешевле, чем во многих магазинах, кроме того доставка заказа свыше 350 рублей осуществляется БЕСПЛАТНО. Прежде чем делать покупки, в разделе «Как заказать» ознакомьтесь с правилами заказа и оплаты товаров. Моментально, после заказа с Вами свяжется менеджер для дальнейших действий.
+	</string>	
+	<string name="information_tab2">
+	    Для того чтобы заказать товар: 1) Перейдите в нужную категорию и выберите товар. 2) После того, как выбрали товар, нажмите на кнопку купить. 3) Как только ваш товар будет добавлен в корзину, перейдите в неё, нажмите на кнопку «галочка» и оформите заказ. Все поля оформления обязательны к заполнению. Выберите форму оплаты. 4) После оформления нажмите на кнопку «отправить» и мы свяжемся с Вами для доставки товаров в удобное для Вас время.
+	</string>	
+	<string name="information_tab3">
+	    При оформлении заказа выберите удобный для Вас способ оплаты. По умолчанию выбор оплаты: Оплата наличными курьеру. Оплачиваете прямо при приёме товаров курьеру. При выборе других методов оплаты, Вам следует до приезда курьера оплатить заказ по квитанции, который получили от нашего менеджера.
+	</string>
+	
+	<!-- Write your description if order sent successfully -->
+	<string name="success_order">
+		Большое спасибо, ваш заказ успешно отправлен.</string>
+	
+</resources>
