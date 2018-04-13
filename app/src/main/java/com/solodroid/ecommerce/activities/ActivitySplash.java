@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.Window;
 
-import com.solodroid.ecommerce.MainActivity;
 import com.solodroid.ecommerce.R;
 
 public class ActivitySplash extends Activity {

@@ -18,13 +18,14 @@
         android:required="true" />
 
     <application
+        android:name="com.solodroid.ecommerce.App"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme2" >
         <activity
-            android:name="com.solodroid.ecommerce.ActivitySplash"
+            android:name="com.solodroid.ecommerce.activities.ActivitySplash"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -34,7 +35,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.solodroid.ecommerce.MainActivity"
+            android:name="com.solodroid.ecommerce.activities.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -44,38 +45,38 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.solodroid.ecommerce.ActivityCategoryList"
+            android:name="com.solodroid.ecommerce.activities.ActivityCategoryList"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.solodroid.ecommerce.ActivityMenuList"
+            android:name="com.solodroid.ecommerce.activities.ActivityMenuList"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.solodroid.ecommerce.ActivityMenuDetail"
+            android:name="com.solodroid.ecommerce.activities.ActivityMenuDetail"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.solodroid.ecommerce.ActivityCart"
+            android:name="com.solodroid.ecommerce.activities.ActivityCart"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.solodroid.ecommerce.ActivityCheckout"
+            android:name="com.solodroid.ecommerce.activities.ActivityCheckout"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.solodroid.ecommerce.ActivityConfirmMessage"
+            android:name="com.solodroid.ecommerce.activities.ActivityConfirmMessage"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.solodroid.ecommerce.ActivityContactUs"
+            android:name="com.solodroid.ecommerce.activities.ActivityContactUs"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.solodroid.ecommerce.ActivityProfile"
+            android:name="com.solodroid.ecommerce.activities.ActivityProfile"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.solodroid.ecommerce.ActivityInformation"
+            android:name="com.solodroid.ecommerce.activities.ActivityInformation"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.solodroid.ecommerce.ActivityAbout"
+            android:name="com.solodroid.ecommerce.activities.ActivityAbout"
             android:screenOrientation="portrait" />
 
         <service android:name="com.parse.PushService" />

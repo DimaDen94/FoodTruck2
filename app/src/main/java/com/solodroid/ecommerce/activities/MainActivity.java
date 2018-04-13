@@ -1,4 +1,4 @@
-package com.solodroid.ecommerce;
+package com.solodroid.ecommerce.activities;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,6 +7,12 @@ import com.parse.Parse;
 import com.parse.ParseAnalytics;
 import com.parse.ParseInstallation;
 import com.parse.PushService;
+import com.solodroid.ecommerce.Constant;
+import com.solodroid.ecommerce.DBHelper;
+import com.solodroid.ecommerce.NavDrawerItem;
+import com.solodroid.ecommerce.R;
+import com.solodroid.ecommerce.adapters.AdapterMainMenu;
+import com.solodroid.ecommerce.adapters.AdapterNavDrawerList;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;

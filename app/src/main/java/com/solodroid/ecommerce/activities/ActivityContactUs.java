@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.solodroid.ecommerce.MainActivity;
 import com.solodroid.ecommerce.R;
 
 public class ActivityContactUs extends Activity {

@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.solodroid.ecommerce.MainActivity;
 import com.solodroid.ecommerce.R;
 
 public class ActivityConfirmMessage extends Activity {
