@@ -18,8 +18,8 @@ import com.solodroid.ecommerce.model.category.PDCategory;
 public class AdapterCategoryList extends BaseAdapter {
 
     private Context context;
-    public ImageLoader imageLoader;
-    PDCategory pDataCategory;
+    private ImageLoader imageLoader;
+    private PDCategory pDataCategory;
 
     public AdapterCategoryList(Context context, PDCategory pDataCategory) {
         this.context = context;

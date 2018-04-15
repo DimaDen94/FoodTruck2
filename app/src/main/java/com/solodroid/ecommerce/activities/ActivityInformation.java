@@ -12,13 +12,14 @@ import android.view.MenuItem;
 import com.solodroid.ecommerce.adapters.AdapterInformation;
 import com.solodroid.ecommerce.R;
 
-public class ActivityInformation extends FragmentActivity implements
-        ActionBar.TabListener {
+public class ActivityInformation extends FragmentActivity implements ActionBar.TabListener
+{
 
     private ViewPager viewPager;
     private ActionBar actionBar;
     private AdapterInformation tabPagerAdapter;
-    private String[] tabs = { "О магазине", "Как заказать", "Как оплатить" };
+    private String[] tabs = {"О магазине", "Как заказать", "Как оплатить"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,9 +31,9 @@ public class ActivityInformation extends FragmentActivity implements
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.header)));
         actionBar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.header)));
         actionBar.setTitle("Информация");
-        
+
         getActionBar().setDisplayHomeAsUpEnabled(true);
-		getActionBar().setHomeButtonEnabled(true);
+        getActionBar().setHomeButtonEnabled(true);
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         for (String tab_name : tabs) {
             actionBar.addTab(actionBar.newTab().setText(tab_name)
@@ -50,15 +51,18 @@ public class ActivityInformation extends FragmentActivity implements
             }
 
             @Override
-            public void onPageScrolled(int arg0, float arg1, int arg2) { }
+            public void onPageScrolled(int arg0, float arg1, int arg2) {
+            }
 
             @Override
-            public void onPageScrollStateChanged(int arg0) { }
+            public void onPageScrollStateChanged(int arg0) {
+            }
         });
     }
 
     @Override
-    public void onTabReselected(Tab tab, FragmentTransaction ft) { }
+    public void onTabReselected(Tab tab, FragmentTransaction ft) {
+    }
 
     @Override
     public void onTabSelected(Tab tab, FragmentTransaction ft) {
@@ -66,22 +70,23 @@ public class ActivityInformation extends FragmentActivity implements
     }
 
     @Override
-    public void onTabUnselected(Tab tab, FragmentTransaction ft) {}
-    
+    public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+    }
+
     @Override
-	public void onBackPressed() {
-		// TODO Auto-generated method stub
-		super.onBackPressed();
-		overridePendingTransition (R.anim.open_main, R.anim.close_next);
-	}
-	
-	@Override
+    public void onBackPressed() {
+        // TODO Auto-generated method stub
+        super.onBackPressed();
+        overridePendingTransition(R.anim.open_main, R.anim.close_next);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 // app icon in action bar clicked; go home
-            	this.finish();
-            	overridePendingTransition (R.anim.open_main, R.anim.close_next);
+                this.finish();
+                overridePendingTransition(R.anim.open_main, R.anim.close_next);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

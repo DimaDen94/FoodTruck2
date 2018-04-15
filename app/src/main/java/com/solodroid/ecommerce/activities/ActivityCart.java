@@ -42,15 +42,15 @@ import retrofit2.Response;
 
 public class ActivityCart extends Activity {
 
-    ListView listOrder;
-    ProgressBar prgLoading;
-    TextView txtTotalLabel, txtTotal, txtAlert;
-    Button btnClear, Checkout;
-    RelativeLayout lytOrder;
+    private ListView listOrder;
+    private ProgressBar prgLoading;
+    private TextView txtTotalLabel, txtTotal, txtAlert;
+    private Button btnClear, Checkout;
+    private RelativeLayout lytOrder;
 
     // declate dbhelper and adapter objects
-    DBHelper dbhelper;
-    AdapterCart mola;
+    private DBHelper dbhelper;
+    private AdapterCart mola;
 
 
     // declare static variables to store tax and currency data
@@ -59,10 +59,10 @@ public class ActivityCart extends Activity {
 
     // declare arraylist variable to store data
     ArrayList<ArrayList<Object>> data;
-    public static ArrayList<Integer> Menu_ID = new ArrayList<Integer>();
-    public static ArrayList<String> Menu_name = new ArrayList<String>();
-    public static ArrayList<Integer> Quantity = new ArrayList<Integer>();
-    public static ArrayList<Double> Sub_total_price = new ArrayList<Double>();
+    private ArrayList<Integer> menuId = new ArrayList<Integer>();
+    private ArrayList<String> menuName = new ArrayList<String>();
+    private ArrayList<Integer> quantity = new ArrayList<Integer>();
+    private ArrayList<Double> subTotalPrice = new ArrayList<Double>();
 
     double Total_price;
     final int CLEAR_ALL_ORDER = 0;
@@ -98,7 +98,7 @@ public class ActivityCart extends Activity {
         lytOrder = (RelativeLayout) findViewById(R.id.lytOrder);
 
 
-        mola = new AdapterCart(this);
+
         dbhelper = new DBHelper(this);
 
         // open database
@@ -126,7 +126,7 @@ public class ActivityCart extends Activity {
             public void onItemClick(AdapterView<?> arg0, View arg1, int position,
                                     long arg3) {
                 // show confirmation dialog
-                showClearDialog(CLEAR_ONE_ORDER, Menu_ID.get(position));
+                showClearDialog(CLEAR_ONE_ORDER, menuId.get(position));
             }
         });
 
@@ -150,27 +150,28 @@ public class ActivityCart extends Activity {
         Map<String, String> map = new HashMap<String, String>();
         map.put(Constant.AccessKeyParam, Constant.AccessKeyValue);
 
-        prgLoading.setVisibility(0);
-        txtAlert.setVisibility(8);
+        prgLoading.setVisibility(View.VISIBLE);
+        txtAlert.setVisibility(View.GONE);
 
         App.getApi().getTaxCurrency(map).enqueue(new Callback<PDTax>() {
             @Override
             public void onResponse(Call<PDTax> call, Response<PDTax> response) {
-                prgLoading.setVisibility(8);
+                prgLoading.setVisibility(View.GONE);
                 if (response.isSuccessful()) {
                     pData = response.body();
+                    mola = new AdapterCart(ActivityCart.this, menuId,menuName,quantity,subTotalPrice);
                     Tax = Double.parseDouble(pData.getData().get(0).getTaxOnCurrency().getValue());
                     Currency = pData.getData().get(1).getTaxOnCurrency().getValue();
                     new getDataTask().execute();
                 } else {
-                    txtAlert.setVisibility(0);
+                    txtAlert.setVisibility(View.VISIBLE);
                     txtAlert.setText(R.string.alert);
                 }
             }
 
             @Override
             public void onFailure(Call<PDTax> call, Throwable t) {
-                txtAlert.setVisibility(0);
+                txtAlert.setVisibility(View.VISIBLE);
                 txtAlert.setText(R.string.alert);
             }
         });
@@ -255,10 +256,10 @@ public class ActivityCart extends Activity {
 
     // clear arraylist variables before used
     void clearData() {
-        Menu_ID.clear();
-        Menu_name.clear();
-        Quantity.clear();
-        Sub_total_price.clear();
+        menuId.clear();
+        menuName.clear();
+        quantity.clear();
+        subTotalPrice.clear();
     }
 
     // asynctask class to handle parsing json in background
@@ -267,9 +268,9 @@ public class ActivityCart extends Activity {
         // show progressbar first
         getDataTask() {
             if (!prgLoading.isShown()) {
-                prgLoading.setVisibility(0);
-                lytOrder.setVisibility(8);
-                txtAlert.setVisibility(8);
+                prgLoading.setVisibility(View.VISIBLE);
+                lytOrder.setVisibility(View.GONE);
+                txtAlert.setVisibility(View.GONE);
             }
         }
 
@@ -287,14 +288,14 @@ public class ActivityCart extends Activity {
             // show data
             txtTotal.setText(Total_price + " " + Currency);
             txtTotalLabel.setText(getString(R.string.total_order) + " (Tax " + Tax + "%)");
-            prgLoading.setVisibility(8);
+            prgLoading.setVisibility(View.GONE);
             // if data available show data on list
             // otherwise, show alert text
-            if (Menu_ID.size() > 0) {
-                lytOrder.setVisibility(0);
+            if (menuId.size() > 0) {
+                lytOrder.setVisibility(View.VISIBLE);
                 listOrder.setAdapter(mola);
             } else {
-                txtAlert.setVisibility(0);
+                txtAlert.setVisibility(View.VISIBLE);
             }
 
         }
@@ -311,11 +312,11 @@ public class ActivityCart extends Activity {
         for (int i = 0; i < data.size(); i++) {
             ArrayList<Object> row = data.get(i);
 
-            Menu_ID.add(Integer.parseInt(row.get(0).toString()));
-            Menu_name.add(row.get(1).toString());
-            Quantity.add(Integer.parseInt(row.get(2).toString()));
-            Sub_total_price.add(Double.parseDouble(formatData.format(Double.parseDouble(row.get(3).toString()))));
-            Total_price += Sub_total_price.get(i);
+            menuId.add(Integer.parseInt(row.get(0).toString()));
+            menuName.add(row.get(1).toString());
+            quantity.add(Integer.parseInt(row.get(2).toString()));
+            subTotalPrice.add(Double.parseDouble(formatData.format(Double.parseDouble(row.get(3).toString()))));
+            Total_price += subTotalPrice.get(i);
         }
 
         // count total order

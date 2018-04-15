@@ -19,8 +19,8 @@ import com.solodroid.ecommerce.model.menu.PDMenu;
 public class AdapterMenuList extends BaseAdapter {
 
     private Context context;
-    public ImageLoader imageLoader;
-    PDMenu menu;
+    private ImageLoader imageLoader;
+    private PDMenu menu;
     private String currency;
 
     public AdapterMenuList(Context context, PDMenu menu, String currency) {

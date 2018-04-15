@@ -45,26 +45,26 @@ import retrofit2.Response;
 
 public class ActivityMenuDetail extends Activity {
 
-    ImageView imgPreview;
-    TextView txtText, txtSubText;
-    WebView txtDescription;
-    Button btnAdd;
-    ScrollView sclDetail;
-    ProgressBar prgLoading;
-    TextView txtAlert;
+    private ImageView imgPreview;
+    private TextView txtText, txtSubText;
+    private WebView txtDescription;
+    private Button btnAdd;
+    private ScrollView sclDetail;
+    private ProgressBar prgLoading;
+    private TextView txtAlert;
 
     // declare dbhelper object
-    static DBHelper dbhelper;
+    private DBHelper dbhelper;
 
     // declare ImageLoader object
-    ImageLoader imageLoader;
+    private ImageLoader imageLoader;
 
     // declare variables to store menu data
-    int Menu_ID;
-    MenuDetail menuDetail;
+    private int Menu_ID;
+    private MenuDetail menuDetail;
 
     // create price format
-    DecimalFormat formatData = new DecimalFormat("#.##");
+    private DecimalFormat formatData = new DecimalFormat("#.##");
     private String Currency;
 
     @Override
@@ -210,14 +210,14 @@ public class ActivityMenuDetail extends Activity {
         map.put(Constant.AccessKeyParam, Constant.AccessKeyValue);
         map.put("menu_id", String.valueOf(Menu_ID));
 
-        prgLoading.setVisibility(0);
-        txtAlert.setVisibility(8);
+        prgLoading.setVisibility(View.VISIBLE);
+        txtAlert.setVisibility(View.GONE);
 
         App.getApi().getMenuDetail(map).enqueue(new Callback<PDMenuDatail>() {
             @Override
             public void onResponse(Call<PDMenuDatail> call, Response<PDMenuDatail> response) {
                 //Данные успешно пришли, но надо проверить response.body() на null
-                prgLoading.setVisibility(8);
+                prgLoading.setVisibility(View.GONE);
 
                 // if internet connection and data available show data on list
                 // otherwise, show alert text
@@ -227,7 +227,7 @@ public class ActivityMenuDetail extends Activity {
 
                     double price = Double.valueOf(menuDetail.getPrice());
 
-                    sclDetail.setVisibility(0);
+                    sclDetail.setVisibility(View.VISIBLE);
 
                     imageLoader.DisplayImage(Constant.AdminPageURL + menuDetail.getMenuImage(), imgPreview);
 
@@ -236,7 +236,7 @@ public class ActivityMenuDetail extends Activity {
                     txtDescription.loadDataWithBaseURL("", menuDetail.getDescription(), "text/html", "UTF-8", "");
 
                 } else {
-                    txtAlert.setVisibility(0);
+                    txtAlert.setVisibility(View.VISIBLE);
                 }
             }
 

@@ -59,8 +59,8 @@ public class MainActivity extends FragmentActivity {
 	private AdapterNavDrawerList adapter;
 
 	// declare dbhelper and adapter object
-	static DBHelper dbhelper;
-	AdapterMainMenu mma;
+	private DBHelper dbhelper;
+	private AdapterMainMenu mma;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

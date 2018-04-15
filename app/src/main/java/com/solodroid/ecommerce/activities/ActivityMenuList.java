@@ -39,30 +39,26 @@ import retrofit2.Response;
 
 public class ActivityMenuList extends Activity {
 	
-	ListView listMenu;
-	ProgressBar prgLoading;
-	EditText edtKeyword;
-	ImageButton btnSearch;
-	TextView txtAlert;
+	private ListView listMenu;
+	private ProgressBar prgLoading;
+	private EditText edtKeyword;
+	private ImageButton btnSearch;
+	private TextView txtAlert;
 	
 	// declare static variable to store tax and currency symbol
-	static double Tax;
 	private static String Currency;
 
-	AdapterMenuList mla;
+	private AdapterMenuList mla;
 	
 
 	
-	public String MenuAPI;
-	int IOConnect = 0;
-	int Category_ID;
-	String Category_name;
-	String Keyword;
 
-	// create price format
-	DecimalFormat formatData = new DecimalFormat("#.##");
-	PDTax pdTax;
-	PDMenu pdMenu;
+
+	private int Category_ID;
+
+
+	private PDTax pdTax;
+	private PDMenu pdMenu;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -84,7 +80,7 @@ public class ActivityMenuList extends Activity {
         // get category id and category name that sent from previous page
         Intent iGet = getIntent();
         Category_ID = iGet.getIntExtra("category_id",0);
-        Category_name = iGet.getStringExtra("category_name");
+        //Category_name = iGet.getStringExtra("category_name");
 
 		// set category name to textview
 //        txtTitle.setText(Category_name);
@@ -98,16 +94,7 @@ public class ActivityMenuList extends Activity {
 		btnSearch.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				// get keyword and send it to server
-				try {
-					Keyword = URLEncoder.encode(edtKeyword.getText().toString(), "utf-8");
-				} catch (UnsupportedEncodingException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				MenuAPI += "&keyword="+Keyword;
-				IOConnect = 0;
+
 				retrofitGetTaxAndGetMenuRun();
 			}
 		});
@@ -141,7 +128,7 @@ public class ActivityMenuList extends Activity {
 				prgLoading.setVisibility(8);
 				if (response.isSuccessful()) {
 					pdTax = response.body();
-					Tax = Double.valueOf(pdTax.getData().get(0).getTaxOnCurrency().getValue());
+					//Tax = Double.valueOf(pdTax.getData().get(0).getTaxOnCurrency().getValue());
 					Currency = pdTax.getData().get(1).getTaxOnCurrency().getValue();
 					if((Currency != null)){
 						retrofitGetMenuRun();
@@ -213,7 +200,6 @@ public class ActivityMenuList extends Activity {
 			return true;
 			
 		case R.id.refresh:
-			IOConnect = 0;
 			listMenu.invalidateViews();
 
 			retrofitGetTaxAndGetMenuRun();

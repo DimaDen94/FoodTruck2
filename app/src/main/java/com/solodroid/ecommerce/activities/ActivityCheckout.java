@@ -74,35 +74,35 @@ import retrofit2.Response;
 
 public class ActivityCheckout extends FragmentActivity {
 	
-	Button btnSend;
+	private Button btnSend;
 
-	EditText edtName, edtName2, edtPhone, edtOrderList, edtComment, edtAlamat, edtEmail, edtKota;
-	ScrollView sclDetail;
-	ProgressBar prgLoading;
-	TextView txtAlert;
-	Spinner spinner;
+	private EditText edtName, edtName2, edtPhone, edtOrderList, edtComment, edtAlamat, edtEmail, edtKota;
+	private ScrollView sclDetail;
+	private ProgressBar prgLoading;
+	private TextView txtAlert;
+	private Spinner spinner;
 	
 	// declare dbhelper object
-	static DBHelper dbhelper;
+	private DBHelper dbhelper;
 	ArrayList<ArrayList<Object>> data;
 	
 	// declare string variables to store data
-	String Name, Name2, Phone, Date_n_Time, Alamat, Email, Kota;
-	String OrderList = "";
-	String Comment = "";
+	private String Name, Name2, Phone, Date_n_Time, Alamat, Email, Kota;
+	private String OrderList = "";
+	private String Comment = "";
 
 
 	
 	// declare static variables to store tax and currency data
-	static double Tax;
-	static String Currency;
+	private static double Tax;
+	private static String Currency;
 	
 
 
 	// create price format
-	DecimalFormat formatData = new DecimalFormat("#.##");
+	private DecimalFormat formatData = new DecimalFormat("#.##");
 
-	String Result;
+	private String Result;
 	private PDTax pdTax;
 	
 	
@@ -183,8 +183,7 @@ public class ActivityCheckout extends FragmentActivity {
 			throw sqle;
 		}
 		
-		// call asynctask class to request tax and currency data from server
-        //new getTaxCurrency().execute();
+
 		retrofitRun();
 
 
@@ -247,14 +246,14 @@ public class ActivityCheckout extends FragmentActivity {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put(Constant.AccessKeyParam, Constant.AccessKeyValue);
 
-		prgLoading.setVisibility(0);
-		txtAlert.setVisibility(8);
+		prgLoading.setVisibility(View.VISIBLE);
+		txtAlert.setVisibility(View.GONE);
 
 		App.getApi().getTaxCurrency(map).enqueue(new Callback<PDTax>() {
 			@Override
 			public void onResponse(Call<PDTax> call, Response<PDTax> response) {
 				//Данные успешно пришли, но надо проверить response.body() на null
-				prgLoading.setVisibility(8);
+				prgLoading.setVisibility(View.GONE);
 
 				// if internet connection and data available show data on list
 				// otherwise, show alert text
@@ -264,7 +263,7 @@ public class ActivityCheckout extends FragmentActivity {
 					Currency = pdTax.getData().get(1).getTaxOnCurrency().getValue();
 					new getDataTask().execute();
 				} else {
-					txtAlert.setVisibility(0);
+					txtAlert.setVisibility(View.VISIBLE);
 				}
 			}
 
@@ -291,8 +290,8 @@ public class ActivityCheckout extends FragmentActivity {
 		protected void onPostExecute(Void result) {
 			// TODO Auto-generated method stub
 			// hide progressbar and show reservation form
-			prgLoading.setVisibility(8);
-			sclDetail.setVisibility(0);
+			prgLoading.setVisibility(View.GONE);
+			sclDetail.setVisibility(View.VISIBLE);
 			
 		}
     }

@@ -17,10 +17,10 @@ import android.util.Log;
 
 public class DBHelper extends SQLiteOpenHelper{
 	
-	String DB_PATH;
+	private String DB_PATH;
     private final static String DB_NAME = "db_order";
-	public final static int DB_VERSION = 1;
-    public static SQLiteDatabase db; 
+	private final static int DB_VERSION = 1;
+    private static SQLiteDatabase db;
  
     private final Context context;
     

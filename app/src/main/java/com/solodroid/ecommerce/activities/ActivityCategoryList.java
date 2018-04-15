@@ -29,14 +29,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ActivityCategoryList extends Activity {
-    GridView listCategory;
-    ProgressBar prgLoading;
-    TextView txtAlert;
+    private GridView listCategory;
+    private ProgressBar prgLoading;
+    private TextView txtAlert;
 
     // declare adapter object to create custom category list
-    AdapterCategoryList cla;
+    private AdapterCategoryList cla;
 
-    PDCategory pDataCategory;
+    private PDCategory pDataCategory;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -78,25 +78,25 @@ public class ActivityCategoryList extends Activity {
         Map<String, String> map = new HashMap<String, String>();
         map.put(Constant.AccessKeyParam, Constant.AccessKeyValue);
 
-        prgLoading.setVisibility(0);
-        txtAlert.setVisibility(8);
+        prgLoading.setVisibility(View.VISIBLE);
+        txtAlert.setVisibility(View.GONE);
 
         App.getApi().getAllCategoryData(map).enqueue(new Callback<PDCategory>() {
             @Override
             public void onResponse(Call<PDCategory> call, Response<PDCategory> response) {
                 //Данные успешно пришли, но надо проверить response.body() на null
-                prgLoading.setVisibility(8);
+                prgLoading.setVisibility(View.GONE);
 
                 // if internet connection and data available show data on list
                 // otherwise, show alert text
                 if (response.isSuccessful()) {
                     pDataCategory = response.body();
                     cla = new AdapterCategoryList(ActivityCategoryList.this, response.body());
-                    listCategory.setVisibility(0);
+                    listCategory.setVisibility(View.VISIBLE);
                     listCategory.setAdapter(cla);
 
                 } else {
-                    txtAlert.setVisibility(0);
+                    txtAlert.setVisibility(View.VISIBLE);
                 }
             }
 

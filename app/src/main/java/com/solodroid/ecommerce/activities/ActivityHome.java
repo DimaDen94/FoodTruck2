@@ -17,9 +17,9 @@ import com.solodroid.ecommerce.GridViewItem;
 import com.solodroid.ecommerce.R;
 
 public class ActivityHome extends Fragment implements OnItemClickListener {
-	GridView gridview;
-	AdapaterGridView gridviewAdapter;
-	ArrayList<GridViewItem> data = new ArrayList<GridViewItem>();
+	private GridView gridview;
+	private AdapaterGridView gridviewAdapter;
+	private ArrayList<GridViewItem> data = new ArrayList<GridViewItem>();
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -75,7 +75,7 @@ public class ActivityHome extends Fragment implements OnItemClickListener {
 		else if (position==6){
 			Intent sendInt = new Intent(Intent.ACTION_SEND);
 			sendInt.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name));
-			sendInt.putExtra(Intent.EXTRA_TEXT, "E-Commerce Android App\n\""+getString(R.string.app_name)+"\" \nhttps://play.google.com/store/apps/details?id="+getActivity().getPackageName());
+			sendInt.putExtra(Intent.EXTRA_TEXT, "Android App\n\""+getString(R.string.app_name)+"\" \nhttps://play.google.com/store/apps/details?id="+getActivity().getPackageName());
 			sendInt.setType("text/plain");
 			startActivity(Intent.createChooser(sendInt, "Share"));
 		}

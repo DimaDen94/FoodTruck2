@@ -15,8 +15,8 @@ import com.solodroid.ecommerce.R;
 
 public class ActivityContactUs extends Activity {
 
-	EditText body;
-	Button send;
+	private EditText body;
+	private Button send;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {

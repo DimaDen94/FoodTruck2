@@ -14,9 +14,9 @@ import com.solodroid.ecommerce.GridViewItem;
 import com.solodroid.ecommerce.R;
 
 public class AdapaterGridView extends ArrayAdapter<GridViewItem> {
-	Context mContext;
-	int resourceId;
-	ArrayList<GridViewItem> data = new ArrayList<GridViewItem>();
+	private Context mContext;
+    private int resourceId;
+    private ArrayList<GridViewItem> data = new ArrayList<GridViewItem>();
 
 	public AdapaterGridView(Context context, int layoutResourceId, ArrayList<GridViewItem> data) {
 		super(context, layoutResourceId, data);
