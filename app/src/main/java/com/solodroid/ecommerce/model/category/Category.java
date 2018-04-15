@@ -1,4 +1,4 @@
-package com.solodroid.ecommerce.model;
+package com.solodroid.ecommerce.model.category;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

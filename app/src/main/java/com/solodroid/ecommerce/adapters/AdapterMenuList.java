@@ -13,66 +13,70 @@ import com.solodroid.ecommerce.Constant;
 import com.solodroid.ecommerce.ImageLoader;
 import com.solodroid.ecommerce.R;
 import com.solodroid.ecommerce.activities.ActivityMenuList;
+import com.solodroid.ecommerce.model.menu.PDMenu;
 
 // adapter class fro custom menu list
 public class AdapterMenuList extends BaseAdapter {
 
-		private Activity activity;
-		public ImageLoader imageLoader;
-		
-		
-		public AdapterMenuList(Activity act) {
-			this.activity = act;
-			imageLoader = new ImageLoader(act);
+    private Context context;
+    public ImageLoader imageLoader;
+    PDMenu menu;
+    private String currency;
 
-		}
-		
-		public int getCount() {
-			// TODO Auto-generated method stub
-			return ActivityMenuList.Menu_ID.size();
-		}
+    public AdapterMenuList(Context context, PDMenu menu, String currency) {
+        this.context = context;
+        imageLoader = new ImageLoader(context);
+        this.menu = menu;
+        this.currency = currency;
 
-		public Object getItem(int position) {
-			// TODO Auto-generated method stub
-			return position;
-		}
+    }
 
-		public long getItemId(int position) {
-			// TODO Auto-generated method stub
-			return position;
-		}
+    public int getCount() {
+        // TODO Auto-generated method stub
+        return menu.getData().size();
+    }
 
-		public View getView(int position, View convertView, ViewGroup parent) {
-			// TODO Auto-generated method stub
-			ViewHolder holder;
-			
-			if(convertView == null){
-				LayoutInflater inflater = (LayoutInflater) activity
-						.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-				convertView = inflater.inflate(R.layout.menu_list_item, null);
-				holder = new ViewHolder();
-				
-				convertView.setTag(holder);
-			}else{
-				holder = (ViewHolder) convertView.getTag();
-			}
-			
-			holder.txtText = (TextView) convertView.findViewById(R.id.txtText);
-			holder.txtSubText = (TextView) convertView.findViewById(R.id.txtSubText);
-			holder.imgThumb = (ImageView) convertView.findViewById(R.id.imgThumb);
-			
-			holder.txtText.setText(ActivityMenuList.Menu_name.get(position));
-			holder.txtSubText.setText(ActivityMenuList.Menu_price.get(position)+" "+ActivityMenuList.Currency);
-			
-			imageLoader.DisplayImage(Constant.AdminPageURL+ActivityMenuList.Menu_image.get(position), holder.imgThumb);
-			
-			return convertView;
-		}
-		
-		static class ViewHolder {
-			TextView txtText, txtSubText;
-			ImageView imgThumb;
-		}
-		
-		
-	}
+    public Object getItem(int position) {
+        // TODO Auto-generated method stub
+        return position;
+    }
+
+    public long getItemId(int position) {
+        // TODO Auto-generated method stub
+        return position;
+    }
+
+    public View getView(int position, View convertView, ViewGroup parent) {
+        // TODO Auto-generated method stub
+        ViewHolder holder;
+
+        if (convertView == null) {
+            LayoutInflater inflater = (LayoutInflater) context
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.menu_list_item, null);
+            holder = new ViewHolder();
+
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+        }
+
+        holder.txtText = (TextView) convertView.findViewById(R.id.txtText);
+        holder.txtSubText = (TextView) convertView.findViewById(R.id.txtSubText);
+        holder.imgThumb = (ImageView) convertView.findViewById(R.id.imgThumb);
+
+        holder.txtText.setText(menu.getData().get(position).getMenu().getMenuName());
+        holder.txtSubText.setText(menu.getData().get(position).getMenu().getPrice() + " " + currency);
+
+        imageLoader.DisplayImage(Constant.AdminPageURL + menu.getData().get(position).getMenu().getMenuImage(), holder.imgThumb);
+
+        return convertView;
+    }
+
+    static class ViewHolder {
+        TextView txtText, txtSubText;
+        ImageView imgThumb;
+    }
+
+
+}

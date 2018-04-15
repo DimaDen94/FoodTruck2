@@ -1,4 +1,4 @@
-package com.solodroid.ecommerce.model;
+package com.solodroid.ecommerce.model.category;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by Dmitry on 13.04.2018.
  */
 
-public class DataCategory {
+public class Data {
     @SerializedName("Category")
     @Expose
     private Category Category;

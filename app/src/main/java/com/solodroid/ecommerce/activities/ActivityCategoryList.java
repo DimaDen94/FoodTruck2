@@ -22,7 +22,7 @@ import com.solodroid.ecommerce.adapters.AdapterCategoryList;
 import com.solodroid.ecommerce.App;
 import com.solodroid.ecommerce.Constant;
 import com.solodroid.ecommerce.R;
-import com.solodroid.ecommerce.model.PDataCategory;
+import com.solodroid.ecommerce.model.category.PDCategory;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -36,7 +36,7 @@ public class ActivityCategoryList extends Activity {
     // declare adapter object to create custom category list
     AdapterCategoryList cla;
 
-    PDataCategory pDataCategory;
+    PDCategory pDataCategory;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -76,14 +76,14 @@ public class ActivityCategoryList extends Activity {
 
     void retrofitRun() {
         Map<String, String> map = new HashMap<String, String>();
-        map.put("accesskey", Constant.AccessKey);
+        map.put(Constant.AccessKeyParam, Constant.AccessKeyValue);
 
         prgLoading.setVisibility(0);
         txtAlert.setVisibility(8);
 
-        App.getApi().getAllCategoryData(map).enqueue(new Callback<PDataCategory>() {
+        App.getApi().getAllCategoryData(map).enqueue(new Callback<PDCategory>() {
             @Override
-            public void onResponse(Call<PDataCategory> call, Response<PDataCategory> response) {
+            public void onResponse(Call<PDCategory> call, Response<PDCategory> response) {
                 //Данные успешно пришли, но надо проверить response.body() на null
                 prgLoading.setVisibility(8);
 
@@ -101,7 +101,7 @@ public class ActivityCategoryList extends Activity {
             }
 
             @Override
-            public void onFailure(Call<PDataCategory> call, Throwable t) {
+            public void onFailure(Call<PDCategory> call, Throwable t) {
 
             }
         });

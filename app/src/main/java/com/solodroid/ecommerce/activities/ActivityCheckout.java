@@ -7,7 +7,9 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -54,12 +56,20 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.solodroid.ecommerce.App;
 import com.solodroid.ecommerce.Constant;
 import com.solodroid.ecommerce.DBHelper;
 import com.solodroid.ecommerce.R;
+import com.solodroid.ecommerce.adapters.AdapterCategoryList;
+import com.solodroid.ecommerce.model.category.PDCategory;
+import com.solodroid.ecommerce.model.tax.PDTax;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 //import android.widget.CheckBox;
 
 public class ActivityCheckout extends FragmentActivity {
@@ -93,8 +103,7 @@ public class ActivityCheckout extends FragmentActivity {
 	DecimalFormat formatData = new DecimalFormat("#.##");
 
 	String Result;
-	String TaxCurrencyAPI;
-	int IOConnect = 0;
+	private PDTax pdTax;
 	
 	
     @Override
@@ -164,7 +173,7 @@ public class ActivityCheckout extends FragmentActivity {
 			});
 
         // tax and currency API url
-		TaxCurrencyAPI = Constant.TaxCurrencyAPI+"?accesskey="+Constant.AccessKey;
+		//TaxCurrencyAPI = Constant.TaxCurrencyAPI+"?accesskey="+Constant.AccessKeyValue;
         
         dbhelper = new DBHelper(this);
         // open database
@@ -175,8 +184,8 @@ public class ActivityCheckout extends FragmentActivity {
 		}
 		
 		// call asynctask class to request tax and currency data from server
-        new getTaxCurrency().execute();        
-        
+        //new getTaxCurrency().execute();
+		retrofitRun();
 
 
         // event listener to handle send button when pressed
@@ -233,106 +242,39 @@ public class ActivityCheckout extends FragmentActivity {
 			return super.onOptionsItemSelected(item);
 		}
 	}
-    
 
-    
+	void retrofitRun() {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put(Constant.AccessKeyParam, Constant.AccessKeyValue);
 
+		prgLoading.setVisibility(0);
+		txtAlert.setVisibility(8);
 
-    // asynctask class to handle parsing json in background
-    public class getTaxCurrency extends AsyncTask<Void, Void, Void>{
-    	
-    	// show progressbar first
-    	getTaxCurrency(){
-	 		if(!prgLoading.isShown()){
-	 			prgLoading.setVisibility(0);
-				txtAlert.setVisibility(8);
-	 		}
-	 	}
-    	
-		@Override
-		protected Void doInBackground(Void... arg0) {
-			// TODO Auto-generated method stub
-			// parse json data from server in background
-			parseJSONDataTax();
-			return null;
-		}
-    	
-		@Override
-		protected void onPostExecute(Void result) {
-			// TODO Auto-generated method stub
-			// when finish parsing, hide progressbar
- 			prgLoading.setVisibility(8);
- 			// if internet connection and data available request menu data from server
- 			// otherwise, show alert text
-			if(IOConnect == 0){
-				new getDataTask().execute();
-			}else{
-				txtAlert.setVisibility(0);
+		App.getApi().getTaxCurrency(map).enqueue(new Callback<PDTax>() {
+			@Override
+			public void onResponse(Call<PDTax> call, Response<PDTax> response) {
+				//Данные успешно пришли, но надо проверить response.body() на null
+				prgLoading.setVisibility(8);
+
+				// if internet connection and data available show data on list
+				// otherwise, show alert text
+				if (response.isSuccessful()) {
+					pdTax = response.body();
+					Tax = Double.parseDouble(pdTax.getData().get(0).getTaxOnCurrency().getValue());
+					Currency = pdTax.getData().get(1).getTaxOnCurrency().getValue();
+					new getDataTask().execute();
+				} else {
+					txtAlert.setVisibility(0);
+				}
 			}
-		}
-    }
-    
-    // method to parse json data from server
-	public void parseJSONDataTax(){
-	
-		try {
-			HostnameVerifier hostnameVerifier = org.apache.http.conn.ssl.SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER;
-			// request data from Category API
-			HttpClient client = new DefaultHttpClient();
-			SchemeRegistry registry = new SchemeRegistry();
-			SSLSocketFactory socketFactory = SSLSocketFactory.getSocketFactory();
-			socketFactory.setHostnameVerifier((X509HostnameVerifier) hostnameVerifier);
-			registry.register(new Scheme("https", socketFactory, 443));
-			SingleClientConnManager mgr = new SingleClientConnManager(client.getParams(), registry);
-			DefaultHttpClient httpClient = new DefaultHttpClient(mgr, client.getParams());
 
+			@Override
+			public void onFailure(Call<PDTax> call, Throwable t) {
 
-			// Set verifier
-			HttpsURLConnection.setDefaultHostnameVerifier(hostnameVerifier);
-
-
-			HttpConnectionParams.setConnectionTimeout(client.getParams(), 15000);
-			HttpConnectionParams.setSoTimeout(client.getParams(), 15000);
-			HttpUriRequest request = new HttpGet(TaxCurrencyAPI);
-			HttpResponse response = httpClient.execute(request);
-			InputStream atomInputStream = response.getEntity().getContent();
-	
-			
-			BufferedReader in = new BufferedReader(new InputStreamReader(atomInputStream));
-		        
-	        String line;
-	        String str = "";
-	        while ((line = in.readLine()) != null){
-	        	str += line;
-	        }
-	    
-	        // parse json data and store into tax and currency variables
-			JSONObject json = new JSONObject(str);
-			JSONArray data = json.getJSONArray("data"); // this is the "items: [ ] part
-				
-				
-			JSONObject object_tax = data.getJSONObject(0); 
-			JSONObject tax = object_tax.getJSONObject("tax_n_currency");
-			    
-			Tax = Double.parseDouble(tax.getString("Value"));
-				   
-			JSONObject object_currency = data.getJSONObject(1); 
-			JSONObject currency = object_currency.getJSONObject("tax_n_currency");
-				    
-			Currency = currency.getString("Value");
-					
-		} catch (MalformedURLException e) {
-		    // TODO Auto-generated catch block
-		    e.printStackTrace();
-		} catch (IOException e) {
-		    // TODO Auto-generated catch block
-			IOConnect = 1;
-		    e.printStackTrace();
-		} catch (JSONException e) {
-		    // TODO Auto-generated catch block
-		    e.printStackTrace();
-		}	
+			}
+		});
 	}
+
 	
 	// asynctask class to get data from database in background
     public class getDataTask extends AsyncTask<Void, Void, Void>{

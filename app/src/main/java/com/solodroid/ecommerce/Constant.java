@@ -12,15 +12,19 @@ public class Constant {
 
 	// API URL configuration
 
-	public static String AdminPageURL = "https://www.foodtruck8.info/panel/";
-	static String CategoryAPI = "https://www.foodtruck8.info/panel/api/get-all-category-data.php";
-	public static String MenuAPI = "https:/www.foodtruck8.info/panel/api/get-menu-data-by-category-id.php";
-	public static String TaxCurrencyAPI = "https://www.foodtruck8.info/panel/api/get-tax-and-currency.php";
-	public static String MenuDetailAPI = "https://www.foodtruck8.info/panel/api/get-menu-detail.php";
-	public static String SendDataAPI = "https://www.foodtruck8.info/panel/api/add-reservation.php";
+	public static final String BaseURL = "https://www.foodtruck8.info";
 
-	// change this access similar with accesskey in admin panel for security reason
-	public static String AccessKey = "12345";
+	public static final String CategoryAPI = "/panel/api/get-all-category-data.php";
+	public static final String TaxCurrencyAPI = "/panel/api/get-tax-and-currency.php";
+	public static final String MenuAPI = "/panel/api/get-menu-data-by-category-id.php";
+	public static final String MenuDetailAPI = "panel/api/get-menu-detail.php";
+	public static final String AdminPageURL = "https://www.foodtruck8.info/panel/";
+
+	public static final String SendDataAPI = "https://www.foodtruck8.info/panel/api/add-reservation.php";
+
+	// accesskey in admin panel for security reason
+	public static String AccessKeyParam = "accesskey";
+	public static String AccessKeyValue = "12345";
 
 	// database path configuration
 	static String DBPath = "/data/data/com.truck.shop/databases/";

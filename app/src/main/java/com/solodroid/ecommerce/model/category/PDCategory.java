@@ -1,4 +1,4 @@
-package com.solodroid.ecommerce.model;
+package com.solodroid.ecommerce.model.category;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -9,16 +9,16 @@ import java.util.ArrayList;
  * Created by Dmitry on 13.04.2018.
  */
 
-public class PDataCategory {
+public class PDCategory {
     @SerializedName("data")
     @Expose
-    private ArrayList<DataCategory> data;
+    private ArrayList<Data> data;
 
-    public ArrayList<DataCategory> getData() {
+    public ArrayList<Data> getData() {
         return this.data;
     }
 
-    public void setData(ArrayList<DataCategory> data) {
+    public void setData(ArrayList<Data> data) {
         this.data = data;
     }
 }

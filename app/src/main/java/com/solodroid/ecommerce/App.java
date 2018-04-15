@@ -25,7 +25,7 @@ public class App extends Application {
         super.onCreate();
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("https://www.foodtruck8.info") //Базовая часть адреса
+                .baseUrl(Constant.BaseURL) //Базовая часть адреса
                 .addConverterFactory(GsonConverterFactory.create(gson)) //Конвертер, необходимый для преобразования JSON'а в объекты
                 .build();
         apiService = retrofit.create(APIService.class); //Создаем объект, при помощи которого будем выполнять запросы

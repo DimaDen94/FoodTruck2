@@ -1,20 +1,27 @@
 package com.solodroid.ecommerce.retrofit;
 
-import com.solodroid.ecommerce.model.PDataCategory;
+import com.solodroid.ecommerce.Constant;
+import com.solodroid.ecommerce.model.category.PDCategory;
+import com.solodroid.ecommerce.model.menu.PDMenu;
+import com.solodroid.ecommerce.model.menu_detail.PDMenuDatail;
+import com.solodroid.ecommerce.model.tax.PDTax;
 
-import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 import retrofit2.Call;
-import retrofit2.http.FieldMap;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.Headers;
 import retrofit2.http.QueryMap;
 
 public interface APIService {
 
-    @GET("/panel/api/get-all-category-data.php")
-    Call<PDataCategory> getAllCategoryData(@QueryMap Map<String, String> map);
+    @GET(Constant.CategoryAPI)
+    Call<PDCategory> getAllCategoryData(@QueryMap Map<String, String> map);
+
+    @GET(Constant.TaxCurrencyAPI)
+    Call<PDTax> getTaxCurrency(@QueryMap Map<String, String> map);
+
+    @GET(Constant.MenuAPI)
+    Call<PDMenu> getMenu(@QueryMap Map<String, String> map);
+    @GET(Constant.MenuDetailAPI)
+    Call<PDMenuDatail> getMenuDetail(@QueryMap Map<String, String> map);
 }

@@ -12,16 +12,16 @@ import android.widget.TextView;
 import com.solodroid.ecommerce.Constant;
 import com.solodroid.ecommerce.ImageLoader;
 import com.solodroid.ecommerce.R;
-import com.solodroid.ecommerce.model.PDataCategory;
+import com.solodroid.ecommerce.model.category.PDCategory;
 
 // adapter class for custom category list
 public class AdapterCategoryList extends BaseAdapter {
 
     private Context context;
     public ImageLoader imageLoader;
-    PDataCategory pDataCategory;
+    PDCategory pDataCategory;
 
-    public AdapterCategoryList(Context context, PDataCategory pDataCategory) {
+    public AdapterCategoryList(Context context, PDCategory pDataCategory) {
         this.context = context;
         this.pDataCategory = pDataCategory;
         imageLoader = new ImageLoader(context);
