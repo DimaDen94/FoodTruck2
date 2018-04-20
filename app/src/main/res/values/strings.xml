@@ -42,7 +42,7 @@
 	<string name="address">Адрес доставки</string>
 	<string name="city">Город</string>
 
-	<string name="email">Ваш Email</string>
+	<string name="email">Ваш Email(Необязательно)</string>
 	<string name="number_of_people">Число людей</string>
 	<string name="date">Установить дату</string>
 	<string name="time">Установить время</string>
@@ -94,7 +94,13 @@
         <item>Связь с нами</item>
         <item>Выход</item>
     </string-array>
-    
+
+
+	<string-array name="facilities">
+		<item>Михайловская 8</item>
+		<item>Гагарина</item>
+	</string-array>
+
     <!-- Nav Drawer List Item Icons, keep them in order as the titles are in -->
     <array name="nav_drawer_icons">
         <item>@drawable/ic_home</item>       
