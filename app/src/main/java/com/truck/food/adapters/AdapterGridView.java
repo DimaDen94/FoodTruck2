@@ -9,22 +9,20 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.truck.food.GridViewItem;
 import com.truck.food.R;
 
-public class AdapaterGridView extends ArrayAdapter<GridViewItem> {
+public class AdapterGridView extends ArrayAdapter<GridViewItem> {
 	private Context mContext;
     private int resourceId;
     private ArrayList<GridViewItem> data = new ArrayList<GridViewItem>();
 
-	public AdapaterGridView(Context context, int layoutResourceId, ArrayList<GridViewItem> data) {
+	public AdapterGridView(Context context, int layoutResourceId, ArrayList<GridViewItem> data) {
 		super(context, layoutResourceId, data);
 		this.mContext = context;
 		this.resourceId = layoutResourceId;
 		this.data = data;
 	}
-
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View itemView = convertView;

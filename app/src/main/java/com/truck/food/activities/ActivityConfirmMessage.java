@@ -22,7 +22,7 @@ public class ActivityConfirmMessage extends Activity {
         setContentView(R.layout.confirm);
         
         ActionBar bar = getActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.header)));
+        bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.primary_dark)));
         bar.setTitle("Congratulations");
         bar.setDisplayHomeAsUpEnabled(true);
         bar.setHomeButtonEnabled(true);

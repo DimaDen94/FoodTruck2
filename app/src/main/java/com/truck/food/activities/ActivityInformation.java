@@ -28,8 +28,8 @@ public class ActivityInformation extends FragmentActivity implements ActionBar.T
         tabPagerAdapter = new AdapterInformation(getSupportFragmentManager());
         viewPager.setAdapter(tabPagerAdapter);
         actionBar = getActionBar();
-        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.header)));
-        actionBar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.header)));
+        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.primary_dark)));
+        actionBar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.primary_dark)));
         actionBar.setTitle("Информация");
 
         getActionBar().setDisplayHomeAsUpEnabled(true);

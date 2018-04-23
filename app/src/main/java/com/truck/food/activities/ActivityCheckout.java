@@ -37,7 +37,6 @@ import com.truck.food.DBHelper;
 import com.truck.food.R;
 import com.truck.food.model.Order;
 import com.truck.food.model.tax.PDTax;
-import com.truck.food.retrofit.APIService;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -77,7 +76,7 @@ public class ActivityCheckout extends FragmentActivity {
         setContentView(R.layout.checkout);
 
         ActionBar bar = getActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.header)));
+        bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.primary_dark)));
         bar.setTitle("Информация о клиенте");
         bar.setDisplayHomeAsUpEnabled(true);
         bar.setHomeButtonEnabled(true);
@@ -303,7 +302,7 @@ public class ActivityCheckout extends FragmentActivity {
             order.setOrderList("" + Quantity + " " + Menu_name + " " + Sub_total_price + " " + Currency + ",\n");
         }
 
-        if (order.getOrderList().equalsIgnoreCase("")) {
+        if (order.getOrderList()==null||order.getOrderList().equalsIgnoreCase("")) {
             order.setOrderList(getString(R.string.no_order_menu));
         }
 

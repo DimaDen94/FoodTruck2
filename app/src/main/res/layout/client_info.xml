@@ -89,9 +89,9 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="@color/header"
+            android:background="@color/primary_dark"
             android:text="@string/send_reservation"
-            android:textColor="@color/text"
+            android:textColor="@color/secondary_dark"
             android:textSize="14sp"
             android:textStyle="bold" />
     </LinearLayout>

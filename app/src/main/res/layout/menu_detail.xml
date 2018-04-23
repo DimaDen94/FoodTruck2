@@ -1,85 +1,62 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="#e7e7e7" >
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary"
+    android:fitsSystemWindows="true">
 
-    <ScrollView
-        android:id="@+id/sclDetail"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:fadeScrollbars="true"
-        android:visibility="gone" >
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
 
-        <LinearLayout
-            android:id="@+id/lytContent"
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/imgPreview"
-                android:layout_width="fill_parent"
-                android:layout_height="150dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/loading" />
-
-            <TextView
-                android:id="@+id/txtText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="18dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:text="aa"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/txtSubText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="18dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:text="aa"
-                android:textSize="16sp" />
-
-            <WebView
-                android:id="@+id/txtDescription"
+            <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:background="#e7e7e7"
-                android:textSize="14sp" />
-        </LinearLayout>
-    </ScrollView>
+                android:layout_height="?actionBarSize"
+                android:background="@color/primary_dark"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <ProgressBar
-        android:id="@+id/prgLoading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
+            </android.support.v7.widget.Toolbar>
 
-    <TextView
-        android:id="@+id/txtAlert"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="@string/alert"
-        android:textSize="14sp"
-        android:visibility="gone" />
+            <include
+                layout="@layout/menu_detail_content" />
+
+            <ProgressBar
+                android:id="@+id/prgLoading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />
+
+            <TextView
+                android:id="@+id/txtAlert"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/alert"
+                android:textSize="14sp"
+                android:visibility="gone" />
 
 
+        </android.support.design.widget.AppBarLayout>
 
-    <Button
-        android:id="@+id/btnAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-         />
+        <android.support.design.widget.FloatingActionButton xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/btnAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_marginBottom="15dp"
+            android:layout_marginRight="15dp"
+            android:src="@mipmap/ic_launcher"
+            app:backgroundTint="@color/primary_dark" />
 
-</RelativeLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+
+</android.support.v4.widget.DrawerLayout>

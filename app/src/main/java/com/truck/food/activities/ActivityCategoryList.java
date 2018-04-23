@@ -9,6 +9,9 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,14 +32,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ActivityCategoryList extends Activity {
-    private GridView listCategory;
+    private RecyclerView listCategory;
     private ProgressBar prgLoading;
     private TextView txtAlert;
 
     // declare adapter object to create custom category list
     private AdapterCategoryList cla;
-
-    private PDCategory pDataCategory;
+    private GridLayoutManager mLayoutManager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,33 +46,20 @@ public class ActivityCategoryList extends Activity {
         setContentView(R.layout.category_list);
 
         ActionBar bar = getActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.header)));
+        bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.primary_dark)));
         bar.setDisplayHomeAsUpEnabled(true);
         bar.setHomeButtonEnabled(true);
         bar.setTitle("Меню");
 
         prgLoading = (ProgressBar) findViewById(R.id.prgLoading);
-        listCategory = (GridView) findViewById(R.id.listCategory);
+        listCategory = (RecyclerView) findViewById(R.id.category_recycler_view);
         txtAlert = (TextView) findViewById(R.id.txtAlert);
-
+        mLayoutManager = new GridLayoutManager(getApplicationContext(), 1);
+        listCategory.setLayoutManager(mLayoutManager);
+        listCategory.setItemAnimator(new DefaultItemAnimator());
 
         retrofitRun();
 
-
-        // event listener to handle list when clicked
-        listCategory.setOnItemClickListener(new OnItemClickListener() {
-
-            public void onItemClick(AdapterView<?> arg0, View arg1, int position,
-                                    long arg3) {
-                // TODO Auto-generated method stub
-                // go to menu page
-                Intent iMenuList = new Intent(ActivityCategoryList.this, ActivityMenuList.class);
-                iMenuList.putExtra("category_id", pDataCategory.getData().get(position).getCategory().getCategoryId());
-
-                startActivity(iMenuList);
-                overridePendingTransition(R.anim.open_next, R.anim.close_next);
-            }
-        });
 
     }
 
@@ -90,7 +79,7 @@ public class ActivityCategoryList extends Activity {
                 // if internet connection and data available show data on list
                 // otherwise, show alert text
                 if (response.isSuccessful()) {
-                    pDataCategory = response.body();
+
                     cla = new AdapterCategoryList(ActivityCategoryList.this, response.body());
                     listCategory.setVisibility(View.VISIBLE);
                     listCategory.setAdapter(cla);
@@ -128,7 +117,7 @@ public class ActivityCategoryList extends Activity {
                 return true;
 
             case R.id.refresh:
-                listCategory.invalidateViews();
+                listCategory.invalidate();
                 clearData();
                 retrofitRun();
                 return true;

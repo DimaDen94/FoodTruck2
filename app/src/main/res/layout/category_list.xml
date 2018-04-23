@@ -1,18 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="#e7e7e7"
-    android:padding="5dp" >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.ActivityCategoryList">
 
-    <GridView
-        android:id="@+id/listCategory"
-        android:layout_width="fill_parent"
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/category_recycler_view"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/background_actionbar"
-        android:divider="@null"
-        android:numColumns="1"
-        android:visibility="gone" />
+        android:scrollbars="vertical" />
 
     <ProgressBar
         android:id="@+id/prgLoading"
@@ -28,5 +26,4 @@
         android:text="@string/alert"
         android:textSize="14sp"
         android:visibility="gone" />
-
 </RelativeLayout>

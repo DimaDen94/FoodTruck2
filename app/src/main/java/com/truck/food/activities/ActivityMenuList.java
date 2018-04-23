@@ -9,6 +9,9 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -36,7 +39,7 @@ import retrofit2.Response;
 
 public class ActivityMenuList extends Activity {
 	
-	private ListView listMenu;
+	private RecyclerView listMenu;
 	private ProgressBar prgLoading;
 	private EditText edtKeyword;
 	private ImageButton btnSearch;
@@ -46,16 +49,10 @@ public class ActivityMenuList extends Activity {
 	private static String Currency;
 
 	private AdapterMenuList mla;
-	
-
-	
-
 
 	private int Category_ID;
 
-
 	private PDTax pdTax;
-	private PDMenu pdMenu;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,31 +60,31 @@ public class ActivityMenuList extends Activity {
         setContentView(R.layout.menu_list);
         
         ActionBar bar = getActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.header)));
+        bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.primary_dark)));
         bar.setTitle("Меню");
         bar.setDisplayHomeAsUpEnabled(true);
         bar.setHomeButtonEnabled(true);
         prgLoading = (ProgressBar) findViewById(R.id.prgLoading);
-        listMenu = (ListView) findViewById(R.id.listMenu);
+        listMenu = (RecyclerView) findViewById(R.id.menu_recycler_view);
         edtKeyword = (EditText) findViewById(R.id.edtKeyword);
         btnSearch = (ImageButton) findViewById(R.id.btnSearch);
         txtAlert = (TextView) findViewById(R.id.txtAlert);
 
-        
-        // get category id and category name that sent from previous page
+
         Intent iGet = getIntent();
         Category_ID = iGet.getIntExtra("category_id",0);
-        //Category_name = iGet.getStringExtra("category_name");
+// call asynctask class to request tax and currency data from server
 
-		// set category name to textview
-//        txtTitle.setText(Category_name);
-        
+		GridLayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(), 1);
 
-       
-        // call asynctask class to request tax and currency data from server
-        retrofitGetTaxAndGetMenuRun();
-		
-        // event listener to handle search button when clicked
+		listMenu.setLayoutManager(mLayoutManager);
+		listMenu.setItemAnimator(new DefaultItemAnimator());
+
+
+
+		retrofitGetTaxAndGetMenuRun();
+
+		// event listener to handle search button when clicked
 		btnSearch.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View arg0) {
@@ -96,33 +93,20 @@ public class ActivityMenuList extends Activity {
 			}
 		});
 		
-		// event listener to handle list when clicked
-		listMenu.setOnItemClickListener(new OnItemClickListener() {
 
-			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
-					long arg3) {
-				// TODO Auto-generated method stub
-				// go to menu detail page
-				Intent iDetail = new Intent(ActivityMenuList.this, ActivityMenuDetail.class);
-				iDetail.putExtra("menu_id", Integer.parseInt(pdMenu.getData().get(position).getMenu().getMenuId()));
-				iDetail.putExtra("currency", Currency);
-				startActivity(iDetail);
-				overridePendingTransition(R.anim.open_next, R.anim.close_next);
-			}
-		});       
         
     }
 	void retrofitGetTaxAndGetMenuRun() {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put(Constant.AccessKeyParam, Constant.AccessKeyValue);
 
-		prgLoading.setVisibility(0);
-		txtAlert.setVisibility(8);
+		prgLoading.setVisibility(View.VISIBLE);
+		txtAlert.setVisibility(View.GONE);
 
 		App.getApi().getTaxCurrency(map).enqueue(new Callback<PDTax>() {
 			@Override
 			public void onResponse(Call<PDTax> call, Response<PDTax> response) {
-				prgLoading.setVisibility(8);
+				prgLoading.setVisibility(View.GONE);
 				if (response.isSuccessful()) {
 					pdTax = response.body();
 					//Tax = Double.valueOf(pdTax.getData().get(0).getTaxOnCurrency().getValue());
@@ -130,16 +114,16 @@ public class ActivityMenuList extends Activity {
 					if((Currency != null)){
 						retrofitGetMenuRun();
 					}else{
-						txtAlert.setVisibility(0);
+						txtAlert.setVisibility(View.VISIBLE);
 					}
 				} else {
-					txtAlert.setVisibility(0);
+					txtAlert.setVisibility(View.GONE);
 				}
 			}
 
 			@Override
 			public void onFailure(Call<PDTax> call, Throwable t) {
-				txtAlert.setVisibility(0);
+				txtAlert.setVisibility(View.VISIBLE);
 			}
 		});
 	}
@@ -148,25 +132,24 @@ public class ActivityMenuList extends Activity {
 		map.put(Constant.AccessKeyParam, Constant.AccessKeyValue);
 		map.put("category_id", String.valueOf(Category_ID));
 
-		prgLoading.setVisibility(0);
-		txtAlert.setVisibility(8);
+		prgLoading.setVisibility(View.VISIBLE);
+		txtAlert.setVisibility(View.GONE);
 
 		App.getApi().getMenu(map).enqueue(new Callback<PDMenu>() {
 			@Override
 			public void onResponse(Call<PDMenu> call, Response<PDMenu> response) {
 				//Данные успешно пришли, но надо проверить response.body() на null
-				prgLoading.setVisibility(8);
+				prgLoading.setVisibility(View.GONE);
 
 				// if internet connection and data available show data on list
 				// otherwise, show alert text
 				if (response.isSuccessful()) {
-					pdMenu = response.body();
 					mla = new AdapterMenuList(ActivityMenuList.this,response.body(),Currency);
-					listMenu.setVisibility(0);
+					listMenu.setVisibility(View.VISIBLE);
 					listMenu.setAdapter(mla);
 
 				} else {
-					txtAlert.setVisibility(0);
+					txtAlert.setVisibility(View.VISIBLE);
 				}
 			}
 
@@ -197,7 +180,7 @@ public class ActivityMenuList extends Activity {
 			return true;
 			
 		case R.id.refresh:
-			listMenu.invalidateViews();
+			listMenu.invalidate();
 
 			retrofitGetTaxAndGetMenuRun();
 			return true;			

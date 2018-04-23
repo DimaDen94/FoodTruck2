@@ -13,6 +13,9 @@ import android.content.res.Configuration;
 import android.database.SQLException;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.util.DisplayMetrics;
@@ -29,10 +32,11 @@ import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.truck.food.App;
 import com.truck.food.Constant;
 import com.truck.food.DBHelper;
-import com.truck.food.ImageLoader;
+
 import com.truck.food.R;
 
 import com.truck.food.model.menu_detail.MenuDetail;
@@ -43,13 +47,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class ActivityMenuDetail extends Activity {
-
+public class ActivityMenuDetail extends AppCompatActivity {
+    private Toolbar toolbar;
     private ImageView imgPreview;
     private TextView txtText, txtSubText;
     private WebView txtDescription;
-    private Button btnAdd;
-    private ScrollView sclDetail;
+    private FloatingActionButton btnAdd;
+    private LinearLayout sclDetail;
     private ProgressBar prgLoading;
     private TextView txtAlert;
 
@@ -57,7 +61,7 @@ public class ActivityMenuDetail extends Activity {
     private DBHelper dbhelper;
 
     // declare ImageLoader object
-    private ImageLoader imageLoader;
+    //private ImageLoader imageLoader;
 
     // declare variables to store menu data
     private int Menu_ID;
@@ -69,22 +73,19 @@ public class ActivityMenuDetail extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppDefault);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_detail);
 
-        ActionBar bar = getActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.header)));
-        bar.setTitle("Описание блюда");
-        bar.setDisplayHomeAsUpEnabled(true);
-        bar.setHomeButtonEnabled(true);
+        initToolbar();
 
         imgPreview = (ImageView) findViewById(R.id.imgPreview);
         txtText = (TextView) findViewById(R.id.txtText);
         txtSubText = (TextView) findViewById(R.id.txtSubText);
         txtDescription = (WebView) findViewById(R.id.txtDescription);
-        btnAdd = (Button) findViewById(R.id.btnAdd);
+        btnAdd = (FloatingActionButton) findViewById(R.id.btnAdd);
 
-        sclDetail = (ScrollView) findViewById(R.id.sclDetail);
+        sclDetail = (LinearLayout) findViewById(R.id.lytContent);
         prgLoading = (ProgressBar) findViewById(R.id.prgLoading);
         txtAlert = (TextView) findViewById(R.id.txtAlert);
 
@@ -98,7 +99,7 @@ public class ActivityMenuDetail extends Activity {
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(wPix, hPix);
         imgPreview.setLayoutParams(lp);
 
-        imageLoader = new ImageLoader(ActivityMenuDetail.this);
+        //imageLoader = new ImageLoader(ActivityMenuDetail.this);
         dbhelper = new DBHelper(this);
 
         // get menu id that sent from previous page
@@ -121,7 +122,16 @@ public class ActivityMenuDetail extends Activity {
         });
 
     }
-
+    private void initToolbar() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(R.string.menu_detail_title);
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                return false;
+            }
+        });
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -229,7 +239,13 @@ public class ActivityMenuDetail extends Activity {
 
                     sclDetail.setVisibility(View.VISIBLE);
 
-                    imageLoader.DisplayImage(Constant.AdminPageURL + menuDetail.getMenuImage(), imgPreview);
+                    Glide.with(ActivityMenuDetail.this)
+                            .load(Constant.AdminPageURL + menuDetail.getMenuImage())
+                            .thumbnail(0.01f)
+                            .crossFade()
+                            .into(imgPreview);
+
+                    //imageLoader.DisplayImage(Constant.AdminPageURL + menuDetail.getMenuImage(), imgPreview);
 
                     txtText.setText(menuDetail.getMenuName());
                     txtSubText.setText("Цена : " + formatData.format(price) + " " + Currency + "\n" + "Осталось : " + menuDetail.getQuantity() + " порций");

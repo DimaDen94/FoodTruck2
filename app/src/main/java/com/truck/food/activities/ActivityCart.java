@@ -81,7 +81,7 @@ public class ActivityCart extends Activity {
         setContentView(R.layout.your_order);
 
         ActionBar bar = getActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.header)));
+        bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.primary_dark)));
         bar.setTitle("Мои заказы");
         bar.setDisplayHomeAsUpEnabled(true);
         bar.setHomeButtonEnabled(true);

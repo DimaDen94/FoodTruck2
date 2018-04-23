@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <style name="AppTheme2" parent="android:Theme.Holo.Light.DarkActionBar">
         <item name="android:actionBarStyle">@style/AppTheme_ActionBar</item>
         <item name="android:actionBarSize">@dimen/action_bar_height</item>
@@ -9,7 +9,7 @@
     </style>
 
     <style name="AppTheme_ActionBar" parent="android:Widget.Holo.ActionBar.Solid">
-        <item name="android:background">@color/header</item>
+        <item name="android:background">@color/primary</item>
         <item name="android:icon">@drawable/actionbar_icon_placeholder_compat</item>
         <item name="android:titleTextStyle">@style/AppTheme_ActionBar_Title</item>
     </style>
@@ -21,5 +21,14 @@
 
     <style name="AppTheme_ActionBar_Overflow" parent="android:Widget.ActionButton.Overflow">
         <item name="android:src">@drawable/ic_ab_overflow_compat</item>
+    </style>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="AppDefault" parent="AppTheme">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorControlNormal">@color/white</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/white</item>
     </style>
 </resources>

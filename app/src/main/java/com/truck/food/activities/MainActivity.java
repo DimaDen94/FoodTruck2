@@ -3,15 +3,12 @@ package com.truck.food.activities;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import com.parse.Parse;
-import com.parse.ParseAnalytics;
-import com.parse.ParseInstallation;
-import com.parse.PushService;
+
 import com.truck.food.Constant;
 import com.truck.food.DBHelper;
 import com.truck.food.NavDrawerItem;
 import com.truck.food.R;
-import com.truck.food.adapters.AdapterMainMenu;
+
 import com.truck.food.adapters.AdapterNavDrawerList;
 
 import android.annotation.SuppressLint;
@@ -60,18 +57,14 @@ public class MainActivity extends FragmentActivity {
 
 	// declare dbhelper and adapter object
 	private DBHelper dbhelper;
-	private AdapterMainMenu mma;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.nav_drawer_main);
 
-		// Parse push notification
-		Parse.initialize(this, getString(R.string.parse_application_id), getString(R.string.parse_client_key));
-		ParseAnalytics.trackAppOpened(getIntent());
-		PushService.setDefaultPushCallback(this, MainActivity.class);
-		ParseInstallation.getCurrentInstallation().saveInBackground();
+
 
 		mTitle = mDrawerTitle = getTitle();
 
@@ -117,7 +110,7 @@ public class MainActivity extends FragmentActivity {
 		getActionBar().setHomeButtonEnabled(true);
 
 		ActionBar bar = getActionBar();
-		bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.header)));
+		bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.primary_dark)));
 
 		// get screen device width and height
 		DisplayMetrics dm = new DisplayMetrics();
@@ -128,7 +121,7 @@ public class MainActivity extends FragmentActivity {
 			Toast.makeText(MainActivity.this, getString(R.string.no_internet), Toast.LENGTH_SHORT).show();
 		}
 
-		mma = new AdapterMainMenu(this);
+
 		dbhelper = new DBHelper(this);
 
 		// create database

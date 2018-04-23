@@ -2,12 +2,12 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:background="#e7e7e7" >
+    android:background="@color/accent" >
 
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="300dp"
         android:background="@drawable/image_header"
         android:scaleType="centerCrop" />
 

@@ -24,7 +24,7 @@ public class ActivityContactUs extends Activity {
 		setContentView(R.layout.contact_us);
 
 		ActionBar bar = getActionBar();
-		bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.header)));
+		bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.primary_dark)));
 		bar.setTitle("Связь с нами");
 		bar.setDisplayHomeAsUpEnabled(true);
 		bar.setHomeButtonEnabled(true);

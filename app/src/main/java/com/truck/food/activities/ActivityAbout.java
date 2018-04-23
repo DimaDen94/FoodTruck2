@@ -15,7 +15,7 @@ public class ActivityAbout extends Activity {
 		setContentView(R.layout.about);
 		
 		ActionBar bar = getActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.header)));
+        bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.primary_dark)));
         bar.setTitle("О программе");
         bar.setDisplayHomeAsUpEnabled(true);
         bar.setHomeButtonEnabled(true);

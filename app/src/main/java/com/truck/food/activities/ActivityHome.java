@@ -12,13 +12,13 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 
-import com.truck.food.adapters.AdapaterGridView;
+import com.truck.food.adapters.AdapterGridView;
 import com.truck.food.GridViewItem;
 import com.truck.food.R;
 
 public class ActivityHome extends Fragment implements OnItemClickListener {
 	private GridView gridview;
-	private AdapaterGridView gridviewAdapter;
+	private AdapterGridView gridviewAdapter;
 	private ArrayList<GridViewItem> data = new ArrayList<GridViewItem>();
 
 	@Override
@@ -42,7 +42,7 @@ public class ActivityHome extends Fragment implements OnItemClickListener {
 
 	// Set the Data Adapter
 	private void setDataAdapter() {
-		gridviewAdapter = new AdapaterGridView(getActivity(), R.layout.fragment_list_item, data);
+		gridviewAdapter = new AdapterGridView(getActivity(), R.layout.fragment_list_item, data);
 		gridview.setAdapter(gridviewAdapter);
 	}
 

@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#e7e7e7" >
+    android:background="@color/accent" >
     
     	<RelativeLayout
     	    android:id="@+id/lytOrder"
@@ -15,7 +15,7 @@
 		        android:layout_width="fill_parent"
 		        android:layout_height="wrap_content"
 		        android:padding="5dp"
-		        android:background="@color/header">
+		        android:background="@color/accent">
 	
 		        <TextView 
 		            android:id="@+id/txtTotalLabel"
@@ -41,7 +41,6 @@
 		        android:id="@+id/txtDetail"
 		        android:layout_width="fill_parent"
 		        android:layout_height="wrap_content"
-		        android:background="#000"
 		        android:text="@string/detail"
 		        android:textColor="@color/text"
 		        android:textSize="14sp"
