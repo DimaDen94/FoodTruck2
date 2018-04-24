@@ -11,225 +11,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bca7b2ef-013b-45b1-a374-4674c5b26182" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/animated_vector_drawable_25_3_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_25_3_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/cardview_v7_25_3_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/design_25_3_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/glide_3_8_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/multidex_1_0_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/multidex_instrumentation_1_0_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/recyclerview_v7_25_3_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/support_annotations_25_3_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/support_compat_25_3_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/support_core_ui_25_3_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/support_core_utils_25_3_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/support_fragment_25_3_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/support_media_compat_25_3_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/support_v4_25_3_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/support_vector_drawable_25_3_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/transition_25_3_1.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Parse_1_3_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/android_support_v4.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/signpost_commonshttp4_1_2_1_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/signpost_core_1_2_1_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/signpost_jetty6_1_2_1_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/FileCache.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/ImageLoader.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/MemoryCache.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/SquareImageView.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/adapters/AdapaterGridView.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/adapters/AdapterMainMenu.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/layout-sw480dp/category_list_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/layout-sw480dp/fragment_list.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/layout-sw480dp/fragment_list_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/layout-sw480dp/menu_list_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/category_list_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/fragment_list.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/fragment_list_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/menu_list_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/layout-sw800dp/fragment_list.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/layout/grid_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/layout/main_menu_item.xml" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/guava_18_0.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/sugar_1_4.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/db/Dish.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/DBHelper.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/.gitignore" afterPath="$PROJECT_DIR$/app/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/allclasses-frame.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/allclasses-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/allclasses-noframe.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/allclasses-noframe.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/CountCallback.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/CountCallback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/DeleteCallback.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/DeleteCallback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/FindCallback.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/FindCallback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/FunctionCallback.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/FunctionCallback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/GetCallback.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/GetCallback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/GetDataCallback.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/GetDataCallback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/LocationCallback.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/LocationCallback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/LogInCallback.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/LogInCallback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/Parse.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/Parse.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseACL.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseACL.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseAnalytics.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseAnalytics.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseAnonymousUtils.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseAnonymousUtils.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseClassName.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseClassName.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseCloud.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseCloud.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseException.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseException.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseFacebookUtils.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseFacebookUtils.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseFile.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseFile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseGeoPoint.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseGeoPoint.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseInstallation.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseInstallation.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseObject.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseObject.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParsePush.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParsePush.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseQuery.CachePolicy.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseQuery.CachePolicy.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseQuery.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseQuery.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseRelation.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseRelation.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseRole.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseRole.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseTwitterUtils.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseTwitterUtils.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseUser.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ParseUser.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ProgressCallback.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/ProgressCallback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/PushCallback.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/PushCallback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/PushService.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/PushService.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/RefreshCallback.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/RefreshCallback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/RequestPasswordResetCallback.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/RequestPasswordResetCallback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/SaveCallback.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/SaveCallback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/SendCallback.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/SendCallback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/SignUpCallback.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/SignUpCallback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/StandardPushCallback.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/StandardPushCallback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/CountCallback.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/CountCallback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/DeleteCallback.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/DeleteCallback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/FindCallback.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/FindCallback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/FunctionCallback.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/FunctionCallback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/GetCallback.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/GetCallback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/GetDataCallback.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/GetDataCallback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/LocationCallback.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/LocationCallback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/LogInCallback.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/LogInCallback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/Parse.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/Parse.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseACL.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseACL.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseAnalytics.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseAnalytics.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseAnonymousUtils.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseAnonymousUtils.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseClassName.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseClassName.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseCloud.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseCloud.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseException.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseException.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseFacebookUtils.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseFacebookUtils.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseFile.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseFile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseGeoPoint.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseGeoPoint.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseInstallation.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseInstallation.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseObject.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseObject.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParsePush.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParsePush.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseQuery.CachePolicy.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseQuery.CachePolicy.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseQuery.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseQuery.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseRelation.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseRelation.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseRole.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseRole.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseTwitterUtils.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseTwitterUtils.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseUser.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ParseUser.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ProgressCallback.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/ProgressCallback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/PushCallback.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/PushCallback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/PushService.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/PushService.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/RefreshCallback.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/RefreshCallback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/RequestPasswordResetCallback.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/RequestPasswordResetCallback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/SaveCallback.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/SaveCallback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/SendCallback.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/SendCallback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/SignUpCallback.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/SignUpCallback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/StandardPushCallback.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/class-use/StandardPushCallback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/package-frame.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/package-summary.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/package-tree.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/package-use.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/com/parse/package-use.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/constant-values.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/constant-values.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/deprecated-list.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/deprecated-list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/help-doc.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/help-doc.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/index-all.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/index-all.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/index.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/overview-tree.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/overview-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/package-list" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/package-list" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/serialized-form.html" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/serialized-form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/style.css" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0-javadoc/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/libs/Parse-1.3.0.jar.properties" afterPath="$PROJECT_DIR$/app/libs/Parse-1.3.0.jar.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/proguard-rules.pro" afterPath="$PROJECT_DIR$/app/proguard-rules.pro" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/truck/food/ApplicationTest.java" afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/truck/food/ApplicationTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/App.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/App.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/Constant.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/Constant.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/DBHelper.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/DBHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/GridViewItem.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/GridViewItem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/NavDrawerItem.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/NavDrawerItem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/SwipeTabFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/SwipeTabFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityAbout.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityAbout.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityCart.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityCart.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityCategoryList.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityCategoryList.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityCheckout.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityCheckout.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityConfirmMessage.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityConfirmMessage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityContactUs.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityContactUs.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityHome.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityHome.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityInformation.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityInformation.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityMenuDetail.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityMenuDetail.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityMenuList.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityMenuList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityProfile.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityProfile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivitySplash.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivitySplash.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/adapters/AdapterCart.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/adapters/AdapterCart.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/adapters/AdapterCategoryList.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/adapters/AdapterCategoryList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/adapters/AdapterInformation.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/adapters/AdapterInformation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/adapters/AdapterMenuList.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/adapters/AdapterMenuList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/adapters/AdapterNavDrawerList.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/adapters/AdapterNavDrawerList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/adapters/AdapterProfile.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/adapters/AdapterProfile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/model/Order.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/model/Order.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/model/category/Category.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/model/category/Category.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/model/category/Data.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/model/category/Data.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/model/category/PDCategory.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/model/category/PDCategory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/model/menu/Data.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/model/menu/Data.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/model/menu/Menu.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/model/menu/Menu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/model/menu/PDMenu.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/model/menu/PDMenu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/model/menu_detail/Data.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/model/menu_detail/Data.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/model/menu_detail/MenuDetail.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/model/menu_detail/MenuDetail.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/model/menu_detail/PDMenuDatail.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/model/menu_detail/PDMenuDatail.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/model/tax/Data.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/model/tax/Data.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/model/tax/PDTax.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/model/tax/PDTax.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/model/tax/TaxOnCurrency.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/model/tax/TaxOnCurrency.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/truck/food/retrofit/APIService.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/truck/food/retrofit/APIService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/anim/close_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/anim/close_main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/anim/close_next.xml" afterPath="$PROJECT_DIR$/app/src/main/res/anim/close_next.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/anim/open_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/anim/open_main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/anim/open_next.xml" afterPath="$PROJECT_DIR$/app/src/main/res/anim/open_next.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/actionbar_icon_placeholder_compat.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/actionbar_icon_placeholder_compat.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/actionbar_shadow.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/actionbar_shadow.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/border_shadow.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/border_shadow.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/border_shadow2.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/border_shadow2.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/btn_buy.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/btn_buy.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/btn_checkout.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/btn_checkout.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/btn_delete.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/btn_delete.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/button_top_style_1.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/button_top_style_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/list_item_bg_normal.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/list_item_bg_normal.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/list_item_bg_pressed.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/list_item_bg_pressed.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/list_selector.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/list_selector.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/loading_url.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/loading_url.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/navigation_drawer_shadow.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/navigation_drawer_shadow.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/about.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/about.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/category_list.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/category_list.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/category_list_item.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/category_list_item.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/checkout.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/checkout.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/client_info.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/client_info.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/confirm.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/confirm.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/contact_us.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/contact_us.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_list.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_list.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_list_item.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_list_item.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/menu_detail.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/menu_detail.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/menu_list.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/menu_list.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/menu_list_item.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/menu_list_item.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/nav_drawer_list_item.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/nav_drawer_list_item.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/nav_drawer_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/nav_drawer_main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/order_list_item.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/order_list_item.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/splash.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/splash.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/swipetab.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/swipetab.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/swipetab_fragment.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/swipetab_fragment.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/your_order.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/your_order.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_category.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_category.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_detail.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_detail.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_list.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_list.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values-w820dp/dimens.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-w820dp/dimens.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/array.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/array.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
     </list>
     <ignored path="EcommerceAndroidApp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -263,11 +57,47 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="456">
+              <caret line="40" column="41" selection-start-line="40" selection-start-column="41" selection-end-line="40" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Dish.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/truck/food/db/Dish.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="18" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#534#535#0" expanded="true" />
+                <element signature="e#562#563#0" expanded="true" />
+                <element signature="e#601#602#0" expanded="true" />
+                <element signature="e#635#636#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ActivityCheckout.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityCheckout.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="498">
-              <caret line="268" column="50" selection-start-line="268" selection-start-column="50" selection-end-line="268" selection-end-column="50" />
+            <state relative-caret-position="3119">
+              <caret line="237" column="5" selection-start-line="237" selection-start-column="5" selection-end-line="237" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -275,35 +105,52 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdapterGridView.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/truck/food/adapters/AdapterGridView.java">
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-335">
-              <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="918">
-              <caret line="54" column="18" selection-start-line="54" selection-start-column="18" selection-end-line="54" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LinkedTreeMap.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.7/bbb63ca253b483da8ee53a50374593923e3de2e2/gson-2.7-sources.jar!/com/google/gson/internal/LinkedTreeMap.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8857">
-              <caret line="565" column="0" selection-start-line="565" selection-start-column="0" selection-end-line="565" selection-end-column="0" />
+            <state relative-caret-position="-437">
+              <caret line="287" column="39" selection-start-line="287" selection-start-column="39" selection-end-line="287" selection-end-column="39" />
               <folding>
-                <element signature="e#2696#2697#0" expanded="true" />
-                <element signature="e#2717#2718#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ActivityCart.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityCart.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="314" column="118" selection-start-line="314" selection-start-column="118" selection-end-line="314" selection-end-column="118" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ActivityMenuDetail.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityMenuDetail.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2694">
+              <caret line="194" column="35" selection-start-line="194" selection-start-column="35" selection-end-line="194" selection-end-column="35" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#5911#7148#0" expanded="true" />
+                <element signature="e#7147#7148#0" expanded="true" />
+                <element signature="e#7196#7427#0" expanded="true" />
+                <element signature="e#7426#7427#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MenuDetail.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/truck/food/model/menu_detail/MenuDetail.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="379">
+              <caret line="101" column="0" selection-start-line="10" selection-start-column="3" selection-end-line="101" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1091,6 +938,11 @@
                 <option name="name" value="packageDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Prepare com.github.satyan:sugar:1.4" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareComGithubSatyanSugar14Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="transformClassesWithJarMergingForDebugAndroidTest" />
               </ExternalTaskPojo>
@@ -1830,6 +1682,11 @@
                 <option name="name" value="packageDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Prepare com.github.satyan:sugar:1.4" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="prepareComGithubSatyanSugar14Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="transformClassesWithJarMergingForDebugAndroidTest" />
               </ExternalTaskPojo>
@@ -1852,7 +1709,7 @@
         <entry key="C:\Users\Dmitry\Downloads\Shop\Shop\AndroidProjects\AndroidStudio\EcommerceAndroidApp" value="4486448215263" />
         <entry key="C:\Users\Dmitry\Downloads\Shop\Shop\AndroidProjects\AndroidStudio\EcommerceAndroidApp\FoodTruck2" value="4486448215263" />
         <entry key="D:\HOBBY\Android\FoodTruck2" value="4571106714519" />
-        <entry key="D:\HOBBY\FoodTruck2" value="4573446072323" />
+        <entry key="D:\HOBBY\FoodTruck2" value="4573610391174" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -2067,14 +1924,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/solodroid/ecommerce/ActivityCategoryList.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout-sw480dp/category_list_item.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/category_list_item.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/category_list.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/grid_item.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/category_list_item.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/solodroid/ecommerce/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/solodroid/ecommerce/App.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/solodroid/ecommerce/model/category/PDataCategory.java" />
@@ -2106,18 +1959,22 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/solodroid/ecommerce/activities/ActivityCheckout.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/solodroid/ecommerce/activities/ActivityMenuDetail.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/solodroid/ecommerce/DBHelper.java" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityMenuDetail.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/truck/food/model/Response.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/checkout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/client_info.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/truck/food/model/Order.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/truck/food/Constant.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/truck/food/App.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/truck/food/retrofit/APIService.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityCheckout.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/truck/food/adapters/AdapterGridView.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/truck/food/db/Dish.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/truck/food/App.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityMenuDetail.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityCart.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityCheckout.java" />
       </list>
     </option>
   </component>
@@ -2152,8 +2009,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
@@ -2189,18 +2046,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="truck" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="food" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -2285,7 +2130,41 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="adapters" />
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="menu_detail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FoodTruck2" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="truck" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="food" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2317,6 +2196,20 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="activities" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FoodTruck2" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="manifests" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidManifestsGroupNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -2680,7 +2573,7 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47440273" sideWeight="0.5030257" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7081911" sideWeight="0.4969743" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.79522187" sideWeight="0.4969743" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935154" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.54266214" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935154" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2724,7 +2617,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityMenuDetail.java</url>
-          <line>188</line>
+          <line>176</line>
           <properties />
           <option name="timeStamp" value="29" />
         </line-breakpoint>
@@ -2736,7 +2629,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityCheckout.java</url>
-          <line>145</line>
+          <line>143</line>
           <properties />
           <option name="timeStamp" value="36" />
         </line-breakpoint>
@@ -2746,59 +2639,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.1.0/3564ebef90ac75e61ed65ab9af0f422ce92d4afa/retrofit-2.1.0-sources.jar!/retrofit2/BuiltInConverters.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.3.0/ce902532a348a685692095f86d14800314078813/okhttp-3.3.0-sources.jar!/okhttp3/HttpUrl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="1610" column="0" selection-start-line="1610" selection-start-column="0" selection-end-line="1610" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.1.0/3564ebef90ac75e61ed65ab9af0f422ce92d4afa/retrofit-2.1.0-sources.jar!/retrofit2/ParameterHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3128">
-          <caret line="209" column="0" selection-start-line="209" selection-start-column="0" selection-end-line="209" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-17">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.3.0/ce902532a348a685692095f86d14800314078813/okhttp-3.3.0-sources.jar!/okhttp3/Headers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="239" column="0" selection-start-line="239" selection-start-column="0" selection-end-line="239" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.3.0/ce902532a348a685692095f86d14800314078813/okhttp-3.3.0-sources.jar!/okhttp3/Request.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.3.0/ce902532a348a685692095f86d14800314078813/okhttp-3.3.0-sources.jar!/okhttp3/FormBody.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.1.0/3564ebef90ac75e61ed65ab9af0f422ce92d4afa/retrofit-2.1.0-sources.jar!/retrofit2/RequestBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
@@ -2835,182 +2675,182 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/about.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-347">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/swipetab_fragment.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/swipetab_fragment.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/swipetab.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/splash.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/order_list_item.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/order_list_item.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-160">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/nav_drawer_main.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/nav_drawer_main.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-126">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/nav_drawer_list_item.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/nav_drawer_list_item.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-92">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/menu_list_item.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/menu_list_item.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
           <caret line="18" column="25" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/menu_detail.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/menu_detail.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/main_menu_item.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_list_item.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_list.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_list.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/contact_us.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/contact_us.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-279">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/confirm.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/confirm.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-sw480dp/category_list_item.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/menu_list.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/category_list.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/grid_item.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/checkout.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="48" selection-start-line="18" selection-start-column="48" selection-end-line="18" selection-end-column="48" />
           <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/client_info.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/client_info.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-500">
           <caret line="36" column="36" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.1.0/3564ebef90ac75e61ed65ab9af0f422ce92d4afa/retrofit-2.1.0-sources.jar!/retrofit2/OkHttpCall.java">
@@ -3068,8 +2908,40 @@
         <state relative-caret-position="8857">
           <caret line="565" column="0" selection-start-line="565" selection-start-column="0" selection-end-line="565" selection-end-column="0" />
           <folding>
-            <element signature="e#2696#2697#0" expanded="true" />
-            <element signature="e#2717#2718#0" expanded="true" />
+            <element signature="e#0#17891#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1646#1647#0" expanded="false" />
+            <element signature="e#1681#1682#0" expanded="false" />
+            <element signature="e#2078#2079#0" expanded="false" />
+            <element signature="e#2131#2132#0" expanded="false" />
+            <element signature="e#2901#2902#0" expanded="false" />
+            <element signature="e#2943#2944#0" expanded="false" />
+            <element signature="e#6541#6542#0" expanded="false" />
+            <element signature="e#6594#6595#0" expanded="false" />
+            <element signature="e#13984#13985#0" expanded="false" />
+            <element signature="e#14008#14009#0" expanded="false" />
+            <element signature="e#14035#14036#0" expanded="false" />
+            <element signature="e#14061#14062#0" expanded="false" />
+            <element signature="e#14725#14726#0" expanded="false" />
+            <element signature="e#14763#14764#0" expanded="false" />
+            <element signature="e#15574#15575#0" expanded="false" />
+            <element signature="e#15609#15610#0" expanded="false" />
+            <element signature="e#16229#16230#0" expanded="false" />
+            <element signature="e#16254#16255#0" expanded="false" />
+            <element signature="e#16403#16404#0" expanded="false" />
+            <element signature="e#16442#16443#0" expanded="false" />
+            <element signature="e#16908#16909#0" expanded="false" />
+            <element signature="e#16948#16949#0" expanded="false" />
+            <element signature="e#17033#17034#0" expanded="false" />
+            <element signature="e#17058#17059#0" expanded="false" />
+            <element signature="e#17177#17178#0" expanded="false" />
+            <element signature="e#17220#17221#0" expanded="false" />
+            <element signature="e#17286#17287#0" expanded="false" />
+            <element signature="e#17321#17322#0" expanded="false" />
+            <element signature="e#17372#17373#0" expanded="false" />
+            <element signature="e#17425#17426#0" expanded="false" />
+            <element signature="e#17462#17463#0" expanded="false" />
+            <element signature="e#17502#17503#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3104,17 +2976,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/truck/food/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="19" column="54" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="54" />
-          <folding>
-            <element signature="e#1075#1076#0" expanded="true" />
-            <element signature="e#1108#1109#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/truck/food/retrofit/APIService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="23">
@@ -3130,29 +2991,112 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityCheckout.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/truck/food/adapters/AdapterGridView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="268" column="50" selection-start-line="268" selection-start-column="50" selection-end-line="268" selection-end-column="50" />
+        <state relative-caret-position="68">
+          <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="40" column="41" selection-start-line="40" selection-start-column="41" selection-end-line="40" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/truck/food/model/menu_detail/MenuDetail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="101" column="0" selection-start-line="10" selection-start-column="3" selection-end-line="101" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/truck/food/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="75" selection-start-line="8" selection-start-column="75" selection-end-line="8" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityMenuDetail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2694">
+          <caret line="194" column="35" selection-start-line="194" selection-start-column="35" selection-end-line="194" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5911#7148#0" expanded="true" />
+            <element signature="e#7147#7148#0" expanded="true" />
+            <element signature="e#7196#7427#0" expanded="true" />
+            <element signature="e#7426#7427#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-437">
+          <caret line="287" column="39" selection-start-line="287" selection-start-column="39" selection-end-line="287" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityCheckout.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="30" column="2" selection-start-line="30" selection-start-column="2" selection-end-line="34" selection-end-column="53" />
-          <folding />
+        <state relative-caret-position="3119">
+          <caret line="237" column="5" selection-start-line="237" selection-start-column="5" selection-end-line="237" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/truck/food/adapters/AdapterGridView.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/truck/food/db/Dish.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-335">
-          <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
-          <folding />
+        <state relative-caret-position="119">
+          <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#534#535#0" expanded="true" />
+            <element signature="e#562#563#0" expanded="true" />
+            <element signature="e#601#602#0" expanded="true" />
+            <element signature="e#635#636#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/truck/food/activities/ActivityCart.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="314" column="118" selection-start-line="314" selection-start-column="118" selection-end-line="314" selection-end-column="118" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

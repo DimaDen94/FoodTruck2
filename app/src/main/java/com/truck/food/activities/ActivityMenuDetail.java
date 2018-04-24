@@ -2,6 +2,7 @@ package com.truck.food.activities;
 
 import java.text.DecimalFormat;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import android.app.ActionBar;
@@ -35,10 +36,10 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.truck.food.App;
 import com.truck.food.Constant;
-import com.truck.food.DBHelper;
 
 import com.truck.food.R;
 
+import com.truck.food.db.Dish;
 import com.truck.food.model.menu_detail.MenuDetail;
 import com.truck.food.model.menu_detail.PDMenuDatail;
 
@@ -57,11 +58,6 @@ public class ActivityMenuDetail extends AppCompatActivity {
     private ProgressBar prgLoading;
     private TextView txtAlert;
 
-    // declare dbhelper object
-    private DBHelper dbhelper;
-
-    // declare ImageLoader object
-    //private ImageLoader imageLoader;
 
     // declare variables to store menu data
     private int Menu_ID;
@@ -99,8 +95,7 @@ public class ActivityMenuDetail extends AppCompatActivity {
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(wPix, hPix);
         imgPreview.setLayoutParams(lp);
 
-        //imageLoader = new ImageLoader(ActivityMenuDetail.this);
-        dbhelper = new DBHelper(this);
+
 
         // get menu id that sent from previous page
         Intent iGet = getIntent();
@@ -167,13 +162,6 @@ public class ActivityMenuDetail extends AppCompatActivity {
     // method to show number of order form
     void inputDialog() {
 
-        // open database first
-        try {
-            dbhelper.openDataBase();
-        } catch (SQLException sqle) {
-            throw sqle;
-        }
-
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
         alert.setTitle(R.string.order);
@@ -193,10 +181,19 @@ public class ActivityMenuDetail extends AppCompatActivity {
                 // when add button clicked add menu to order table in database
                 if (!temp.equalsIgnoreCase("")) {
                     quantity = Integer.parseInt(temp);
-                    if (dbhelper.isDataExist(Menu_ID)) {
-                        dbhelper.updateData(Menu_ID, quantity, (Double.parseDouble(menuDetail.getPrice()) * quantity));
+                    if (Dish.findById(Dish.class,Menu_ID)!=null) {
+                        Dish dish = Dish.findById(Dish.class,Menu_ID);
+                        dish.setCount(quantity);
                     } else {
-                        dbhelper.addData(Menu_ID, menuDetail.getMenuName(), quantity, (Double.parseDouble(menuDetail.getPrice()) * quantity));
+                        Dish dish = new Dish(menuDetail.getDescription(),
+                                menuDetail.getServeFor(),
+                                menuDetail.getQuantity(),
+                                menuDetail.getMenuImage(),
+                                menuDetail.getMenuId(),
+                                menuDetail.getPrice(),
+                                menuDetail.getMenuName(),
+                                quantity);
+                        dish.save();
                     }
                 } else {
                     dialog.cancel();
@@ -268,7 +265,6 @@ public class ActivityMenuDetail extends AppCompatActivity {
     public void onBackPressed() {
         // TODO Auto-generated method stub
         super.onBackPressed();
-        dbhelper.close();
         finish();
         overridePendingTransition(R.anim.open_main, R.anim.close_next);
     }

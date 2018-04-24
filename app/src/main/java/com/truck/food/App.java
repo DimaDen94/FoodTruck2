@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.orm.SugarApp;
 import com.truck.food.retrofit.APIService;
 
 import okhttp3.OkHttpClient;
@@ -14,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by Dmitry on 13.04.2018.
  */
 
-public class App extends Application {
+public class App extends SugarApp {
     private static APIService apiService;
     private Retrofit retrofit;
     private Gson gson = new GsonBuilder().setLenient()

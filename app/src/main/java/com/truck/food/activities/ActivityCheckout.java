@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -33,8 +34,9 @@ import android.widget.Toast;
 
 import com.truck.food.App;
 import com.truck.food.Constant;
-import com.truck.food.DBHelper;
+
 import com.truck.food.R;
+import com.truck.food.db.Dish;
 import com.truck.food.model.Order;
 import com.truck.food.model.tax.PDTax;
 
@@ -54,8 +56,8 @@ public class ActivityCheckout extends FragmentActivity {
     private Spinner spinFacility;
 
     // declare dbhelper object
-    private DBHelper dbhelper;
-    ArrayList<ArrayList<Object>> data;
+    private List<Dish> dishes;
+
 
 
     // declare static variables to store tax and currency data
@@ -106,13 +108,9 @@ public class ActivityCheckout extends FragmentActivity {
         spinFacility.setAdapter(adapter);
 
         order = new Order();
-        dbhelper = new DBHelper(this);
-        // open database
-        try {
-            dbhelper.openDataBase();
-        } catch (SQLException sqle) {
-            throw sqle;
-        }
+
+        //it's sugar, baby
+        dishes = Dish.listAll(Dish.class);
 
 
         retrofitRun();
@@ -135,7 +133,7 @@ public class ActivityCheckout extends FragmentActivity {
                         order.getlName().equalsIgnoreCase("") ||
                         order.getPhone().equalsIgnoreCase("")) {
                     Toast.makeText(ActivityCheckout.this, R.string.form_alert, Toast.LENGTH_SHORT).show();
-                } else if ((data.size() == 0)) {
+                } else if ((dishes.size() == 0)) {
                     Toast.makeText(ActivityCheckout.this, R.string.order_alert, Toast.LENGTH_SHORT).show();
                 } else {
 
@@ -226,7 +224,7 @@ public class ActivityCheckout extends FragmentActivity {
                     pdTax = response.body();
                     Tax = Double.parseDouble(pdTax.getData().get(0).getTaxOnCurrency().getValue());
                     Currency = pdTax.getData().get(1).getTaxOnCurrency().getValue();
-                    new getDataTask().execute();
+                    getDataFromDatabase();
                 } else {
                     txtAlert.setVisibility(View.VISIBLE);
                 }
@@ -237,28 +235,6 @@ public class ActivityCheckout extends FragmentActivity {
 
             }
         });
-    }
-
-
-    // asynctask class to get data from database in background
-    public class getDataTask extends AsyncTask<Void, Void, Void> {
-
-
-        @Override
-        protected Void doInBackground(Void... arg0) {
-            // TODO Auto-generated method stub
-            getDataFromDatabase();
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void result) {
-            // TODO Auto-generated method stub
-            // hide progressbar and show reservation form
-            prgLoading.setVisibility(View.GONE);
-            sclDetail.setVisibility(View.VISIBLE);
-
-        }
     }
 
 
@@ -283,19 +259,19 @@ public class ActivityCheckout extends FragmentActivity {
     // method to get data from database
     public void getDataFromDatabase() {
 
-        data = dbhelper.getAllData();
+
 
         double Order_price = 0;
         double Total_price = 0;
         double tax = 0;
 
         // store all data to variables
-        for (int i = 0; i < data.size(); i++) {
-            ArrayList<Object> row = data.get(i);
+        for (int i = 0; i < dishes.size(); i++) {
+            Dish dish = dishes.get(i);
 
-            String Menu_name = row.get(1).toString();
-            String Quantity = row.get(2).toString();
-            double Sub_total_price = Double.parseDouble(formatData.format(Double.parseDouble(row.get(3).toString())));
+            String Menu_name = dish.getMenuName();
+            String Quantity = String.valueOf(dish.getCount());
+            double Sub_total_price = Double.parseDouble(formatData.format(Double.parseDouble(dish.getPrice())*dish.getCount()));
             Order_price += Sub_total_price;
 
             // calculate order price
@@ -311,6 +287,9 @@ public class ActivityCheckout extends FragmentActivity {
         order.setOrderList(order.getOrderList() + "\nЗаказ: " + Order_price + " " + Currency +
                 "\nИтого: " + Total_price + " " + Currency);
         edtOrderList.setText(order.getOrderList());
+
+        prgLoading.setVisibility(View.GONE);
+        sclDetail.setVisibility(View.VISIBLE);
     }
 
     // method to format date
@@ -327,7 +306,6 @@ public class ActivityCheckout extends FragmentActivity {
     public void onBackPressed() {
         // TODO Auto-generated method stub
         super.onBackPressed();
-        dbhelper.close();
         finish();
         overridePendingTransition(R.anim.open_main, R.anim.close_next);
     }

@@ -5,11 +5,11 @@ import java.util.ArrayList;
 
 
 import com.truck.food.Constant;
-import com.truck.food.DBHelper;
 import com.truck.food.NavDrawerItem;
 import com.truck.food.R;
 
 import com.truck.food.adapters.AdapterNavDrawerList;
+import com.truck.food.db.Dish;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
@@ -54,9 +54,6 @@ public class MainActivity extends FragmentActivity {
 
 	private ArrayList<NavDrawerItem> navDrawerItems;
 	private AdapterNavDrawerList adapter;
-
-	// declare dbhelper and adapter object
-	private DBHelper dbhelper;
 
 
 	@Override
@@ -121,28 +118,6 @@ public class MainActivity extends FragmentActivity {
 			Toast.makeText(MainActivity.this, getString(R.string.no_internet), Toast.LENGTH_SHORT).show();
 		}
 
-
-		dbhelper = new DBHelper(this);
-
-		// create database
-		try {
-			dbhelper.createDataBase();
-		} catch (IOException ioe) {
-			throw new Error("Unable to create database");
-		}
-
-		// then, the database will be open to use
-		try {
-			dbhelper.openDataBase();
-		} catch (SQLException sqle) {
-			throw sqle;
-		}
-
-		// if user has already ordered food previously then show confirm dialog
-		if (dbhelper.isPreviousDataExist()) {
-			showAlertDialog();
-		}
-
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.drawable.ic_drawer, // nav
 																								// menu
 																								// toggle
@@ -183,8 +158,7 @@ public class MainActivity extends FragmentActivity {
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
 				// delete order data when yes button clicked
-				dbhelper.deleteAllData();
-				dbhelper.close();
+				Dish.deleteAll(Dish.class);
 
 			}
 		});
@@ -194,7 +168,6 @@ public class MainActivity extends FragmentActivity {
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
 				// close dialog when no button clicked
-				dbhelper.close();
 				dialog.cancel();
 			}
 		});
@@ -206,8 +179,7 @@ public class MainActivity extends FragmentActivity {
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
-		dbhelper.deleteAllData();
-		dbhelper.close();
+		Dish.deleteAll(Dish.class);
 		finish();
 		overridePendingTransition(R.anim.open_main, R.anim.close_next);
 	}
@@ -313,8 +285,7 @@ public class MainActivity extends FragmentActivity {
 
 			break;
 		case 9:
-			dbhelper.deleteAllData();
-			dbhelper.close();
+			Dish.deleteAll(Dish.class);
 			MainActivity.this.finish();
 			overridePendingTransition(R.anim.open_next, R.anim.close_next);
 

@@ -3,6 +3,7 @@ package com.truck.food.activities;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -31,8 +32,9 @@ import android.widget.TextView;
 import com.truck.food.App;
 import com.truck.food.adapters.AdapterCart;
 import com.truck.food.Constant;
-import com.truck.food.DBHelper;
+
 import com.truck.food.R;
+import com.truck.food.db.Dish;
 import com.truck.food.model.tax.*;
 
 
@@ -49,7 +51,7 @@ public class ActivityCart extends Activity {
     private RelativeLayout lytOrder;
 
     // declate dbhelper and adapter objects
-    private DBHelper dbhelper;
+    private List<Dish> dishes;
     private AdapterCart mola;
 
 
@@ -57,8 +59,7 @@ public class ActivityCart extends Activity {
     static double Tax;
     public static String Currency;
 
-    // declare arraylist variable to store data
-    ArrayList<ArrayList<Object>> data;
+
     private ArrayList<Integer> menuId = new ArrayList<Integer>();
     private ArrayList<String> menuName = new ArrayList<String>();
     private ArrayList<Integer> quantity = new ArrayList<Integer>();
@@ -99,14 +100,10 @@ public class ActivityCart extends Activity {
 
 
 
-        dbhelper = new DBHelper(this);
+        //it's sugar, baby
+        dishes = Dish.listAll(Dish.class);
 
-        // open database
-        try {
-            dbhelper.openDataBase();
-        } catch (SQLException sqle) {
-            throw sqle;
-        }
+
 
         // call asynctask class to request tax and currency data from server
         retrofitRun();
@@ -136,7 +133,6 @@ public class ActivityCart extends Activity {
             public void onClick(View arg0) {
                 // TODO Auto-generated method stub
                 // close database and back to previous page
-                dbhelper.close();
                 Intent iReservation = new Intent(ActivityCart.this, ActivityCheckout.class);
                 startActivity(iReservation);
                 overridePendingTransition(R.anim.open_next, R.anim.close_next);
@@ -224,14 +220,15 @@ public class ActivityCart extends Activity {
                 switch (FLAG) {
                     case 0:
                         // clear all menu in order table
-                        dbhelper.deleteAllData();
+                        Dish.deleteAll(Dish.class);
                         listOrder.invalidateViews();
                         clearData();
                         new getDataTask().execute();
                         break;
                     case 1:
                         // clear selected menu in order table
-                        dbhelper.deleteData(ID);
+                        Dish dish = Dish.findById(Dish.class,ID);
+                        dish.delete();
                         listOrder.invalidateViews();
                         clearData();
                         new getDataTask().execute();
@@ -306,16 +303,16 @@ public class ActivityCart extends Activity {
 
         Total_price = 0;
         clearData();
-        data = dbhelper.getAllData();
+
 
         // store data to arraylist variables
-        for (int i = 0; i < data.size(); i++) {
-            ArrayList<Object> row = data.get(i);
+        for (int i = 0; i < dishes.size(); i++) {
+            Dish dish = dishes.get(i);
 
-            menuId.add(Integer.parseInt(row.get(0).toString()));
-            menuName.add(row.get(1).toString());
-            quantity.add(Integer.parseInt(row.get(2).toString()));
-            subTotalPrice.add(Double.parseDouble(formatData.format(Double.parseDouble(row.get(3).toString()))));
+            menuId.add(Integer.valueOf(dish.getMenuId()));
+            menuName.add(dish.getMenuName());
+            quantity.add(Integer.parseInt(String.valueOf(dish.getCount())));
+            subTotalPrice.add(Double.parseDouble(formatData.format(Double.parseDouble(dish.getPrice())*dish.getCount())));
             Total_price += subTotalPrice.get(i);
         }
 
@@ -329,7 +326,6 @@ public class ActivityCart extends Activity {
     public void onBackPressed() {
         // TODO Auto-generated method stub
         super.onBackPressed();
-        dbhelper.close();
         finish();
         overridePendingTransition(R.anim.open_main, R.anim.close_next);
     }
