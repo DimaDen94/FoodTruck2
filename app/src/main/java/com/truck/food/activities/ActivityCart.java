@@ -13,10 +13,12 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.database.SQLException;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -43,8 +45,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ActivityCart extends Activity {
-
-    private ListView listOrder;
+    private GridLayoutManager mLayoutManager;
+    private RecyclerView listOrder;
     private ProgressBar prgLoading;
     private TextView txtTotalLabel, txtTotal, txtAlert;
     private Button btnClear, Checkout;
@@ -54,16 +56,10 @@ public class ActivityCart extends Activity {
     private List<Dish> dishes;
     private AdapterCart mola;
 
-
     // declare static variables to store tax and currency data
     static double Tax;
     public static String Currency;
 
-
-    private ArrayList<Integer> menuId = new ArrayList<Integer>();
-    private ArrayList<String> menuName = new ArrayList<String>();
-    private ArrayList<Integer> quantity = new ArrayList<Integer>();
-    private ArrayList<Double> subTotalPrice = new ArrayList<Double>();
 
     double Total_price;
     final int CLEAR_ALL_ORDER = 0;
@@ -79,25 +75,27 @@ public class ActivityCart extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.your_order);
+        setContentView(R.layout.order_layout);
 
         ActionBar bar = getActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.primary_dark)));
         bar.setTitle("Мои заказы");
         bar.setDisplayHomeAsUpEnabled(true);
         bar.setHomeButtonEnabled(true);
-
+        mLayoutManager = new GridLayoutManager(this, 1);
         // connect view objects with xml id
 //        imgNavBack = (ImageButton) findViewById(R.id.imgNavBack);
         Checkout = (Button) findViewById(R.id.Checkout);
         prgLoading = (ProgressBar) findViewById(R.id.prgLoading);
-        listOrder = (ListView) findViewById(R.id.listOrder);
+        listOrder = (RecyclerView) findViewById(R.id.listOrder);
         txtTotalLabel = (TextView) findViewById(R.id.txtTotalLabel);
         txtTotal = (TextView) findViewById(R.id.txtTotal);
         txtAlert = (TextView) findViewById(R.id.txtAlert);
         btnClear = (Button) findViewById(R.id.btnClear);
         lytOrder = (RelativeLayout) findViewById(R.id.lytOrder);
 
+        listOrder.setLayoutManager(mLayoutManager);
+        listOrder.setItemAnimator(new DefaultItemAnimator());
 
 
         //it's sugar, baby
@@ -117,15 +115,6 @@ public class ActivityCart extends Activity {
             }
         });
 
-        // event listener to handle list when clicked
-        listOrder.setOnItemClickListener(new OnItemClickListener() {
-
-            public void onItemClick(AdapterView<?> arg0, View arg1, int position,
-                                    long arg3) {
-                // show confirmation dialog
-                showClearDialog(CLEAR_ONE_ORDER, menuId.get(position));
-            }
-        });
 
 
         Checkout.setOnClickListener(new OnClickListener() {
@@ -155,9 +144,9 @@ public class ActivityCart extends Activity {
                 prgLoading.setVisibility(View.GONE);
                 if (response.isSuccessful()) {
                     pData = response.body();
-                    mola = new AdapterCart(ActivityCart.this, menuId,menuName,quantity,subTotalPrice);
-                    Tax = Double.parseDouble(pData.getData().get(0).getTaxOnCurrency().getValue());
                     Currency = pData.getData().get(1).getTaxOnCurrency().getValue();
+                    mola = new AdapterCart(ActivityCart.this, dishes, txtTotal, Currency);
+                    Tax = Double.parseDouble(pData.getData().get(0).getTaxOnCurrency().getValue());
                     new getDataTask().execute();
                 } else {
                     txtAlert.setVisibility(View.VISIBLE);
@@ -221,16 +210,14 @@ public class ActivityCart extends Activity {
                     case 0:
                         // clear all menu in order table
                         Dish.deleteAll(Dish.class);
-                        listOrder.invalidateViews();
-                        clearData();
+                        listOrder.invalidate();
                         new getDataTask().execute();
                         break;
                     case 1:
                         // clear selected menu in order table
                         Dish dish = Dish.findById(Dish.class,ID);
                         dish.delete();
-                        listOrder.invalidateViews();
-                        clearData();
+                        listOrder.invalidate();
                         new getDataTask().execute();
                         break;
                 }
@@ -251,13 +238,6 @@ public class ActivityCart extends Activity {
 
     }
 
-    // clear arraylist variables before used
-    void clearData() {
-        menuId.clear();
-        menuName.clear();
-        quantity.clear();
-        subTotalPrice.clear();
-    }
 
     // asynctask class to handle parsing json in background
     public class getDataTask extends AsyncTask<Void, Void, Void> {
@@ -288,7 +268,7 @@ public class ActivityCart extends Activity {
             prgLoading.setVisibility(View.GONE);
             // if data available show data on list
             // otherwise, show alert text
-            if (menuId.size() > 0) {
+            if (dishes.size() > 0) {
                 lytOrder.setVisibility(View.VISIBLE);
                 listOrder.setAdapter(mola);
             } else {
@@ -300,22 +280,12 @@ public class ActivityCart extends Activity {
 
     // method to get data from server
     public void getDataFromDatabase() {
-
         Total_price = 0;
-        clearData();
-
-
         // store data to arraylist variables
         for (int i = 0; i < dishes.size(); i++) {
             Dish dish = dishes.get(i);
-
-            menuId.add(Integer.valueOf(dish.getMenuId()));
-            menuName.add(dish.getMenuName());
-            quantity.add(Integer.parseInt(String.valueOf(dish.getCount())));
-            subTotalPrice.add(Double.parseDouble(formatData.format(Double.parseDouble(dish.getPrice())*dish.getCount())));
-            Total_price += subTotalPrice.get(i);
+            Total_price += Double.parseDouble(dish.getPrice())*dish.getCount();
         }
-
         // count total order
         Total_price -= (Total_price * (Tax / 100));
         Total_price = Double.parseDouble(formatData.format(Total_price));
