@@ -9,9 +9,11 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,7 +33,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ActivityCategoryList extends Activity {
+public class ActivityCategoryList extends AppCompatActivity {
     private RecyclerView listCategory;
     private ProgressBar prgLoading;
     private TextView txtAlert;
@@ -39,28 +41,57 @@ public class ActivityCategoryList extends Activity {
     // declare adapter object to create custom category list
     private AdapterCategoryList cla;
     private GridLayoutManager mLayoutManager;
-
+    private Toolbar toolbar;
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppDefault);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.category_list);
 
-        ActionBar bar = getActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.primary_dark)));
-        bar.setDisplayHomeAsUpEnabled(true);
-        bar.setHomeButtonEnabled(true);
-        bar.setTitle("Меню");
+        initViews();
+        initToolbar();
+        retrofitRun();
 
+    }
+
+    private void initViews() {
         prgLoading = (ProgressBar) findViewById(R.id.prgLoading);
         listCategory = (RecyclerView) findViewById(R.id.category_recycler_view);
         txtAlert = (TextView) findViewById(R.id.txtAlert);
         mLayoutManager = new GridLayoutManager(getApplicationContext(), 1);
         listCategory.setLayoutManager(mLayoutManager);
         listCategory.setItemAnimator(new DefaultItemAnimator());
+    }
 
-        retrofitRun();
+    private void initToolbar() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(R.string.category_list_title);
+        setSupportActionBar(toolbar);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                Intent iMyOrder = new Intent(ActivityCategoryList.this, ActivityCart.class);
+                startActivity(iMyOrder);
+                overridePendingTransition(R.anim.open_next, R.anim.close_next);
+                return true;
+
+            }
+        });
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        return true;
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     void retrofitRun() {
@@ -95,49 +126,6 @@ public class ActivityCategoryList extends Activity {
             }
         });
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_category, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        switch (item.getItemId()) {
-            case R.id.cart:
-                // refresh action
-                Intent iMyOrder = new Intent(ActivityCategoryList.this, ActivityCart.class);
-                startActivity(iMyOrder);
-                overridePendingTransition(R.anim.open_next, R.anim.close_next);
-                return true;
-
-            case R.id.refresh:
-                listCategory.invalidate();
-                clearData();
-                retrofitRun();
-                return true;
-
-            case android.R.id.home:
-                // app icon in action bar clicked; go home
-                this.finish();
-                overridePendingTransition(R.anim.open_main, R.anim.close_next);
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-    // clear arraylist variables before used
-    void clearData() {
-
-    }
-
 
     @Override
     protected void onDestroy() {

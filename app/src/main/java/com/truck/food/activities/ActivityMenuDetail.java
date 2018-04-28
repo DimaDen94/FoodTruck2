@@ -1,18 +1,9 @@
 package com.truck.food.activities;
 
-import java.text.DecimalFormat;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import android.app.ActionBar;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.database.SQLException;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -25,23 +16,23 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.webkit.WebView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.truck.food.App;
 import com.truck.food.Constant;
-
 import com.truck.food.R;
-
 import com.truck.food.db.Dish;
 import com.truck.food.model.menu_detail.MenuDetail;
 import com.truck.food.model.menu_detail.PDMenuDatail;
+
+import java.text.DecimalFormat;
+import java.util.HashMap;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -71,7 +62,7 @@ public class ActivityMenuDetail extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppDefault);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.menu_detail);
+        setContentView(R.layout.dish_detail);
 
         initToolbar();
 
@@ -96,7 +87,6 @@ public class ActivityMenuDetail extends AppCompatActivity {
         imgPreview.setLayoutParams(lp);
 
 
-
         // get menu id that sent from previous page
         Intent iGet = getIntent();
         Menu_ID = iGet.getIntExtra("menu_id", 0);
@@ -117,48 +107,40 @@ public class ActivityMenuDetail extends AppCompatActivity {
         });
 
     }
+
+
     private void initToolbar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.menu_detail_title);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                return false;
-            }
-        });
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_detail, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        switch (item.getItemId()) {
-            case R.id.cart:
-                // refresh action
                 Intent iMyOrder = new Intent(ActivityMenuDetail.this, ActivityCart.class);
                 startActivity(iMyOrder);
                 overridePendingTransition(R.anim.open_next, R.anim.close_next);
                 return true;
 
-            case android.R.id.home:
-                // app icon in action bar clicked; go home
-                this.finish();
-                overridePendingTransition(R.anim.open_main, R.anim.close_next);
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-
+            }
+        });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
     // method to show number of order form
     void inputDialog() {
 
@@ -181,8 +163,8 @@ public class ActivityMenuDetail extends AppCompatActivity {
                 // when add button clicked add menu to order table in database
                 if (!temp.equalsIgnoreCase("")) {
                     quantity = Integer.parseInt(temp);
-                    if (Dish.findById(Dish.class,Menu_ID)!=null) {
-                        Dish dish = Dish.findById(Dish.class,Menu_ID);
+                    if (Dish.findById(Dish.class, Menu_ID) != null) {
+                        Dish dish = Dish.findById(Dish.class, Menu_ID);
                         dish.setCount(quantity);
                     } else {
                         Dish dish = new Dish(menuDetail.getDescription(),

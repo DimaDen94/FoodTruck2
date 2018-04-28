@@ -18,6 +18,11 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -45,7 +50,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 //import android.widget.CheckBox;
 
-public class ActivityCheckout extends FragmentActivity {
+public class ActivityCheckout extends AppCompatActivity {
 
     private Button btnSend;
 
@@ -57,7 +62,6 @@ public class ActivityCheckout extends FragmentActivity {
 
     // declare dbhelper object
     private List<Dish> dishes;
-
 
 
     // declare static variables to store tax and currency data
@@ -74,15 +78,21 @@ public class ActivityCheckout extends FragmentActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppDefault);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.checkout);
 
-        ActionBar bar = getActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.primary_dark)));
-        bar.setTitle("Информация о клиенте");
-        bar.setDisplayHomeAsUpEnabled(true);
-        bar.setHomeButtonEnabled(true);
+        initViews();
+        initToolbar();
+        order = new Order();
 
+        //it's sugar, baby
+        dishes = Dish.listAll(Dish.class);
+
+        retrofitRun();
+    }
+
+    private void initViews() {
         edtFName = (EditText) findViewById(R.id.edtFName);
         edtLName = (EditText) findViewById(R.id.edtLName);
         edtPhone = (EditText) findViewById(R.id.edtPhone);
@@ -94,10 +104,9 @@ public class ActivityCheckout extends FragmentActivity {
         edtComment = (EditText) findViewById(R.id.edtComment);
 
         btnSend = (Button) findViewById(R.id.btnSend);
-        sclDetail = (ScrollView) findViewById(R.id.sclDetail);
+        //sclDetail = (ScrollView) findViewById(R.id.sclDetail);
         prgLoading = (ProgressBar) findViewById(R.id.prgLoading);
         txtAlert = (TextView) findViewById(R.id.txtAlert);
-
 
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -106,16 +115,6 @@ public class ActivityCheckout extends FragmentActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         spinFacility.setAdapter(adapter);
-
-        order = new Order();
-
-        //it's sugar, baby
-        dishes = Dish.listAll(Dish.class);
-
-
-        retrofitRun();
-
-
         // event listener to handle send button when pressed
         btnSend.setOnClickListener(new OnClickListener() {
 
@@ -156,6 +155,37 @@ public class ActivityCheckout extends FragmentActivity {
         });
     }
 
+    private void initToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(R.string.about_title);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                Intent iMyOrder = new Intent(ActivityCheckout.this, ActivityCart.class);
+                startActivity(iMyOrder);
+                overridePendingTransition(R.anim.open_next, R.anim.close_next);
+                return true;
+
+            }
+        });
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        return true;
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+
     private Map<String, String> getMap() {
         String date = new SimpleDateFormat("yyyy.MM.dd  hh:mm:ss").format(Calendar.getInstance().getTime());
         Map<String, String> map = new HashMap<String, String>();
@@ -180,30 +210,6 @@ public class ActivityCheckout extends FragmentActivity {
         order.setEmail(edtEmail.getText().toString());
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        switch (item.getItemId()) {
-
-            case android.R.id.home:
-                // app icon in action bar clicked; go home
-                this.finish();
-                overridePendingTransition(R.anim.open_main, R.anim.close_next);
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 
     void retrofitRun() {
         Map<String, String> map = new HashMap<String, String>();
@@ -260,7 +266,6 @@ public class ActivityCheckout extends FragmentActivity {
     public void getDataFromDatabase() {
 
 
-
         double Order_price = 0;
         double Total_price = 0;
         double tax = 0;
@@ -271,14 +276,14 @@ public class ActivityCheckout extends FragmentActivity {
 
             String Menu_name = dish.getMenuName();
             String Quantity = String.valueOf(dish.getCount());
-            double Sub_total_price = Double.parseDouble(formatData.format(Double.parseDouble(dish.getPrice())*dish.getCount()));
+            double Sub_total_price = Double.parseDouble(formatData.format(Double.parseDouble(dish.getPrice()) * dish.getCount()));
             Order_price += Sub_total_price;
 
             // calculate order price
             order.setOrderList("" + Quantity + " " + Menu_name + " " + Sub_total_price + " " + Currency + ",\n");
         }
 
-        if (order.getOrderList()==null||order.getOrderList().equalsIgnoreCase("")) {
+        if (order.getOrderList() == null || order.getOrderList().equalsIgnoreCase("")) {
             order.setOrderList(getString(R.string.no_order_menu));
         }
 
@@ -289,16 +294,7 @@ public class ActivityCheckout extends FragmentActivity {
         edtOrderList.setText(order.getOrderList());
 
         prgLoading.setVisibility(View.GONE);
-        sclDetail.setVisibility(View.VISIBLE);
-    }
-
-    // method to format date
-    private static String pad(int c) {
-        if (c >= 10) {
-            return String.valueOf(c);
-        } else {
-            return "0" + String.valueOf(c);
-        }
+        //sclDetail.setVisibility(View.VISIBLE);
     }
 
     // when back button pressed close database and back to previous page

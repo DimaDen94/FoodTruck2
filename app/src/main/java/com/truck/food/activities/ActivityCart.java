@@ -16,9 +16,11 @@ import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -44,7 +46,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ActivityCart extends Activity {
+public class ActivityCart extends AppCompatActivity {
     private GridLayoutManager mLayoutManager;
     private RecyclerView listOrder;
     private ProgressBar prgLoading;
@@ -74,14 +76,11 @@ public class ActivityCart extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppDefault);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order_layout);
 
-        ActionBar bar = getActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.primary_dark)));
-        bar.setTitle("Мои заказы");
-        bar.setDisplayHomeAsUpEnabled(true);
-        bar.setHomeButtonEnabled(true);
+       initToolbar();
         mLayoutManager = new GridLayoutManager(this, 1);
         // connect view objects with xml id
 //        imgNavBack = (ImageButton) findViewById(R.id.imgNavBack);
@@ -129,8 +128,40 @@ public class ActivityCart extends Activity {
         });
 
     }
+    private void initToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(R.string.about_title);
+        setSupportActionBar(toolbar);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                Intent iMyOrder = new Intent(ActivityCart.this, ActivityCart.class);
+                startActivity(iMyOrder);
+                overridePendingTransition(R.anim.open_next, R.anim.close_next);
+                return true;
+
+            }
+        });
+    }
+
+    private void initViews() {
+
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        return true;
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
     void retrofitRun() {
         Map<String, String> map = new HashMap<String, String>();
         map.put(Constant.AccessKeyParam, Constant.AccessKeyValue);
@@ -160,31 +191,6 @@ public class ActivityCart extends Activity {
                 txtAlert.setText(R.string.alert);
             }
         });
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        switch (item.getItemId()) {
-
-            case android.R.id.home:
-                // app icon in action bar clicked; go home
-                this.finish();
-                overridePendingTransition(R.anim.open_main, R.anim.close_next);
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 
     // method to create dialog

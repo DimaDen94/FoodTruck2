@@ -9,9 +9,11 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,14 +39,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ActivityMenuList extends Activity {
+public class ActivityMenuList extends AppCompatActivity {
 	
 	private RecyclerView listMenu;
 	private ProgressBar prgLoading;
-	private EditText edtKeyword;
-	private ImageButton btnSearch;
 	private TextView txtAlert;
-	
+	private Toolbar toolbar;
 	// declare static variable to store tax and currency symbol
 	private static String Currency;
 
@@ -56,46 +56,60 @@ public class ActivityMenuList extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+		setTheme(R.style.AppDefault);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_list);
-        
-        ActionBar bar = getActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.primary_dark)));
-        bar.setTitle("Меню");
-        bar.setDisplayHomeAsUpEnabled(true);
-        bar.setHomeButtonEnabled(true);
-        prgLoading = (ProgressBar) findViewById(R.id.prgLoading);
-        listMenu = (RecyclerView) findViewById(R.id.menu_recycler_view);
-        edtKeyword = (EditText) findViewById(R.id.edtKeyword);
-        btnSearch = (ImageButton) findViewById(R.id.btnSearch);
-        txtAlert = (TextView) findViewById(R.id.txtAlert);
 
+        initViews();
+		initToolbar();
 
         Intent iGet = getIntent();
         Category_ID = iGet.getIntExtra("category_id",0);
-// call asynctask class to request tax and currency data from server
-
-		GridLayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(), 1);
-
-		listMenu.setLayoutManager(mLayoutManager);
-		listMenu.setItemAnimator(new DefaultItemAnimator());
-
-
+		// call asynctask class to request tax and currency data from server
 
 		retrofitGetTaxAndGetMenuRun();
+    }
 
-		// event listener to handle search button when clicked
-		btnSearch.setOnClickListener(new OnClickListener() {
-			
-			public void onClick(View arg0) {
+	private void initToolbar() {
+		toolbar = (Toolbar) findViewById(R.id.toolbar);
+		toolbar.setTitle(R.string.menu_list_title);
+		setSupportActionBar(toolbar);
 
-				retrofitGetTaxAndGetMenuRun();
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+		toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+			@Override
+			public boolean onMenuItemClick(MenuItem menuItem) {
+				Intent iMyOrder = new Intent(ActivityMenuList.this, ActivityCart.class);
+				startActivity(iMyOrder);
+				overridePendingTransition(R.anim.open_next, R.anim.close_next);
+				return true;
+
 			}
 		});
-		
+	}
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+		return true;
+	}
+	@Override
+	public boolean onSupportNavigateUp() {
+		onBackPressed();
+		return true;
+	}
 
-        
-    }
+	private void initViews() {
+		prgLoading = (ProgressBar) findViewById(R.id.prgLoading);
+		listMenu = (RecyclerView) findViewById(R.id.menu_recycler_view);
+		txtAlert = (TextView) findViewById(R.id.txtAlert);
+		GridLayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(), 1);
+		listMenu.setLayoutManager(mLayoutManager);
+		listMenu.setItemAnimator(new DefaultItemAnimator());
+	}
+
 	void retrofitGetTaxAndGetMenuRun() {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put(Constant.AccessKeyParam, Constant.AccessKeyValue);
@@ -159,44 +173,6 @@ public class ActivityMenuList extends Activity {
 			}
 		});
 	}
-    @Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.menu_category, menu);
-		return true;
-	}
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		switch (item.getItemId()) {
-		case R.id.cart:
-			// refresh action
-			Intent iMyOrder = new Intent(ActivityMenuList.this, ActivityCart.class);
-			startActivity(iMyOrder);
-			overridePendingTransition (R.anim.open_next, R.anim.close_next);
-			return true;
-			
-		case R.id.refresh:
-			listMenu.invalidate();
-
-			retrofitGetTaxAndGetMenuRun();
-			return true;			
-
-		case android.R.id.home:
-            // app icon in action bar clicked; go home
-        	this.finish();
-        	overridePendingTransition(R.anim.open_main, R.anim.close_next);
-			return true;
-			
-		default:
-			return super.onOptionsItemSelected(item);
-		}
-	}
-
-
 
     @Override
     protected void onDestroy() {
@@ -205,8 +181,7 @@ public class ActivityMenuList extends Activity {
     	listMenu.setAdapter(null);
     	super.onDestroy();
     }
-	 
-    
+
     @Override
 	public void onConfigurationChanged(final Configuration newConfig)
 	{
@@ -221,6 +196,4 @@ public class ActivityMenuList extends Activity {
     	finish();
     	overridePendingTransition(R.anim.open_main, R.anim.close_next);
     }
-
-    
 }

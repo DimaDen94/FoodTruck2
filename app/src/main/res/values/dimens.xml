@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <dimen name="padding_small">8dp</dimen>
     <dimen name="padding_medium">8dp</dimen>
@@ -15,5 +15,5 @@
     <dimen name="action_bar_height">56dp</dimen>
 
     <dimen name="fab_margin">16dp</dimen>
-
+    <dimen name="design_navigation_icon_size" tools:override="true">35dp</dimen>
 </resources>

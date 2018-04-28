@@ -4,14 +4,16 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 
 import com.truck.food.R;
 
-public class ActivitySplash extends Activity {
+public class ActivitySplash extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+		setTheme(R.style.AppDefault);
         super.onCreate(savedInstanceState);
         
         //menyembunyikan title bar di layar acitivy
@@ -24,8 +26,8 @@ public class ActivitySplash extends Activity {
         /** Sets a layout for this activity */
         setContentView(R.layout.splash);
         
-        /** Creates a count down timer, which will be expired after 5000 milliseconds */         
-        new CountDownTimer(5000,1000) {        	
+        /** Creates a count down timer, which will be expired after 3000 milliseconds */
+        new CountDownTimer(3000,1000) {
         	
         	/** This method will be invoked on finishing or expiring the timer */
 			@Override

@@ -87,15 +87,13 @@
         <item>Меню</item>
         <item>Корзина</item>
         <item>Заказы</item>
-        <item>Профиль</item>
-        <item>Информация</item>
         <item>О программе</item>
-        <item>Поделиться</item>
         <item>Связь с нами</item>
         <item>Выход</item>
     </string-array>
 
-
+	<string name="view_navigation_open">open</string>
+	<string name="view_navigation_close">clode</string>
 	<string-array name="facilities">
 		<item>Михайловская 8</item>
 		<item>Гагарина</item>
@@ -107,10 +105,7 @@
         <item>@drawable/ic_product</item>
         <item>@drawable/ic_cart</item>
         <item>@drawable/ic_checkout</item>
-        <item>@drawable/ic_profile</item>
-        <item>@drawable/ic_info</item>
         <item>@drawable/ic_about</item>
-        <item>@drawable/ic_share</item>
         <item>@drawable/ic_contact</item>
         <item>@drawable/ic_exit</item>
     </array>
@@ -141,5 +136,10 @@
 	<string name="success_order">
 		Большое спасибо, ваш заказ успешно отправлен.</string>
 	<string name="menu_detail_title">Описание блюда</string>
+    <string name="str_cart">Корзина</string>
+	<string name="menu_list_title">Список блюд</string>
+	<string name="category_list_title">Категория</string>
+    <string name="about_title">О программе</string>
+    <string name="call_us_title">Связь с нами</string>
 
 </resources>

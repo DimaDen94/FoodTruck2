@@ -5,12 +5,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.truck.food.R;
 
-public class ActivityConfirmMessage extends Activity {
+public class ActivityConfirmMessage extends AppCompatActivity {
 	
 	// declare view objects
 //	ImageButton imgNavBack;
@@ -18,14 +19,11 @@ public class ActivityConfirmMessage extends Activity {
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
+		setTheme(R.style.AppDefault);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.confirm);
         
-        ActionBar bar = getActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.primary_dark)));
-        bar.setTitle("Congratulations");
-        bar.setDisplayHomeAsUpEnabled(true);
-        bar.setHomeButtonEnabled(true);
+
         
     }
     
