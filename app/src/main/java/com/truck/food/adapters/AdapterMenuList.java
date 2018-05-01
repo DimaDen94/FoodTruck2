@@ -70,7 +70,7 @@ public class AdapterMenuList extends RecyclerView.Adapter<AdapterMenuList.ViewHo
 
 
         holder.txtTitle.setText(menu.getData().get(position).getMenu().getMenuName());
-        holder.txtPrice.setText(menu.getData().get(position).getMenu().getPrice());
+        holder.txtPrice.setText(menu.getData().get(position).getMenu().getPrice() + " " + currency);
         Glide.with(context)
                 .load(Constant.AdminPageURL + menu.getData().get(position).getMenu().getMenuImage())
                 .thumbnail(0.01f)

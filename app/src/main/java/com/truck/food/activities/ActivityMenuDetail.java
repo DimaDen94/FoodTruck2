@@ -6,8 +6,11 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.util.DisplayMetrics;
@@ -16,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.webkit.WebView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -42,12 +46,15 @@ import retrofit2.Response;
 public class ActivityMenuDetail extends AppCompatActivity {
     private Toolbar toolbar;
     private ImageView imgPreview;
-    private TextView txtText, txtSubText;
-    private WebView txtDescription;
+    private Button btnPlus;
+    private Button btnMin;
+    private TextView txtText, txtSubText, txtDescription, txtNumbeOfServings;
     private FloatingActionButton btnAdd;
     private LinearLayout sclDetail;
     private ProgressBar prgLoading;
     private TextView txtAlert;
+
+    private int numberOfServings;
 
 
     // declare variables to store menu data
@@ -64,54 +71,24 @@ public class ActivityMenuDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dish_detail);
 
-        initToolbar();
-
-        imgPreview = (ImageView) findViewById(R.id.imgPreview);
-        txtText = (TextView) findViewById(R.id.txtText);
-        txtSubText = (TextView) findViewById(R.id.txtSubText);
-        txtDescription = (WebView) findViewById(R.id.txtDescription);
-        btnAdd = (FloatingActionButton) findViewById(R.id.btnAdd);
-
-        sclDetail = (LinearLayout) findViewById(R.id.lytContent);
-        prgLoading = (ProgressBar) findViewById(R.id.prgLoading);
-        txtAlert = (TextView) findViewById(R.id.txtAlert);
-
-        // get screen device width and height
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
-        int wPix = dm.widthPixels;
-        int hPix = wPix / 2 + 50;
-
-        // change menu image width and height
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(wPix, hPix);
-        imgPreview.setLayoutParams(lp);
+        //initToolbar();
 
 
         // get menu id that sent from previous page
         Intent iGet = getIntent();
         Menu_ID = iGet.getIntExtra("menu_id", 0);
         Currency = iGet.getStringExtra("currency");
-
-        // call asynctask class to request data from server
-        //new getDataTask().execute();
+        initViews();
         retrofitRun();
 
-        // event listener to handle add button when clicked
-        btnAdd.setOnClickListener(new OnClickListener() {
-
-            public void onClick(View arg0) {
-                // TODO Auto-generated method stub
-                // show input dialog
-                inputDialog();
-            }
-        });
 
     }
 
 
-    private void initToolbar() {
+    private void initToolbar(String menuName) {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.menu_detail_title);
+        toolbar.setTitle(menuName);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.cardview_light_background));
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -128,6 +105,63 @@ public class ActivityMenuDetail extends AppCompatActivity {
             }
         });
     }
+    private void initViews() {
+        numberOfServings = 1;
+        txtNumbeOfServings = (TextView) findViewById(R.id.d_count);
+        txtNumbeOfServings.setText(String.valueOf(numberOfServings));
+        imgPreview = (ImageView) findViewById(R.id.backdrop);
+        txtText = (TextView) findViewById(R.id.txtText);
+        txtSubText = (TextView) findViewById(R.id.txtSubText);
+        txtDescription = (TextView) findViewById(R.id.txtDescription);
+        btnAdd = (FloatingActionButton) findViewById(R.id.btnAdd);
+        btnPlus = (Button) findViewById(R.id.btn_i_count);
+        btnMin = (Button) findViewById(R.id.btn_d_count);
+
+        sclDetail = (LinearLayout) findViewById(R.id.lytContent);
+        prgLoading = (ProgressBar) findViewById(R.id.prgLoading);
+        txtAlert = (TextView) findViewById(R.id.txtAlert);
+
+
+        final View content = findViewById(R.id.coordinator);
+        // event listener to handle add button when clicked
+        btnAdd.setOnClickListener(new OnClickListener() {
+
+            public void onClick(View arg0) {
+                // TODO Auto-generated method stub
+                // show input dialog
+                Dish dish = new Dish(menuDetail.getDescription(),
+                        menuDetail.getServeFor(),
+                        menuDetail.getQuantity(),
+                        menuDetail.getMenuImage(),
+                        menuDetail.getMenuId(),
+                        menuDetail.getPrice(),
+                        menuDetail.getMenuName(),
+                        numberOfServings);
+                dish.save();
+                Snackbar snackbar = Snackbar.make(content, "Ваш заказ добавлен в корзину", Snackbar.LENGTH_SHORT);
+                View sbView = snackbar.getView();
+                sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
+                snackbar.show();
+            }
+        });
+
+        btnPlus.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                numberOfServings++;
+                txtNumbeOfServings.setText(String.valueOf(numberOfServings));
+            }
+        });
+        btnMin.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (numberOfServings > 1) {
+                    numberOfServings--;
+                    txtNumbeOfServings.setText(String.valueOf(numberOfServings));
+                }
+            }
+        });
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -141,58 +175,7 @@ public class ActivityMenuDetail extends AppCompatActivity {
         onBackPressed();
         return true;
     }
-    // method to show number of order form
-    void inputDialog() {
 
-        AlertDialog.Builder alert = new AlertDialog.Builder(this);
-
-        alert.setTitle(R.string.order);
-        alert.setMessage(R.string.number_order);
-        alert.setCancelable(false);
-        final EditText edtQuantity = new EditText(this);
-        int maxLength = 3;
-        edtQuantity.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
-        edtQuantity.setInputType(InputType.TYPE_CLASS_NUMBER);
-        alert.setView(edtQuantity);
-
-        alert.setPositiveButton("Добавить", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                String temp = edtQuantity.getText().toString();
-                int quantity = 0;
-
-                // when add button clicked add menu to order table in database
-                if (!temp.equalsIgnoreCase("")) {
-                    quantity = Integer.parseInt(temp);
-                    if (Dish.findById(Dish.class, Menu_ID) != null) {
-                        Dish dish = Dish.findById(Dish.class, Menu_ID);
-                        dish.setCount(quantity);
-                    } else {
-                        Dish dish = new Dish(menuDetail.getDescription(),
-                                menuDetail.getServeFor(),
-                                menuDetail.getQuantity(),
-                                menuDetail.getMenuImage(),
-                                menuDetail.getMenuId(),
-                                menuDetail.getPrice(),
-                                menuDetail.getMenuName(),
-                                quantity);
-                        dish.save();
-                    }
-                } else {
-                    dialog.cancel();
-                }
-            }
-        });
-
-        alert.setNegativeButton("Отменить", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-
-                // when cancel button clicked close dialog
-                dialog.cancel();
-            }
-        });
-
-        alert.show();
-    }
 
     void retrofitRun() {
         Map<String, String> map = new HashMap<String, String>();
@@ -225,10 +208,10 @@ public class ActivityMenuDetail extends AppCompatActivity {
                             .into(imgPreview);
 
                     //imageLoader.DisplayImage(Constant.AdminPageURL + menuDetail.getMenuImage(), imgPreview);
+                    initToolbar(menuDetail.getMenuName());
 
-                    txtText.setText(menuDetail.getMenuName());
                     txtSubText.setText("Цена : " + formatData.format(price) + " " + Currency + "\n" + "Осталось : " + menuDetail.getQuantity() + " порций");
-                    txtDescription.loadDataWithBaseURL("", menuDetail.getDescription(), "text/html", "UTF-8", "");
+                    txtDescription.setText(Html.fromHtml(menuDetail.getDescription()).toString());
 
                 } else {
                     txtAlert.setVisibility(View.VISIBLE);
