@@ -88,7 +88,7 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.MyViewHolder> 
         holder.min.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (dish.getCount() > 0) {
+                if (dish.getCount() > 1) {
                     dish.setCount(dish.getCount() - 1);
                     dish.save();
                     txtTotal.setText(getTotal() + " " + currency);
@@ -98,6 +98,7 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.MyViewHolder> 
                     dishes.remove(dish);
                     dish.delete();
                     //notifyDataSetChanged();
+                    txtTotal.setText(getTotal() + " " + currency);
                     notifyItemRemoved(position);
                     notifyItemRangeChanged(position,dishes.size());
 

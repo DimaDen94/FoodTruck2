@@ -33,8 +33,7 @@
     <string name="my_order">Информация заказа</string>
     <string name="total_order">Всего:</string>
     <string name="clear_order">Очистить заказы</string>
-    <string name="clear_all_order">Вы хотите очистить все заказы?</string>
-	<string name="clear_one_order">Вы хотите очистить заказ?</string>
+    <string name="clear_all_order">Вы хотите очистить корзину?</string>
 	<string name="db_exist_alert">Вы хотите удалить предыдущий заказ?</string>
 	<string name="confirm">подтверждение</string>
 	<string name="reservation">Резервация</string>

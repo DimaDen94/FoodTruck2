@@ -2,13 +2,14 @@
     android:id="@+id/lytOrder"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary_light"
     >
 
     <RelativeLayout
         android:id="@+id/lytTotal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/accent"
+        android:background="@color/primary_dark"
         android:padding="5dp">
 
         <TextView
@@ -32,40 +33,29 @@
             android:textStyle="bold" />
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/txtDetail"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/lytTotal"
-        android:padding="5dp"
-        android:text="@string/detail"
-        android:textColor="@color/text"
-        android:textSize="14sp"
-        android:textStyle="bold" />
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/listOrder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btnClear"
-        android:layout_below="@+id/txtDetail"
+
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/lytTotal"
+        android:layout_marginTop="8dp"
         android:scrollbars="vertical" />
+    <ProgressBar
+        android:id="@+id/prgLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
 
-    <Button
-        android:id="@+id/btnClear"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="10dp"
-        android:background="@drawable/btn_delete" />
-
-    <Button
-        android:id="@+id/Checkout"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_margin="10dp"
-        android:background="@drawable/btn_checkout" />
+    <TextView
+        android:id="@+id/txtAlert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/no_order"
+        android:textSize="14sp"
+        android:visibility="gone" />
 
 </RelativeLayout>

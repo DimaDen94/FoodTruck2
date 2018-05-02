@@ -48,7 +48,7 @@ public class ActivityMenuDetail extends AppCompatActivity {
     private ImageView imgPreview;
     private Button btnPlus;
     private Button btnMin;
-    private TextView txtText, txtSubText, txtDescription, txtNumbeOfServings;
+    private TextView txtSubText, txtDescription, txtNumbeOfServings;
     private FloatingActionButton btnAdd;
     private LinearLayout sclDetail;
     private ProgressBar prgLoading;
@@ -105,14 +105,16 @@ public class ActivityMenuDetail extends AppCompatActivity {
             }
         });
     }
+
     private void initViews() {
         numberOfServings = 1;
         txtNumbeOfServings = (TextView) findViewById(R.id.d_count);
         txtNumbeOfServings.setText(String.valueOf(numberOfServings));
+
         imgPreview = (ImageView) findViewById(R.id.backdrop);
-        txtText = (TextView) findViewById(R.id.txtText);
         txtSubText = (TextView) findViewById(R.id.txtSubText);
         txtDescription = (TextView) findViewById(R.id.txtDescription);
+
         btnAdd = (FloatingActionButton) findViewById(R.id.btnAdd);
         btnPlus = (Button) findViewById(R.id.btn_i_count);
         btnMin = (Button) findViewById(R.id.btn_d_count);
@@ -129,19 +131,26 @@ public class ActivityMenuDetail extends AppCompatActivity {
             public void onClick(View arg0) {
                 // TODO Auto-generated method stub
                 // show input dialog
-                Dish dish = new Dish(menuDetail.getDescription(),
-                        menuDetail.getServeFor(),
-                        menuDetail.getQuantity(),
-                        menuDetail.getMenuImage(),
-                        menuDetail.getMenuId(),
-                        menuDetail.getPrice(),
-                        menuDetail.getMenuName(),
-                        numberOfServings);
-                dish.save();
-                Snackbar snackbar = Snackbar.make(content, "Ваш заказ добавлен в корзину", Snackbar.LENGTH_SHORT);
-                View sbView = snackbar.getView();
-                sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
-                snackbar.show();
+                if (Integer.parseInt(menuDetail.getQuantity()) >= numberOfServings) {
+                    Dish dish = new Dish(menuDetail.getDescription(),
+                            menuDetail.getServeFor(),
+                            menuDetail.getQuantity(),
+                            menuDetail.getMenuImage(),
+                            menuDetail.getMenuId(),
+                            menuDetail.getPrice(),
+                            menuDetail.getMenuName(),
+                            numberOfServings);
+                    dish.save();
+                    Snackbar snackbar = Snackbar.make(content, "Ваш заказ добавлен в корзину", Snackbar.LENGTH_SHORT);
+                    View sbView = snackbar.getView();
+                    sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
+                    snackbar.show();
+                } else {
+                    Snackbar snackbar = Snackbar.make(content, "У нас нет столько порций", Snackbar.LENGTH_SHORT);
+                    View sbView = snackbar.getView();
+                    sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
+                    snackbar.show();
+                }
             }
         });
 
