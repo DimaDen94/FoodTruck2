@@ -81,7 +81,7 @@ public class ActivityCart extends AppCompatActivity {
 
     private void initToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.about_title);
+        toolbar.setTitle(R.string.menu_cart);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -90,9 +90,7 @@ public class ActivityCart extends AppCompatActivity {
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                Intent iMyOrder = new Intent(ActivityCart.this, ActivityCart.class);
-                startActivity(iMyOrder);
-                overridePendingTransition(R.anim.open_next, R.anim.close_next);
+                showClearDialog();
                 return true;
 
             }
@@ -130,7 +128,7 @@ public class ActivityCart extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        getMenuInflater().inflate(R.menu.menu_cart, menu);
         return true;
     }
 

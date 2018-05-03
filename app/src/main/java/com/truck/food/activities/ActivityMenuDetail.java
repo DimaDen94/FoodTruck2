@@ -70,18 +70,13 @@ public class ActivityMenuDetail extends AppCompatActivity {
         setTheme(R.style.AppDefault);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dish_detail);
-
         //initToolbar();
-
-
         // get menu id that sent from previous page
         Intent iGet = getIntent();
         Menu_ID = iGet.getIntExtra("menu_id", 0);
         Currency = iGet.getStringExtra("currency");
         initViews();
         retrofitRun();
-
-
     }
 
 
@@ -101,7 +96,6 @@ public class ActivityMenuDetail extends AppCompatActivity {
                 startActivity(iMyOrder);
                 overridePendingTransition(R.anim.open_next, R.anim.close_next);
                 return true;
-
             }
         });
     }

@@ -140,5 +140,6 @@
 	<string name="category_list_title">Категория</string>
     <string name="about_title">О программе</string>
     <string name="call_us_title">Связь с нами</string>
+    <string name="currency"> грн</string>
 
 </resources>

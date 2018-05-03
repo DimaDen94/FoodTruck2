@@ -1,25 +1,15 @@
 package com.truck.food.activities;
 
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-
-import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.database.SQLException;
-import android.graphics.drawable.ColorDrawable;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -29,51 +19,41 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.truck.food.App;
-import com.truck.food.Constant;
-
 import com.truck.food.R;
+import com.truck.food.adapters.AdapterCheckout;
+import com.truck.food.adapters.SimpleDividerItemDecoration;
 import com.truck.food.db.Dish;
 import com.truck.food.model.Order;
-import com.truck.food.model.tax.PDTax;
-
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-//import android.widget.CheckBox;
+
 
 public class ActivityCheckout extends AppCompatActivity {
 
-    private Button btnSend;
-
-    private EditText edtFName, edtLName, edtPhone, edtOrderList, edtComment, edtEmail;
-    private ScrollView sclDetail;
-    private ProgressBar prgLoading;
-    private TextView txtAlert;
+    private FloatingActionButton btnSend;
+    private RecyclerView listCheckout;
+    private EditText edtFName;
+    private EditText edtLName;
+    private EditText edtPhone;
+    private TextView txtTotal;
+    private EditText edtComment;
+    private EditText edtEmail;
     private Spinner spinFacility;
 
-    // declare dbhelper object
     private List<Dish> dishes;
 
-
-    // declare static variables to store tax and currency data
-    private static double Tax;
-    private static String Currency;
-
-
-    // create price format
-    private DecimalFormat formatData = new DecimalFormat("#.##");
-
     private String Result;
-    private PDTax pdTax;
     private Order order;
 
     @Override
@@ -82,31 +62,27 @@ public class ActivityCheckout extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.checkout);
 
-        initViews();
         initToolbar();
         order = new Order();
 
         //it's sugar, baby
         dishes = Dish.listAll(Dish.class);
-
-        retrofitRun();
+        initViews();
     }
 
     private void initViews() {
+        listCheckout = (RecyclerView) findViewById(R.id.listCheckout);
         edtFName = (EditText) findViewById(R.id.edtFName);
         edtLName = (EditText) findViewById(R.id.edtLName);
         edtPhone = (EditText) findViewById(R.id.edtPhone);
         spinFacility = (Spinner) findViewById(R.id.spinner);
 
-        edtOrderList = (EditText) findViewById(R.id.edtOrderList);
+        txtTotal = (TextView) findViewById(R.id.txtTotal);
 
         edtEmail = (EditText) findViewById(R.id.edtEmail);
         edtComment = (EditText) findViewById(R.id.edtComment);
 
-        btnSend = (Button) findViewById(R.id.btnSend);
-        //sclDetail = (ScrollView) findViewById(R.id.sclDetail);
-        prgLoading = (ProgressBar) findViewById(R.id.prgLoading);
-        txtAlert = (TextView) findViewById(R.id.txtAlert);
+        btnSend = (FloatingActionButton) findViewById(R.id.btnSend);
 
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -116,6 +92,21 @@ public class ActivityCheckout extends AppCompatActivity {
         // Apply the adapter to the spinner
         spinFacility.setAdapter(adapter);
         // event listener to handle send button when pressed
+
+        GridLayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(), 1);
+        listCheckout.setLayoutManager(mLayoutManager);
+        listCheckout.setItemAnimator(new DefaultItemAnimator());
+
+        AdapterCheckout adapterCheckout = new AdapterCheckout(Dish.listAll(Dish.class), getString(R.string.currency));
+
+        listCheckout.setVisibility(View.VISIBLE);
+        listCheckout.setAdapter(adapterCheckout);
+        DividerItemDecoration divider = new DividerItemDecoration(this, DividerItemDecoration.HORIZONTAL);
+        divider.setDrawable(ContextCompat.getDrawable(this, R.drawable.divider));
+        listCheckout.addItemDecoration(new SimpleDividerItemDecoration(
+                getApplicationContext()
+        ));
+
         btnSend.setOnClickListener(new OnClickListener() {
 
             public void onClick(View arg0) {
@@ -126,16 +117,26 @@ public class ActivityCheckout extends AppCompatActivity {
                         getString(R.string.sending_alert), true);
 
                 getOrder();
+                final View content = findViewById(R.id.coordinator);
 
                 if (order.getFacility().equalsIgnoreCase("") ||
                         order.getfName().equalsIgnoreCase("") ||
                         order.getlName().equalsIgnoreCase("") ||
                         order.getPhone().equalsIgnoreCase("")) {
-                    Toast.makeText(ActivityCheckout.this, R.string.form_alert, Toast.LENGTH_SHORT).show();
-                } else if ((dishes.size() == 0)) {
-                    Toast.makeText(ActivityCheckout.this, R.string.order_alert, Toast.LENGTH_SHORT).show();
-                } else {
+                    dialog.dismiss();
 
+                    Snackbar snackbar = Snackbar.make(content, R.string.form_alert, Snackbar.LENGTH_SHORT);
+                    View sbView = snackbar.getView();
+                    sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
+                    snackbar.show();
+                } else if ((dishes.size() == 0)) {
+                    dialog.dismiss();
+                    Snackbar snackbar = Snackbar.make(content, R.string.order_alert, Snackbar.LENGTH_SHORT);
+                    View sbView = snackbar.getView();
+                    sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
+                    snackbar.show();
+                } else {
+                    dialog.dismiss();
                     App.getApi().sendData(getMap()).enqueue(new Callback<Object>() {
                         @Override
                         public void onResponse(Call<Object> call, Response<Object> response) {
@@ -145,14 +146,16 @@ public class ActivityCheckout extends AppCompatActivity {
 
                         @Override
                         public void onFailure(Call<Object> call, Throwable t) {
-                            Toast.makeText(ActivityCheckout.this, R.string.failed_alert, Toast.LENGTH_SHORT).show();
+                            Snackbar snackbar = Snackbar.make(content, R.string.failed_alert, Snackbar.LENGTH_SHORT);
+                            View sbView = snackbar.getView();
+                            sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
+                            snackbar.show();
                         }
                     });
-
-                    dialog.dismiss();
                 }
             }
         });
+        txtTotal.setText("Итого: " + getTotal() + " " + getString(R.string.currency));
     }
 
     private void initToolbar() {
@@ -173,18 +176,19 @@ public class ActivityCheckout extends AppCompatActivity {
             }
         });
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_toolbar, menu);
         return true;
     }
+
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
     }
-
 
     private Map<String, String> getMap() {
         String date = new SimpleDateFormat("yyyy.MM.dd  hh:mm:ss").format(Calendar.getInstance().getTime());
@@ -205,44 +209,10 @@ public class ActivityCheckout extends AppCompatActivity {
         order.setfName(edtFName.getText().toString());
         order.setlName(edtLName.getText().toString());
         order.setPhone(edtPhone.getText().toString());
-        order.setOrderList(edtOrderList.getText().toString());
+        order.setOrderList(txtTotal.getText().toString());
         order.setComment(edtComment.getText().toString());
         order.setEmail(edtEmail.getText().toString());
     }
-
-
-    void retrofitRun() {
-        Map<String, String> map = new HashMap<String, String>();
-        map.put(Constant.AccessKeyParam, Constant.AccessKeyValue);
-
-        prgLoading.setVisibility(View.VISIBLE);
-        txtAlert.setVisibility(View.GONE);
-
-        App.getApi().getTaxCurrency(map).enqueue(new Callback<PDTax>() {
-            @Override
-            public void onResponse(Call<PDTax> call, Response<PDTax> response) {
-                //Данные успешно пришли, но надо проверить response.body() на null
-                prgLoading.setVisibility(View.GONE);
-
-                // if internet connection and data available show data on list
-                // otherwise, show alert text
-                if (response.isSuccessful()) {
-                    pdTax = response.body();
-                    Tax = Double.parseDouble(pdTax.getData().get(0).getTaxOnCurrency().getValue());
-                    Currency = pdTax.getData().get(1).getTaxOnCurrency().getValue();
-                    getDataFromDatabase();
-                } else {
-                    txtAlert.setVisibility(View.VISIBLE);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<PDTax> call, Throwable t) {
-
-            }
-        });
-    }
-
 
     // method to show toast message
     public void resultAlert(String HasilProses) {
@@ -259,42 +229,14 @@ public class ActivityCheckout extends AppCompatActivity {
         }
     }
 
-    // method to post data to server
-
-
-    // method to get data from database
-    public void getDataFromDatabase() {
-
-
-        double Order_price = 0;
-        double Total_price = 0;
-        double tax = 0;
-
-        // store all data to variables
+    int getTotal() {
+        int t = 0;
+        // store data to arraylist variables
         for (int i = 0; i < dishes.size(); i++) {
             Dish dish = dishes.get(i);
-
-            String Menu_name = dish.getMenuName();
-            String Quantity = String.valueOf(dish.getCount());
-            double Sub_total_price = Double.parseDouble(formatData.format(Double.parseDouble(dish.getPrice()) * dish.getCount()));
-            Order_price += Sub_total_price;
-
-            // calculate order price
-            order.setOrderList("" + Quantity + " " + Menu_name + " " + Sub_total_price + " " + Currency + ",\n");
+            t += Double.parseDouble(dish.getPrice()) * dish.getCount();
         }
-
-        if (order.getOrderList() == null || order.getOrderList().equalsIgnoreCase("")) {
-            order.setOrderList(getString(R.string.no_order_menu));
-        }
-
-        tax = Double.parseDouble(formatData.format(Order_price * (Tax / 100)));
-        Total_price = Double.parseDouble(formatData.format(Order_price - tax));
-        order.setOrderList(order.getOrderList() + "\nЗаказ: " + Order_price + " " + Currency +
-                "\nИтого: " + Total_price + " " + Currency);
-        edtOrderList.setText(order.getOrderList());
-
-        prgLoading.setVisibility(View.GONE);
-        //sclDetail.setVisibility(View.VISIBLE);
+        return t;
     }
 
     // when back button pressed close database and back to previous page

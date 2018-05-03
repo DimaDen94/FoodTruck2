@@ -73,7 +73,7 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.MyViewHolder> 
 
 
         holder.titleOrder.setText(dish.getMenuName());
-        holder.priceOrder.setText(dish.getPrice() + " " + ActivityCart.Currency);
+        holder.priceOrder.setText(dish.getPrice() + " " + currency);
         holder.dCount.setText(String.valueOf(dish.getCount()));
 
         holder.plus.setOnClickListener(new View.OnClickListener() {
