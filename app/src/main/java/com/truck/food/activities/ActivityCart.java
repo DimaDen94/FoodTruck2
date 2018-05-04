@@ -259,7 +259,8 @@ public class ActivityCart extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         // TODO Auto-generated method stub
-        super.onBackPressed();
+        Intent intent = new Intent(ActivityCart.this, MainActivity.class);
+        startActivity(intent);
         finish();
         overridePendingTransition(R.anim.open_main, R.anim.close_next);
     }

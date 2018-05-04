@@ -2,6 +2,7 @@ package com.truck.food.activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -16,24 +17,34 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.truck.food.App;
 import com.truck.food.R;
 import com.truck.food.adapters.AdapterCheckout;
 import com.truck.food.adapters.SimpleDividerItemDecoration;
 import com.truck.food.db.Dish;
+import com.truck.food.db.User;
 import com.truck.food.model.Order;
+
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -43,18 +54,20 @@ public class ActivityCheckout extends AppCompatActivity {
 
     private FloatingActionButton btnSend;
     private RecyclerView listCheckout;
-    private EditText edtFName;
+    private AutoCompleteTextView edtFName;
     private EditText edtLName;
     private EditText edtPhone;
     private TextView txtTotal;
     private EditText edtComment;
     private EditText edtEmail;
     private Spinner spinFacility;
-
+    private AdapterCheckout adapterCheckout;
     private List<Dish> dishes;
-
+    private List<User> users;
+    private ArrayAdapter<CharSequence> adapter;
     private String Result;
     private Order order;
+    private List<String> names;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,40 +77,105 @@ public class ActivityCheckout extends AppCompatActivity {
 
         initToolbar();
         order = new Order();
-
+        names = new ArrayList<>();
         //it's sugar, baby
         dishes = Dish.listAll(Dish.class);
+        users = User.listAll(User.class);
+        findAllNames();
         initViews();
+        setLastUser();
+    }
+
+    private void setLastUser() {
+        if (users.size() != 0) {
+            for (User user : users) {
+                if(user.isLast()){
+                    edtFName.setText(user.getfName());
+                    edtLName.setText(user.getlName());
+                    edtPhone.setText(user.getPhoneNumber());
+                    if (user.getEmail() != null)
+                        edtEmail.setText(user.getEmail());
+                    ArrayList<String> listOfFacilities = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.facilities)));
+
+                    if (listOfFacilities.contains(user.getFacility())) {
+                        int spinnerPosition = adapter.getPosition(user.getFacility());
+                        spinFacility.setSelection(spinnerPosition);
+                    }
+                    break;
+                }
+            }
+        }
+
+    }
+
+    private void findAllNames() {
+        if (users.size() != 0) {
+            for (User user : users) {
+                names.add(user.getfName());
+            }
+        }
     }
 
     private void initViews() {
         listCheckout = (RecyclerView) findViewById(R.id.listCheckout);
-        edtFName = (EditText) findViewById(R.id.edtFName);
+        edtFName = (AutoCompleteTextView) findViewById(R.id.edtFName);
         edtLName = (EditText) findViewById(R.id.edtLName);
         edtPhone = (EditText) findViewById(R.id.edtPhone);
-        spinFacility = (Spinner) findViewById(R.id.spinner);
-
         txtTotal = (TextView) findViewById(R.id.txtTotal);
-
         edtEmail = (EditText) findViewById(R.id.edtEmail);
         edtComment = (EditText) findViewById(R.id.edtComment);
+        edtComment.requestFocus();
+
+        spinFacility = (Spinner) findViewById(R.id.spinner);
 
         btnSend = (FloatingActionButton) findViewById(R.id.btnSend);
 
         // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.facilities, android.R.layout.simple_spinner_item);
+        adapter = ArrayAdapter.createFromResource(this,
+                R.array.facilities, R.layout.spinner_item);
         // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(R.layout.spinner_item);
         // Apply the adapter to the spinner
         spinFacility.setAdapter(adapter);
+
+        if (names != null) {
+            ArrayAdapter namesAdapter = new ArrayAdapter(this, R.layout.spinner_item, names.toArray());
+
+            edtFName.setAdapter(namesAdapter);
+            edtFName.setThreshold(1);
+            edtFName.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    edtFName.showDropDown();
+                    return false;
+                }
+            });
+
+            edtFName.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Log.d("HasilProses", users.get(position).getEmail());
+                    edtLName.setText(users.get(position).getlName());
+                    edtPhone.setText(users.get(position).getPhoneNumber());
+                    if (users.get(position).getEmail() != null)
+                        edtEmail.setText(users.get(position).getEmail());
+                    ArrayList<String> listOfFacilities = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.facilities)));
+
+                    if (listOfFacilities.contains(users.get(position).getFacility())) {
+                        int spinnerPosition = adapter.getPosition(users.get(position).getFacility());
+                        spinFacility.setSelection(spinnerPosition);
+                    }
+                }
+            });
+        }
+
         // event listener to handle send button when pressed
 
         GridLayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(), 1);
         listCheckout.setLayoutManager(mLayoutManager);
         listCheckout.setItemAnimator(new DefaultItemAnimator());
 
-        AdapterCheckout adapterCheckout = new AdapterCheckout(Dish.listAll(Dish.class), getString(R.string.currency));
+        adapterCheckout = new AdapterCheckout(Dish.listAll(Dish.class), getString(R.string.currency));
 
         listCheckout.setVisibility(View.VISIBLE);
         listCheckout.setAdapter(adapterCheckout);
@@ -140,6 +218,7 @@ public class ActivityCheckout extends AppCompatActivity {
                     App.getApi().sendData(getMap()).enqueue(new Callback<Object>() {
                         @Override
                         public void onResponse(Call<Object> call, Response<Object> response) {
+                            saveUser(order);
                             Result = response.body().toString();
                             resultAlert(Result);
                         }
@@ -156,6 +235,24 @@ public class ActivityCheckout extends AppCompatActivity {
             }
         });
         txtTotal.setText("Итого: " + getTotal() + " " + getString(R.string.currency));
+    }
+
+    private void saveUser(Order order) {
+        String eMail = "";
+        if (order.getEmail() != null)
+            eMail = order.getEmail();
+        User user = new User(order.getfName(), order.getlName(), order.getPhone(), order.getFacility(), eMail, true);
+
+        changeUserLast();
+        user.setLast(true);
+        user.save();
+    }
+
+    private void changeUserLast() {
+        for (User user : users) {
+            user.setLast(false);
+            user.save();
+        }
     }
 
     private void initToolbar() {
@@ -243,9 +340,16 @@ public class ActivityCheckout extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         // TODO Auto-generated method stub
-        super.onBackPressed();
+        Intent intent = new Intent(ActivityCheckout.this, MainActivity.class);
+        startActivity(intent);
         finish();
         overridePendingTransition(R.anim.open_main, R.anim.close_next);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adapterCheckout.notifyDataSetChanged();
     }
 
     @Override

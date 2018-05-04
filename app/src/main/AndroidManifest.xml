@@ -29,7 +29,7 @@
             android:value="food_truck2.db" />
         <meta-data
             android:name="VERSION"
-            android:value="1" />
+            android:value="3" />
         <meta-data
             android:name="QUERY_LOG"
             android:value="true" />
@@ -81,12 +81,6 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="com.truck.food.activities.ActivityContactUs"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.truck.food.activities.ActivityProfile"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.truck.food.activities.ActivityInformation"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.truck.food.activities.ActivityAbout"
