@@ -1,22 +1,11 @@
 package com.truck.food.activities;
 
-import java.util.ArrayList;
-import java.util.List;
-
-
-import com.truck.food.Constant;
-import com.truck.food.GridViewItem;
-import com.truck.food.R;
-
-import com.truck.food.adapters.AdapterGridView;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
@@ -25,6 +14,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
+
+import com.truck.food.Constant;
+import com.truck.food.GridViewItem;
+import com.truck.food.R;
+import com.truck.food.adapters.AdapterGridView;
+
+import java.util.ArrayList;
 
 @SuppressLint("NewApi")
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
@@ -74,12 +70,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private void initToolbar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.app_name);
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                return false;
-            }
-        });
+
     }
 
     private void initNavigationView() {
@@ -144,9 +135,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             overridePendingTransition(R.anim.open_next, R.anim.close_next);
         } else if (position == 3) {
             startActivity(new Intent(this, ActivityAbout.class));
-            overridePendingTransition(R.anim.open_next, R.anim.close_next);
-        } else {
-            startActivity(new Intent(this, ActivityContactUs.class));
             overridePendingTransition(R.anim.open_next, R.anim.close_next);
         }
     }

@@ -9,7 +9,6 @@ import com.truck.food.model.tax.PDTax;
 import java.util.Map;
 
 import retrofit2.Call;
-import retrofit2.http.FieldMap;
 import retrofit2.http.GET;
 import retrofit2.http.QueryMap;
 

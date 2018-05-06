@@ -1,26 +1,19 @@
 package com.truck.food.activities;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
-import android.text.InputFilter;
-import android.text.InputType;
-import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.webkit.WebView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -28,6 +21,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.truck.food.App;
+import com.truck.food.SugarHelper;
 import com.truck.food.Constant;
 import com.truck.food.R;
 import com.truck.food.db.Dish;
@@ -56,25 +50,26 @@ public class ActivityMenuDetail extends AppCompatActivity {
 
     private int numberOfServings;
 
-
     // declare variables to store menu data
     private int Menu_ID;
     private MenuDetail menuDetail;
 
     // create price format
     private DecimalFormat formatData = new DecimalFormat("#.##");
-    private String Currency;
+    private TextView notifCount;
+    private ImageView notifImg;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppDefault);
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.dish_detail);
         //initToolbar();
         // get menu id that sent from previous page
         Intent iGet = getIntent();
         Menu_ID = iGet.getIntExtra("menu_id", 0);
-        Currency = iGet.getStringExtra("currency");
         initViews();
         retrofitRun();
     }
@@ -85,19 +80,8 @@ public class ActivityMenuDetail extends AppCompatActivity {
         toolbar.setTitle(menuName);
         toolbar.setTitleTextColor(getResources().getColor(R.color.cardview_light_background));
         setSupportActionBar(toolbar);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                Intent iMyOrder = new Intent(ActivityMenuDetail.this, ActivityCart.class);
-                startActivity(iMyOrder);
-                overridePendingTransition(R.anim.open_next, R.anim.close_next);
-                return true;
-            }
-        });
     }
 
     private void initViews() {
@@ -139,6 +123,8 @@ public class ActivityMenuDetail extends AppCompatActivity {
                     View sbView = snackbar.getView();
                     sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
                     snackbar.show();
+                    notifCount.setText(String.valueOf(SugarHelper.getDishCount()));
+
                 } else {
                     Snackbar snackbar = Snackbar.make(content, "У нас нет столько порций", Snackbar.LENGTH_SHORT);
                     View sbView = snackbar.getView();
@@ -170,7 +156,23 @@ public class ActivityMenuDetail extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_toolbar, menu);
-        return true;
+        final MenuItem menuItem = menu.findItem(R.id.action_cart);
+        View actionView = MenuItemCompat.getActionView(menuItem);
+        notifCount = (TextView) actionView.findViewById(R.id.cart_badge);
+        notifImg = (ImageView) actionView.findViewById(R.id.cart_img);
+        notifCount.setText(String.valueOf(SugarHelper.getDishCount()));
+        notifImg.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iMyOrder = new Intent(ActivityMenuDetail.this, ActivityCart.class);
+                startActivity(iMyOrder);
+                overridePendingTransition(R.anim.open_next, R.anim.close_next);
+            }
+        });
+
+
+
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -213,7 +215,7 @@ public class ActivityMenuDetail extends AppCompatActivity {
                     //imageLoader.DisplayImage(Constant.AdminPageURL + menuDetail.getMenuImage(), imgPreview);
                     initToolbar(menuDetail.getMenuName());
 
-                    txtSubText.setText("Цена : " + formatData.format(price) + " " + Currency + "\n" + "Осталось : " + menuDetail.getQuantity() + " порций");
+                    txtSubText.setText("Цена : " + formatData.format(price) + " " + getString(R.string.currency) + "\n" + "Осталось : " + menuDetail.getQuantity() + " порций");
                     txtDescription.setText(Html.fromHtml(menuDetail.getDescription()).toString());
 
                 } else {
@@ -237,7 +239,6 @@ public class ActivityMenuDetail extends AppCompatActivity {
         overridePendingTransition(R.anim.open_main, R.anim.close_next);
     }
 
-
     @Override
     protected void onDestroy() {
         // TODO Auto-generated method stub
@@ -251,6 +252,10 @@ public class ActivityMenuDetail extends AppCompatActivity {
         // Ignore orientation change to keep activity from restarting
         super.onConfigurationChanged(newConfig);
     }
-
-
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (notifCount != null)
+            notifCount.setText(String.valueOf(SugarHelper.getDishCount()));
+    }
 }

@@ -12,7 +12,7 @@
 
         <include layout="@layout/toolbar" />
 
-        <include layout="@layout/order_content" />
+        <include layout="@layout/cart_content" />
 
     </android.support.design.widget.AppBarLayout>
     <android.support.design.widget.FloatingActionButton xmlns:app="http://schemas.android.com/apk/res-auto"

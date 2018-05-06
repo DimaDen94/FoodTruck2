@@ -1,13 +1,15 @@
 package com.truck.food.activities;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
@@ -24,11 +26,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.truck.food.App;
+import com.truck.food.SugarHelper;
 import com.truck.food.R;
 import com.truck.food.adapters.AdapterCheckout;
 import com.truck.food.adapters.SimpleDividerItemDecoration;
@@ -36,7 +40,6 @@ import com.truck.food.db.Dish;
 import com.truck.food.db.User;
 import com.truck.food.model.Order;
 
-import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -68,6 +71,8 @@ public class ActivityCheckout extends AppCompatActivity {
     private String Result;
     private Order order;
     private List<String> names;
+    private TextView notifCount;
+    private ImageView notifImg;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -89,7 +94,7 @@ public class ActivityCheckout extends AppCompatActivity {
     private void setLastUser() {
         if (users.size() != 0) {
             for (User user : users) {
-                if(user.isLast()){
+                if (user.isLast()) {
                     edtFName.setText(user.getfName());
                     edtLName.setText(user.getlName());
                     edtPhone.setText(user.getPhoneNumber());
@@ -265,11 +270,37 @@ public class ActivityCheckout extends AppCompatActivity {
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                Intent iMyOrder = new Intent(ActivityCheckout.this, ActivityCart.class);
-                startActivity(iMyOrder);
-                overridePendingTransition(R.anim.open_next, R.anim.close_next);
-                return true;
+                switch (menuItem.getItemId()) {
+                    case R.id.delete_users:
+                        AlertDialog.Builder builder = new AlertDialog.Builder(ActivityCheckout.this);
+                        builder.setTitle(R.string.remove_users);
 
+                        //builder.setMessage(R.string.remove_users);
+
+                        builder.setCancelable(false);
+                        builder.setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                User.deleteAll(User.class);
+                                users.clear();
+                            }
+                        });
+
+                        builder.setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                        AlertDialog alert = builder.create();
+                        alert.show();
+
+                        break;
+                    case R.id.cart:
+                        Intent iMyOrder = new Intent(ActivityCheckout.this, ActivityCart.class);
+                        startActivity(iMyOrder);
+                        overridePendingTransition(R.anim.open_next, R.anim.close_next);
+                        break;
+                }
+                return true;
             }
         });
     }
@@ -277,7 +308,20 @@ public class ActivityCheckout extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        getMenuInflater().inflate(R.menu.menu_toolbar_in_checkout, menu);
+        final MenuItem menuItem = menu.findItem(R.id.action_cart);
+        View actionView = MenuItemCompat.getActionView(menuItem);
+        notifCount = (TextView) actionView.findViewById(R.id.cart_badge);
+        notifImg = (ImageView) actionView.findViewById(R.id.cart_img);
+        notifCount.setText(String.valueOf(SugarHelper.getDishCount()));
+        notifImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iMyOrder = new Intent(ActivityCheckout.this, ActivityCart.class);
+                startActivity(iMyOrder);
+                overridePendingTransition(R.anim.open_next, R.anim.close_next);
+            }
+        });
         return true;
     }
 
@@ -356,5 +400,11 @@ public class ActivityCheckout extends AppCompatActivity {
     public void onConfigurationChanged(final Configuration newConfig) {
         // Ignore orientation change to keep activity from restarting
         super.onConfigurationChanged(newConfig);
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (notifCount != null)
+            notifCount.setText(String.valueOf(SugarHelper.getDishCount()));
     }
 }

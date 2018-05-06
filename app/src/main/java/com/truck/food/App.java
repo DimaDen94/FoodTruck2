@@ -1,7 +1,5 @@
 package com.truck.food;
 
-import android.app.Application;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.orm.SugarApp;

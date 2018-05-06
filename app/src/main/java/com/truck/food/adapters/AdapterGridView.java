@@ -1,7 +1,5 @@
 package com.truck.food.adapters;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,8 +7,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.truck.food.GridViewItem;
 import com.truck.food.R;
+
+import java.util.ArrayList;
 
 public class AdapterGridView extends ArrayAdapter<GridViewItem> {
 	private Context mContext;

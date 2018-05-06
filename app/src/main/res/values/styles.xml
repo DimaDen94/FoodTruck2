@@ -4,7 +4,6 @@
 
     </style>
 
-
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
 
@@ -17,11 +16,15 @@
         <item name="android:textColorSecondary">@android:color/white</item>
         <item name="actionMenuTextColor">@android:color/white</item>
 
+        
 
-        <item name="android:windowBackground">@color/delivery</item>
-        <item name="android:colorBackground">@color/delivery</item>
+        <item name="android:windowBackground">@color/primary_light</item>
+        <item name="android:colorBackground">@color/primary_light</item>
 
 
+        <item name="colorControlNormal">@color/primary</item>
+        <item name="colorControlActivated">@color/primary</item>
+        <item name="colorControlHighlight">@color/primary</item>
     </style>
 
 </resources>

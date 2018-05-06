@@ -1,16 +1,9 @@
 package com.truck.food.activities;
 
-import java.text.DecimalFormat;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -23,21 +16,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.truck.food.App;
-import com.truck.food.adapters.AdapterCart;
-import com.truck.food.Constant;
-
 import com.truck.food.R;
+import com.truck.food.SugarHelper;
+import com.truck.food.adapters.AdapterCart;
 import com.truck.food.db.Dish;
-import com.truck.food.model.tax.*;
 
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import java.util.List;
 
 public class ActivityCart extends AppCompatActivity {
     private GridLayoutManager mLayoutManager;
@@ -45,38 +31,19 @@ public class ActivityCart extends AppCompatActivity {
     private ProgressBar prgLoading;
     private TextView txtTotalLabel, txtTotal, txtAlert;
     private FloatingActionButton toCheckout;
-
-
-    // declate dbhelper and adapter objects
     private List<Dish> dishes;
-    private AdapterCart mola;
-
-    // declare static variable
-    public static String Currency;
-
-    double Total_price;
-
-    // create price format
-    DecimalFormat formatData = new DecimalFormat("#.##");
-
-    PDTax pData;
+    private AdapterCart adapterCart;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppDefault);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.order_layout);
-
-        initToolbar();
-        initViews();
+        setContentView(R.layout.cart_layout);
 
         //it's sugar, baby
         dishes = Dish.listAll(Dish.class);
-
-        // call asynctask class to request tax and currency data from server
-        retrofitRun();
-        // event listener to handle clear button when clicked
-
+        initToolbar();
+        initViews();
     }
 
     private void initToolbar() {
@@ -123,6 +90,21 @@ public class ActivityCart extends AppCompatActivity {
                 overridePendingTransition(R.anim.open_next, R.anim.close_next);
             }
         });
+        adapterCart = new AdapterCart(ActivityCart.this, dishes, txtTotal, getString(R.string.currency));
+
+
+
+        txtTotal.setText(SugarHelper.getTotal()+ " " + getString(R.string.currency));
+        txtTotalLabel.setText(getString(R.string.total_order));
+        prgLoading.setVisibility(View.GONE);
+        // if data available show data on list
+        // otherwise, show alert text
+        if (dishes.size() > 0) {
+            listOrder.setVisibility(View.VISIBLE);
+            listOrder.setAdapter(adapterCart);
+        } else {
+            txtAlert.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -136,36 +118,6 @@ public class ActivityCart extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
-    }
-
-    void retrofitRun() {
-        Map<String, String> map = new HashMap<String, String>();
-        map.put(Constant.AccessKeyParam, Constant.AccessKeyValue);
-
-        prgLoading.setVisibility(View.VISIBLE);
-        txtAlert.setVisibility(View.GONE);
-
-        App.getApi().getTaxCurrency(map).enqueue(new Callback<PDTax>() {
-            @Override
-            public void onResponse(Call<PDTax> call, Response<PDTax> response) {
-                prgLoading.setVisibility(View.GONE);
-                if (response.isSuccessful()) {
-                    pData = response.body();
-                    Currency = pData.getData().get(1).getTaxOnCurrency().getValue();
-                    mola = new AdapterCart(ActivityCart.this, dishes, txtTotal, Currency);
-                    new getDataTask().execute();
-                } else {
-                    txtAlert.setVisibility(View.VISIBLE);
-                    txtAlert.setText(R.string.alert);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<PDTax> call, Throwable t) {
-                txtAlert.setVisibility(View.VISIBLE);
-                txtAlert.setText(R.string.alert);
-            }
-        });
     }
 
     // method to create dialog
@@ -182,9 +134,9 @@ public class ActivityCart extends AppCompatActivity {
                 // TODO Auto-generated method stub
 
                 Dish.deleteAll(Dish.class);
+                dishes.clear();
                 listOrder.invalidate();
-                //new getDataTask().execute();
-
+                adapterCart.notifyDataSetChanged();
 
             }
         });
@@ -202,59 +154,6 @@ public class ActivityCart extends AppCompatActivity {
 
     }
 
-
-    // asynctask class to handle parsing json in background
-    public class getDataTask extends AsyncTask<Void, Void, Void> {
-
-        // show progressbar first
-        getDataTask() {
-            if (!prgLoading.isShown()) {
-                prgLoading.setVisibility(View.VISIBLE);
-                listOrder.setVisibility(View.GONE);
-                txtAlert.setVisibility(View.GONE);
-            }
-        }
-
-        @Override
-        protected Void doInBackground(Void... arg0) {
-            // TODO Auto-generated method stub
-            // get data from database
-            getDataFromDatabase();
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void result) {
-            // TODO Auto-generated method stub
-            // show data
-            txtTotal.setText(getTotal() + " " + Currency);
-            txtTotalLabel.setText(getString(R.string.total_order));
-            prgLoading.setVisibility(View.GONE);
-            // if data available show data on list
-            // otherwise, show alert text
-            if (dishes.size() > 0) {
-                listOrder.setVisibility(View.VISIBLE);
-                listOrder.setAdapter(mola);
-            } else {
-                txtAlert.setVisibility(View.VISIBLE);
-            }
-
-        }
-    }
-
-    // method to get data from server
-    public void getDataFromDatabase() {
-        Total_price = 0;
-        // store data to arraylist variables
-        for (int i = 0; i < dishes.size(); i++) {
-            Dish dish = dishes.get(i);
-            Total_price += Double.parseDouble(dish.getPrice()) * dish.getCount();
-        }
-        // count total order
-        Total_price -= (Total_price);
-        Total_price = Double.parseDouble(formatData.format(Total_price));
-    }
-
     // when back button pressed close database and back to previous page
     @Override
     public void onBackPressed() {
@@ -265,21 +164,9 @@ public class ActivityCart extends AppCompatActivity {
         overridePendingTransition(R.anim.open_main, R.anim.close_next);
     }
 
-
     @Override
     public void onConfigurationChanged(final Configuration newConfig) {
         // Ignore orientation change to keep activity from restarting
         super.onConfigurationChanged(newConfig);
-    }
-
-
-    int getTotal(){
-        int t = 0;
-        // store data to arraylist variables
-        for (int i = 0; i < dishes.size(); i++) {
-            Dish dish = dishes.get(i);
-            t += Double.parseDouble(dish.getPrice())*dish.getCount();
-        }
-        return t;
     }
 }

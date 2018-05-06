@@ -1,14 +1,9 @@
 package com.truck.food.activities;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import android.app.ActionBar;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -17,17 +12,19 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.truck.food.adapters.AdapterCategoryList;
 import com.truck.food.App;
+import com.truck.food.SugarHelper;
 import com.truck.food.Constant;
 import com.truck.food.R;
+import com.truck.food.adapters.AdapterCategoryList;
 import com.truck.food.model.category.PDCategory;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -39,9 +36,11 @@ public class ActivityCategoryList extends AppCompatActivity {
     private TextView txtAlert;
 
     // declare adapter object to create custom category list
-    private AdapterCategoryList cla;
+    private AdapterCategoryList adapterCategoryList;
     private GridLayoutManager mLayoutManager;
     private Toolbar toolbar;
+    private TextView notifCount;
+    private ImageView notifImg;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppDefault);
@@ -71,21 +70,24 @@ public class ActivityCategoryList extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                Intent iMyOrder = new Intent(ActivityCategoryList.this, ActivityCart.class);
-                startActivity(iMyOrder);
-                overridePendingTransition(R.anim.open_next, R.anim.close_next);
-                return true;
-
-            }
-        });
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        final MenuItem menuItem = menu.findItem(R.id.action_cart);
+        View actionView = MenuItemCompat.getActionView(menuItem);
+        notifCount = (TextView) actionView.findViewById(R.id.cart_badge);
+        notifImg = (ImageView) actionView.findViewById(R.id.cart_img);
+        notifCount.setText(String.valueOf(SugarHelper.getDishCount()));
+        notifImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iMyOrder = new Intent(ActivityCategoryList.this, ActivityCart.class);
+                startActivity(iMyOrder);
+                overridePendingTransition(R.anim.open_next, R.anim.close_next);
+            }
+        });
         return true;
     }
     @Override
@@ -111,9 +113,9 @@ public class ActivityCategoryList extends AppCompatActivity {
                 // otherwise, show alert text
                 if (response.isSuccessful()) {
 
-                    cla = new AdapterCategoryList(ActivityCategoryList.this, response.body());
+                    adapterCategoryList = new AdapterCategoryList(ActivityCategoryList.this, response.body());
                     listCategory.setVisibility(View.VISIBLE);
-                    listCategory.setAdapter(cla);
+                    listCategory.setAdapter(adapterCategoryList);
 
                 } else {
                     txtAlert.setVisibility(View.VISIBLE);
@@ -130,7 +132,7 @@ public class ActivityCategoryList extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         // TODO Auto-generated method stub
-        //cla.imageLoader.clearCache();
+        //adapterCategoryList.imageLoader.clearCache();
         listCategory.setAdapter(null);
         super.onDestroy();
     }
@@ -148,6 +150,13 @@ public class ActivityCategoryList extends AppCompatActivity {
         super.onBackPressed();
         finish();
         overridePendingTransition(R.anim.open_main, R.anim.close_next);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (notifCount != null)
+            notifCount.setText(String.valueOf(SugarHelper.getDishCount()));
     }
 
 }
