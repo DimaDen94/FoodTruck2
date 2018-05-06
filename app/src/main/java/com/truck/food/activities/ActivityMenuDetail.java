@@ -161,7 +161,7 @@ public class ActivityMenuDetail extends AppCompatActivity {
         notifCount = (TextView) actionView.findViewById(R.id.cart_badge);
         notifImg = (ImageView) actionView.findViewById(R.id.cart_img);
         notifCount.setText(String.valueOf(SugarHelper.getDishCount()));
-        notifImg.setOnClickListener(new OnClickListener() {
+        actionView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent iMyOrder = new Intent(ActivityMenuDetail.this, ActivityCart.class);

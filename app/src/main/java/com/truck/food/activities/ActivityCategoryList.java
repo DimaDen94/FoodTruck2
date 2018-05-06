@@ -15,17 +15,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import com.truck.food.App;
 import com.truck.food.SugarHelper;
 import com.truck.food.Constant;
 import com.truck.food.R;
 import com.truck.food.adapters.AdapterCategoryList;
 import com.truck.food.model.category.PDCategory;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -41,6 +38,7 @@ public class ActivityCategoryList extends AppCompatActivity {
     private Toolbar toolbar;
     private TextView notifCount;
     private ImageView notifImg;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppDefault);
@@ -71,6 +69,7 @@ public class ActivityCategoryList extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -80,7 +79,7 @@ public class ActivityCategoryList extends AppCompatActivity {
         notifCount = (TextView) actionView.findViewById(R.id.cart_badge);
         notifImg = (ImageView) actionView.findViewById(R.id.cart_img);
         notifCount.setText(String.valueOf(SugarHelper.getDishCount()));
-        notifImg.setOnClickListener(new View.OnClickListener() {
+        actionView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent iMyOrder = new Intent(ActivityCategoryList.this, ActivityCart.class);
@@ -90,6 +89,7 @@ public class ActivityCategoryList extends AppCompatActivity {
         });
         return true;
     }
+
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
@@ -158,5 +158,4 @@ public class ActivityCategoryList extends AppCompatActivity {
         if (notifCount != null)
             notifCount.setText(String.valueOf(SugarHelper.getDishCount()));
     }
-
 }

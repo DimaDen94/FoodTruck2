@@ -137,6 +137,7 @@ public class ActivityCart extends AppCompatActivity {
                 dishes.clear();
                 listOrder.invalidate();
                 adapterCart.notifyDataSetChanged();
+                txtTotal.setText(SugarHelper.getTotal()+ " " + getString(R.string.currency));
 
             }
         });

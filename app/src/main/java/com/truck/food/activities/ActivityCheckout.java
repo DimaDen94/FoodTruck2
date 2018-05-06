@@ -314,7 +314,7 @@ public class ActivityCheckout extends AppCompatActivity {
         notifCount = (TextView) actionView.findViewById(R.id.cart_badge);
         notifImg = (ImageView) actionView.findViewById(R.id.cart_img);
         notifCount.setText(String.valueOf(SugarHelper.getDishCount()));
-        notifImg.setOnClickListener(new View.OnClickListener() {
+        actionView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent iMyOrder = new Intent(ActivityCheckout.this, ActivityCart.class);
@@ -322,6 +322,7 @@ public class ActivityCheckout extends AppCompatActivity {
                 overridePendingTransition(R.anim.open_next, R.anim.close_next);
             }
         });
+
         return true;
     }
 

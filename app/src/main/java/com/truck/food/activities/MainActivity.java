@@ -13,25 +13,31 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.truck.food.Constant;
 import com.truck.food.GridViewItem;
 import com.truck.food.R;
 import com.truck.food.adapters.AdapterGridView;
+import com.truck.food.db.User;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @SuppressLint("NewApi")
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
-
-
 
     private Toolbar toolbar;
     private DrawerLayout drawer;
     private GridView gridview;
     private AdapterGridView gridviewAdapter;
     private ArrayList<GridViewItem> data = new ArrayList<GridViewItem>();
+    TextView name;
+    TextView email;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +47,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         initToolbar();
         initNavigationView();
 
-
         // get screen device width and height
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -50,7 +55,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         if (!Constant.isNetworkAvailable(MainActivity.this)) {
             Toast.makeText(MainActivity.this, getString(R.string.no_internet), Toast.LENGTH_SHORT).show();
         }
-
 
         initGridView();
     }
@@ -70,7 +74,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private void initToolbar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.app_name);
-
     }
 
     private void initNavigationView() {
@@ -79,8 +82,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation);
+
+        View header=navigationView.getHeaderView(0);
+/*View view=navigationView.inflateHeaderView(R.layout.nav_header_main);*/
+        name = (TextView)header.findViewById(R.id.nav_name);
+        email = (TextView)header.findViewById(R.id.nav_phone_number);
+
+        setLastUser();
+
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
@@ -118,8 +129,19 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         });
     }
 
+    private void setLastUser() {
+        List<User> users = User.listAll(User.class);
+        if (users.size() != 0) {
+            for (User user : users) {
+                if (user.isLast()) {
+                    name.setText(user.getfName());
+                    email.setText(user.getPhoneNumber());
+                    break;
+                }
+            }
+        }
 
-
+    }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -137,5 +159,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             startActivity(new Intent(this, ActivityAbout.class));
             overridePendingTransition(R.anim.open_next, R.anim.close_next);
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        setLastUser();
     }
 }
