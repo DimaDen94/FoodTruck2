@@ -59,7 +59,7 @@ public class AdapterMenuList extends RecyclerView.Adapter<AdapterMenuList.ViewHo
             public void onClick(View v) {
 
                 Intent iDetail = new Intent(context, ActivityMenuDetail.class);
-                iDetail.putExtra("menu_id", Integer.parseInt(menu.getData().get(position).getMenu().getMenuId()));
+                iDetail.putExtra("menu_id", Integer.parseInt(menu.getData().get(position).getDish().getMenuId()));
                 iDetail.putExtra("currency", currency);
                 context.startActivity(iDetail);
                 Activity activity = (Activity) context;
@@ -69,10 +69,10 @@ public class AdapterMenuList extends RecyclerView.Adapter<AdapterMenuList.ViewHo
         });
 
 
-        holder.txtTitle.setText(menu.getData().get(position).getMenu().getMenuName());
-        holder.txtPrice.setText(menu.getData().get(position).getMenu().getPrice() + " " + currency);
+        holder.txtTitle.setText(menu.getData().get(position).getDish().getMenuName());
+        holder.txtPrice.setText(menu.getData().get(position).getDish().getPrice() + " " + currency);
         Glide.with(context)
-                .load(Constant.AdminPageURL + menu.getData().get(position).getMenu().getMenuImage())
+                .load(Constant.AdminPageURL + menu.getData().get(position).getDish().getMenuImage())
                 .thumbnail(0.01f)
                 .crossFade()
                 .into(holder.menuImageView);

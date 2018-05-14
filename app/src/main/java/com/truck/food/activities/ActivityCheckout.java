@@ -32,6 +32,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.truck.food.App;
+import com.truck.food.Constant;
 import com.truck.food.SugarHelper;
 import com.truck.food.R;
 import com.truck.food.adapters.AdapterCheckout;
@@ -40,6 +41,11 @@ import com.truck.food.db.DishDB;
 import com.truck.food.db.UserDB;
 import com.truck.food.model.Dish;
 import com.truck.food.model.User;
+import com.truck.food.model.dishes_for_av.DataForAv;
+import com.truck.food.model.dishes_for_av.DishForAv;
+import com.truck.food.model.dishes_for_av.PDMenuForAv;
+import com.truck.food.model.menu.Data;
+import com.truck.food.model.menu.PDMenu;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -232,7 +238,8 @@ public class ActivityCheckout extends AppCompatActivity {
                     snackbar.show();
                 } else {
                     dialog.dismiss();
-                    sendUserCollectAllDishAndSendOrder(content);
+                    checkAvailabilitySendUserCollectAllDishAndSendOrder(content);
+                    //sendUserCollectAllDishAndSendOrder(content);
                 }
             }
         });
@@ -267,6 +274,54 @@ public class ActivityCheckout extends AppCompatActivity {
                 names.add(userDB.getfName());
             }
         }
+    }
+    private void checkAvailabilitySendUserCollectAllDishAndSendOrder(final View content) {
+
+        Map<String, String> map = new HashMap<String, String>();
+        map.put(Constant.AccessKeyParam, Constant.AccessKeyValue);
+
+        App.getApi().getAllTheDishes(map).enqueue(new Callback<PDMenuForAv>() {
+            @Override
+            public void onResponse(Call<PDMenuForAv> call, Response<PDMenuForAv> response) {
+                if (response.isSuccessful()) {
+                    String list = "";
+                    PDMenuForAv pdMenu = response.body();
+                    ArrayList<DataForAv> datas = pdMenu.getData();
+
+                    for(DataForAv data: datas){
+                        DishForAv dish = data.getDish();
+                        for(DishDB dishDB: dishDBs){
+                            if(dish.getMenuId().equals(dishDB.getMenuId())){
+                                if(Integer.parseInt(dish.getQuantity())<dishDB.getCount()){
+                                    list = list  + dishDB.getMenuName()+ " осталось всего: " + Integer.parseInt(dish.getQuantity()) + "\n";
+                                }
+                            }
+                        }
+                    }
+                    if(list.equals("")){
+                        sendUserCollectAllDishAndSendOrder(content);
+                    }
+                    else {
+                        Snackbar snackbar = Snackbar.make(content, list, Snackbar.LENGTH_SHORT);
+                        View sbView = snackbar.getView();
+                        sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
+                        snackbar.show();
+                    }
+                } else {
+                    Snackbar snackbar = Snackbar.make(content, R.string.failed_alert, Snackbar.LENGTH_SHORT);
+                    View sbView = snackbar.getView();
+                    sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
+                    snackbar.show();
+                }
+            }
+            @Override
+            public void onFailure(Call<PDMenuForAv> call, Throwable t) {
+                Snackbar snackbar = Snackbar.make(content, R.string.failed_alert, Snackbar.LENGTH_SHORT);
+                View sbView = snackbar.getView();
+                sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
+                snackbar.show();
+            }
+        });
     }
 
     private void sendUserCollectAllDishAndSendOrder(final View content) {
@@ -314,6 +369,8 @@ public class ActivityCheckout extends AppCompatActivity {
             @Override
             public void onResponse(Call<Object> call, Response<Object> response) {
                 resultAlert("OK");
+                dishDBs.clear();
+                DishDB.deleteAll(DishDB.class);
             }
 
             @Override

@@ -13,6 +13,7 @@ public class Constant {
 
 	public static final String CategoryAPI = "/panel/api/get-all-category-data.php";
 	public static final String MenuAPI = "/panel/api/get-menu-data-by-category-id.php";
+	public static final String AllTheDishesAPI = "/panel/api/take-all-the-dishes.php";
 	public static final String MenuDetailAPI = "panel/api/get-menu-detail.php";
 	public static final String AdminPageURL = "https://www.foodtruck8.info/panel/";
 

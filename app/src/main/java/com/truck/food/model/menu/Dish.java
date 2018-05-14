@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by Dmitry on 14.04.2018.
  */
 
-public class Menu
+public class Dish
 {
     @SerializedName("Menu_image")
     @Expose

@@ -2,6 +2,7 @@ package com.truck.food.retrofit;
 
 import com.truck.food.Constant;
 import com.truck.food.model.category.PDCategory;
+import com.truck.food.model.dishes_for_av.PDMenuForAv;
 import com.truck.food.model.menu.PDMenu;
 import com.truck.food.model.menu_detail.PDMenuDatail;
 
@@ -18,6 +19,9 @@ public interface APIService {
 
     @GET(Constant.MenuAPI)
     Call<PDMenu> getMenu(@QueryMap Map<String, String> map);
+
+    @GET(Constant.AllTheDishesAPI)
+    Call<PDMenuForAv> getAllTheDishes(@QueryMap Map<String, String> map);
 
     @GET(Constant.MenuDetailAPI)
     Call<PDMenuDatail> getMenuDetail(@QueryMap Map<String, String> map);

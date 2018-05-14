@@ -1,4 +1,4 @@
-package com.truck.food.model.menu;
+package com.truck.food.model.dishes_for_av;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -7,17 +7,17 @@ import com.google.gson.annotations.SerializedName;
  * Created by Dmitry on 14.04.2018.
  */
 
-public class Data {
+public class DataForAv {
     @SerializedName("Menu")
     @Expose
-    private Dish dish;
+    private DishForAv dish;
 
-    public Dish getDish()
+    public DishForAv getDish()
     {
         return dish;
     }
 
-    public void setDish(Dish Dish)
+    public void setDish(DishForAv Dish)
     {
         this.dish = Dish;
     }
