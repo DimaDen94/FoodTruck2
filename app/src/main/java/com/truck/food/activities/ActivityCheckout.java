@@ -36,9 +36,10 @@ import com.truck.food.SugarHelper;
 import com.truck.food.R;
 import com.truck.food.adapters.AdapterCheckout;
 import com.truck.food.adapters.SimpleDividerItemDecoration;
-import com.truck.food.db.Dish;
-import com.truck.food.db.User;
-import com.truck.food.model.Order;
+import com.truck.food.db.DishDB;
+import com.truck.food.db.UserDB;
+import com.truck.food.model.Dish;
+import com.truck.food.model.User;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -65,11 +66,13 @@ public class ActivityCheckout extends AppCompatActivity {
     private EditText edtEmail;
     private Spinner spinFacility;
     private AdapterCheckout adapterCheckout;
-    private List<Dish> dishes;
-    private List<User> users;
+    private List<DishDB> dishDBs;
+    private List<UserDB> userDBs;
     private ArrayAdapter<CharSequence> adapter;
     private String Result;
-    private Order order;
+
+    private User user;
+
     private List<String> names;
     private TextView notifCount;
     private ImageView notifImg;
@@ -79,48 +82,59 @@ public class ActivityCheckout extends AppCompatActivity {
         setTheme(R.style.AppDefault);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.checkout);
-
         initToolbar();
-        order = new Order();
+        user = new User();
         names = new ArrayList<>();
         //it's sugar, baby
-        dishes = Dish.listAll(Dish.class);
-        users = User.listAll(User.class);
+        dishDBs = DishDB.listAll(DishDB.class);
+        userDBs = UserDB.listAll(UserDB.class);
         findAllNames();
         initViews();
         setLastUser();
     }
+    private void initToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(R.string.about_title);
+        setSupportActionBar(toolbar);
 
-    private void setLastUser() {
-        if (users.size() != 0) {
-            for (User user : users) {
-                if (user.isLast()) {
-                    edtFName.setText(user.getfName());
-                    edtLName.setText(user.getlName());
-                    edtPhone.setText(user.getPhoneNumber());
-                    if (user.getEmail() != null)
-                        edtEmail.setText(user.getEmail());
-                    ArrayList<String> listOfFacilities = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.facilities)));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.delete_users:
+                        AlertDialog.Builder builder = new AlertDialog.Builder(ActivityCheckout.this);
+                        builder.setTitle(R.string.remove_users);
 
-                    if (listOfFacilities.contains(user.getFacility())) {
-                        int spinnerPosition = adapter.getPosition(user.getFacility());
-                        spinFacility.setSelection(spinnerPosition);
-                    }
-                    break;
+                        builder.setCancelable(false);
+                        builder.setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                UserDB.deleteAll(UserDB.class);
+                                userDBs.clear();
+                            }
+                        });
+
+                        builder.setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                        AlertDialog alert = builder.create();
+                        alert.show();
+
+                        break;
+                    case R.id.cart:
+                        Intent iMyOrder = new Intent(ActivityCheckout.this, ActivityCart.class);
+                        startActivity(iMyOrder);
+                        overridePendingTransition(R.anim.open_next, R.anim.close_next);
+                        break;
                 }
+                return true;
             }
-        }
-
+        });
     }
-
-    private void findAllNames() {
-        if (users.size() != 0) {
-            for (User user : users) {
-                names.add(user.getfName());
-            }
-        }
-    }
-
+    
     private void initViews() {
         listCheckout = (RecyclerView) findViewById(R.id.listCheckout);
         edtFName = (AutoCompleteTextView) findViewById(R.id.edtFName);
@@ -159,15 +173,15 @@ public class ActivityCheckout extends AppCompatActivity {
             edtFName.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Log.d("HasilProses", users.get(position).getEmail());
-                    edtLName.setText(users.get(position).getlName());
-                    edtPhone.setText(users.get(position).getPhoneNumber());
-                    if (users.get(position).getEmail() != null)
-                        edtEmail.setText(users.get(position).getEmail());
+                    Log.d("HasilProses", userDBs.get(position).getEmail());
+                    edtLName.setText(userDBs.get(position).getlName());
+                    edtPhone.setText(userDBs.get(position).getPhoneNumber());
+                    if (userDBs.get(position).getEmail() != null)
+                        edtEmail.setText(userDBs.get(position).getEmail());
                     ArrayList<String> listOfFacilities = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.facilities)));
 
-                    if (listOfFacilities.contains(users.get(position).getFacility())) {
-                        int spinnerPosition = adapter.getPosition(users.get(position).getFacility());
+                    if (listOfFacilities.contains(userDBs.get(position).getFacility())) {
+                        int spinnerPosition = adapter.getPosition(userDBs.get(position).getFacility());
                         spinFacility.setSelection(spinnerPosition);
                     }
                 }
@@ -180,7 +194,7 @@ public class ActivityCheckout extends AppCompatActivity {
         listCheckout.setLayoutManager(mLayoutManager);
         listCheckout.setItemAnimator(new DefaultItemAnimator());
 
-        adapterCheckout = new AdapterCheckout(Dish.listAll(Dish.class), getString(R.string.currency));
+        adapterCheckout = new AdapterCheckout(DishDB.listAll(DishDB.class), getString(R.string.currency));
 
         listCheckout.setVisibility(View.VISIBLE);
         listCheckout.setAdapter(adapterCheckout);
@@ -193,26 +207,24 @@ public class ActivityCheckout extends AppCompatActivity {
         btnSend.setOnClickListener(new OnClickListener() {
 
             public void onClick(View arg0) {
-                // TODO Auto-generated method stub
-
                 ProgressDialog dialog;
                 dialog = ProgressDialog.show(ActivityCheckout.this, "",
                         getString(R.string.sending_alert), true);
 
-                getOrder();
+                takeUser();
                 final View content = findViewById(R.id.coordinator);
 
-                if (order.getFacility().equalsIgnoreCase("") ||
-                        order.getfName().equalsIgnoreCase("") ||
-                        order.getlName().equalsIgnoreCase("") ||
-                        order.getPhone().equalsIgnoreCase("")) {
+                if (user.getFacility().equalsIgnoreCase("") ||
+                        user.getfName().equalsIgnoreCase("") ||
+                        user.getlName().equalsIgnoreCase("") ||
+                        user.getPhone().equalsIgnoreCase("")) {
                     dialog.dismiss();
 
                     Snackbar snackbar = Snackbar.make(content, R.string.form_alert, Snackbar.LENGTH_SHORT);
                     View sbView = snackbar.getView();
                     sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
                     snackbar.show();
-                } else if ((dishes.size() == 0)) {
+                } else if ((dishDBs.size() == 0)) {
                     dialog.dismiss();
                     Snackbar snackbar = Snackbar.make(content, R.string.order_alert, Snackbar.LENGTH_SHORT);
                     View sbView = snackbar.getView();
@@ -220,89 +232,160 @@ public class ActivityCheckout extends AppCompatActivity {
                     snackbar.show();
                 } else {
                     dialog.dismiss();
-                    App.getApi().sendData(getMap()).enqueue(new Callback<Object>() {
-                        @Override
-                        public void onResponse(Call<Object> call, Response<Object> response) {
-                            saveUser(order);
-                            Result = response.body().toString();
-                            resultAlert(Result);
-                        }
-
-                        @Override
-                        public void onFailure(Call<Object> call, Throwable t) {
-                            Snackbar snackbar = Snackbar.make(content, R.string.failed_alert, Snackbar.LENGTH_SHORT);
-                            View sbView = snackbar.getView();
-                            sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
-                            snackbar.show();
-                        }
-                    });
+                    sendUserCollectAllDishAndSendOrder(content);
                 }
             }
         });
-        txtTotal.setText("Итого: " + getTotal() + " " + getString(R.string.currency));
+        txtTotal.setText("Итого: " + SugarHelper.getTotal() + " " + getString(R.string.currency));
+    }
+    
+    private void setLastUser() {
+        if (userDBs.size() != 0) {
+            for (UserDB userDB : userDBs) {
+                if (userDB.isLast()) {
+                    edtFName.setText(userDB.getfName());
+                    edtLName.setText(userDB.getlName());
+                    edtPhone.setText(userDB.getPhoneNumber());
+                    if (userDB.getEmail() != null)
+                        edtEmail.setText(userDB.getEmail());
+                    ArrayList<String> listOfFacilities = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.facilities)));
+
+                    if (listOfFacilities.contains(userDB.getFacility())) {
+                        int spinnerPosition = adapter.getPosition(userDB.getFacility());
+                        spinFacility.setSelection(spinnerPosition);
+                    }
+                    break;
+                }
+            }
+        }
+
     }
 
-    private void saveUser(Order order) {
-        String eMail = "";
-        if (order.getEmail() != null)
-            eMail = order.getEmail();
-        User user = new User(order.getfName(), order.getlName(), order.getPhone(), order.getFacility(), eMail, true);
-
-        changeUserLast();
-        user.setLast(true);
-        user.save();
-    }
-
-    private void changeUserLast() {
-        for (User user : users) {
-            user.setLast(false);
-            user.save();
+    private void findAllNames() {
+        if (userDBs.size() != 0) {
+            for (UserDB userDB : userDBs) {
+                names.add(userDB.getfName());
+            }
         }
     }
 
-    private void initToolbar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.about_title);
-        setSupportActionBar(toolbar);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+    private void sendUserCollectAllDishAndSendOrder(final View content) {
+        // TODO Auto-generated method stub
+        App.getApi().sendUser(getUserMap()).enqueue(new Callback<Object>() {
             @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
-                    case R.id.delete_users:
-                        AlertDialog.Builder builder = new AlertDialog.Builder(ActivityCheckout.this);
-                        builder.setTitle(R.string.remove_users);
-
-                        //builder.setMessage(R.string.remove_users);
-
-                        builder.setCancelable(false);
-                        builder.setPositiveButton("Да", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                User.deleteAll(User.class);
-                                users.clear();
-                            }
-                        });
-
-                        builder.setNegativeButton("Нет", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.cancel();
-                            }
-                        });
-                        AlertDialog alert = builder.create();
-                        alert.show();
-
-                        break;
-                    case R.id.cart:
-                        Intent iMyOrder = new Intent(ActivityCheckout.this, ActivityCart.class);
-                        startActivity(iMyOrder);
-                        overridePendingTransition(R.anim.open_next, R.anim.close_next);
-                        break;
-                }
-                return true;
+            public void onResponse(Call<Object> call, Response<Object> response) {
+                saveUser(user);
+                double res =  Double.valueOf(response.body().toString());
+                int userId = (int) res;
+                collectAllDishAndSendOrder(userId);
+            }
+            @Override
+            public void onFailure(Call<Object> call, Throwable t) {
+                Snackbar snackbar = Snackbar.make(content, R.string.failed_alert, Snackbar.LENGTH_SHORT);
+                View sbView = snackbar.getView();
+                sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
+                snackbar.show();
             }
         });
+
+    }
+
+    private void collectAllDishAndSendOrder(int userId) {
+        String date = new SimpleDateFormat("yyyy.MM.dd  hh:mm:ss").format(Calendar.getInstance().getTime());
+        if (dishDBs.size() != 0) {
+            for (DishDB dishDB : dishDBs) {
+                Dish dish = new Dish();
+                dish.setUserId(userId);
+                dish.setDishId(Integer.parseInt(dishDB.getMenuId()));
+                dish.setCount(dishDB.getCount());
+                dish.setDate(date);
+                dish.setComment(edtComment.getText().toString());
+                sendOrder(dish);
+            }
+        }
+    }
+
+    private void sendOrder(Dish dish) {
+        // TODO Auto-generated method stub
+
+        final View content = findViewById(R.id.coordinator);
+
+        App.getApi().sendOrder(getOrderMap(dish)).enqueue(new Callback<Object>() {
+            @Override
+            public void onResponse(Call<Object> call, Response<Object> response) {
+                resultAlert("OK");
+            }
+
+            @Override
+            public void onFailure(Call<Object> call, Throwable t) {
+                Snackbar snackbar = Snackbar.make(content, R.string.failed_alert, Snackbar.LENGTH_SHORT);
+                View sbView = snackbar.getView();
+                sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
+                snackbar.show();
+            }
+        });
+
+    }
+
+    private void saveUser(User user) {
+        String eMail = "";
+        if (user.getEmail() != null)
+            eMail = user.getEmail();
+        UserDB userDB = new UserDB(user.getfName(), user.getlName(), user.getPhone(), user.getFacility(), eMail, true);
+
+        changeUserLast();
+        userDB.setLast(true);
+        userDB.save();
+    }
+
+    private void changeUserLast() {
+        for (UserDB userDB : userDBs) {
+            userDB.setLast(false);
+            userDB.save();
+        }
+    }
+
+    private Map<String, String> getUserMap() {
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("facility", user.getFacility());
+        map.put("fname", user.getfName());
+        map.put("lname", user.getlName());
+        map.put("phone", user.getPhone());
+        map.put("email", user.getEmail());
+        return map;
+    }
+
+    private Map<String, String> getOrderMap(Dish dish) {
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("user_id", String.valueOf(dish.getUserId()));
+        map.put("dish_id", String.valueOf(dish.getDishId()));
+        map.put("count", String.valueOf(dish.getCount()));
+        map.put("date", dish.getDate());
+        map.put("comment", dish.getComment());
+        return map;
+    }
+
+    private void takeUser() {
+        user.setfName(edtFName.getText().toString());
+        user.setlName(edtLName.getText().toString());
+        user.setPhone(edtPhone.getText().toString());
+        user.setEmail(edtEmail.getText().toString());
+        user.setFacility(spinFacility.getSelectedItem().toString());
+    }
+
+    // method to show toast message
+    public void resultAlert(String HasilProses) {
+        if (HasilProses.trim().equalsIgnoreCase("OK")) {
+            Toast.makeText(ActivityCheckout.this, R.string.ok_alert, Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(ActivityCheckout.this, ActivityConfirmMessage.class);
+            startActivity(i);
+            overridePendingTransition(R.anim.open_next, R.anim.close_next);
+            finish();
+        } else if (HasilProses.trim().equalsIgnoreCase("Failed")) {
+            Toast.makeText(ActivityCheckout.this, R.string.failed_alert, Toast.LENGTH_SHORT).show();
+        } else {
+            Log.d("HasilProses", HasilProses);
+        }
     }
 
     @Override
@@ -326,61 +409,6 @@ public class ActivityCheckout extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
-    }
-
-    private Map<String, String> getMap() {
-        String date = new SimpleDateFormat("yyyy.MM.dd  hh:mm:ss").format(Calendar.getInstance().getTime());
-        Map<String, String> map = new HashMap<String, String>();
-        map.put("facility", order.getFacility());
-        map.put("fname", order.getfName());
-        map.put("lname", order.getlName());
-        map.put("date_n_time", date);
-        map.put("phone", order.getPhone());
-        map.put("order_list", order.getOrderList());
-        map.put("comment", order.getComment());
-        map.put("email", order.getEmail());
-        return map;
-    }
-
-    private void getOrder() {
-        order.setFacility(spinFacility.getSelectedItem().toString());
-        order.setfName(edtFName.getText().toString());
-        order.setlName(edtLName.getText().toString());
-        order.setPhone(edtPhone.getText().toString());
-        order.setOrderList(txtTotal.getText().toString());
-        order.setComment(edtComment.getText().toString());
-        order.setEmail(edtEmail.getText().toString());
-    }
-
-    // method to show toast message
-    public void resultAlert(String HasilProses) {
-        if (HasilProses.trim().equalsIgnoreCase("OK")) {
-            Toast.makeText(ActivityCheckout.this, R.string.ok_alert, Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(ActivityCheckout.this, ActivityConfirmMessage.class);
-            startActivity(i);
-            overridePendingTransition(R.anim.open_next, R.anim.close_next);
-            finish();
-        } else if (HasilProses.trim().equalsIgnoreCase("Failed")) {
-            Toast.makeText(ActivityCheckout.this, R.string.failed_alert, Toast.LENGTH_SHORT).show();
-        } else {
-            Log.d("HasilProses", HasilProses);
-        }
-    }
-
-    int getTotal() {
-        int t = 0;
-        // store data to arraylist variables
-        for (int i = 0; i < dishes.size(); i++) {
-            Dish dish = dishes.get(i);
-            t += Double.parseDouble(dish.getPrice()) * dish.getCount();
-        }
-        return t;
-    }
-
     // when back button pressed close database and back to previous page
     @Override
     public void onBackPressed() {
@@ -402,10 +430,16 @@ public class ActivityCheckout extends AppCompatActivity {
         // Ignore orientation change to keep activity from restarting
         super.onConfigurationChanged(newConfig);
     }
+
     @Override
     protected void onStart() {
         super.onStart();
         if (notifCount != null)
             notifCount.setText(String.valueOf(SugarHelper.getDishCount()));
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

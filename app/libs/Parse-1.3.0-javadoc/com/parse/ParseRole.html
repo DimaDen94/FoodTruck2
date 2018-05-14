@@ -103,7 +103,7 @@ Class ParseRole</H2>
 <P>
 Represents a Role on the Parse server. <code>ParseRole</code>s represent groupings of
  <code>ParseUsers</code> for the purposes of granting permissions (e.g. specifying a <A HREF="../../com/parse/ParseACL.html" title="class in com.parse"><CODE>ParseACL</CODE></A>
- for a <A HREF="../../com/parse/ParseObject.html" title="class in com.parse"><CODE>ParseObject</CODE></A>). Roles are specified by their sets of child users and child roles, all
+ for a <A HREF="../../com/parse/ParseObject.html" title="class in com.parse"><CODE>ParseObject</CODE></A>). Roles are specified by their sets of child userDBs and child roles, all
  of which are granted any permissions that the parent role has.<br />
  <br />
  Roles must have a name (which cannot be changed after creation of the role), and must specify an
@@ -310,12 +310,12 @@ getUsers</H3>
 public <A HREF="../../com/parse/ParseRelation.html" title="class in com.parse">ParseRelation</A>&lt;<A HREF="../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&gt; <B>getUsers</B>()</PRE>
 <DL>
 <DD>Gets the <A HREF="../../com/parse/ParseRelation.html" title="class in com.parse"><CODE>ParseRelation</CODE></A> for the <A HREF="../../com/parse/ParseUser.html" title="class in com.parse"><CODE>ParseUser</CODE></A>s that are direct children of this
- role. These users are granted any privileges that this role has been granted (e.g. read or
- write access through ACLs). You can add or remove users from the role through this relation.
+ role. These userDBs are granted any privileges that this role has been granted (e.g. read or
+ write access through ACLs). You can add or remove userDBs from the role through this relation.
 <P>
 <DD><DL>
 
-<DT><B>Returns:</B><DD>the relation for the users belonging to this role.</DL>
+<DT><B>Returns:</B><DD>the relation for the userDBs belonging to this role.</DL>
 </DD>
 </DL>
 <HR>
@@ -326,7 +326,7 @@ getRoles</H3>
 public <A HREF="../../com/parse/ParseRelation.html" title="class in com.parse">ParseRelation</A>&lt;<A HREF="../../com/parse/ParseRole.html" title="class in com.parse">ParseRole</A>&gt; <B>getRoles</B>()</PRE>
 <DL>
 <DD>Gets the <A HREF="../../com/parse/ParseRelation.html" title="class in com.parse"><CODE>ParseRelation</CODE></A> for the <A HREF="../../com/parse/ParseRole.html" title="class in com.parse"><CODE>ParseRole</CODE></A>s that are direct children of this
- role. These roles' users are granted any privileges that this role has been granted (e.g. read
+ role. These roles' userDBs are granted any privileges that this role has been granted (e.g. read
  or write access through ACLs). You can add or remove child roles from this role through this
  relation.
 <P>

@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 
 /**
- * Created by Dmitry on 13.04.2018.
+ * Created by Dmitry on 11.05.2018.
  */
 
 public class PDCategory {

@@ -21,7 +21,7 @@ import android.widget.TextView;
 import com.truck.food.R;
 import com.truck.food.SugarHelper;
 import com.truck.food.adapters.AdapterCart;
-import com.truck.food.db.Dish;
+import com.truck.food.db.DishDB;
 
 import java.util.List;
 
@@ -31,7 +31,7 @@ public class ActivityCart extends AppCompatActivity {
     private ProgressBar prgLoading;
     private TextView txtTotalLabel, txtTotal, txtAlert;
     private FloatingActionButton toCheckout;
-    private List<Dish> dishes;
+    private List<DishDB> dishDBs;
     private AdapterCart adapterCart;
 
     @Override
@@ -41,7 +41,7 @@ public class ActivityCart extends AppCompatActivity {
         setContentView(R.layout.cart_layout);
 
         //it's sugar, baby
-        dishes = Dish.listAll(Dish.class);
+        dishDBs = DishDB.listAll(DishDB.class);
         initToolbar();
         initViews();
     }
@@ -90,7 +90,7 @@ public class ActivityCart extends AppCompatActivity {
                 overridePendingTransition(R.anim.open_next, R.anim.close_next);
             }
         });
-        adapterCart = new AdapterCart(ActivityCart.this, dishes, txtTotal, getString(R.string.currency));
+        adapterCart = new AdapterCart(ActivityCart.this, dishDBs, txtTotal, getString(R.string.currency));
 
 
 
@@ -99,7 +99,7 @@ public class ActivityCart extends AppCompatActivity {
         prgLoading.setVisibility(View.GONE);
         // if data available show data on list
         // otherwise, show alert text
-        if (dishes.size() > 0) {
+        if (dishDBs.size() > 0) {
             listOrder.setVisibility(View.VISIBLE);
             listOrder.setAdapter(adapterCart);
         } else {
@@ -133,8 +133,8 @@ public class ActivityCart extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 // TODO Auto-generated method stub
 
-                Dish.deleteAll(Dish.class);
-                dishes.clear();
+                DishDB.deleteAll(DishDB.class);
+                dishDBs.clear();
                 listOrder.invalidate();
                 adapterCart.notifyDataSetChanged();
                 txtTotal.setText(SugarHelper.getTotal()+ " " + getString(R.string.currency));

@@ -5,7 +5,6 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -20,7 +19,9 @@ import com.truck.food.SugarHelper;
 import com.truck.food.Constant;
 import com.truck.food.R;
 import com.truck.food.adapters.AdapterCategoryList;
+
 import com.truck.food.model.category.PDCategory;
+
 import java.util.HashMap;
 import java.util.Map;
 import retrofit2.Call;
@@ -57,7 +58,8 @@ public class ActivityCategoryList extends AppCompatActivity {
         txtAlert = (TextView) findViewById(R.id.txtAlert);
         mLayoutManager = new GridLayoutManager(getApplicationContext(), 1);
         listCategory.setLayoutManager(mLayoutManager);
-        listCategory.setItemAnimator(new DefaultItemAnimator());
+        listCategory.setHasFixedSize(true);
+        //listCategory.setItemAnimator(new DefaultItemAnimator());
     }
 
     private void initToolbar() {

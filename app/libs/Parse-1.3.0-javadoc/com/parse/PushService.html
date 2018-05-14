@@ -138,7 +138,7 @@ A service to listen for push notifications. This operates in the same process as
  </pre>
  
  When the client receives a push message, a notification will appear in the system tray. When the
- user taps the notification, they will enter the application through a new instance of
+ userDB taps the notification, they will enter the application through a new instance of
  YourActivity.
 <P>
 
@@ -267,7 +267,7 @@ A service to listen for push notifications. This operates in the same process as
           int&nbsp;icon)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Call this function when the user should be subscribed to a new push channel.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Call this function when the userDB should be subscribed to a new push channel.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -372,7 +372,7 @@ public static void <B>subscribe</B>(<A target="_top" HREF="http://developer.andr
           be a viable context.<DD><CODE>channel</CODE> - A string identifier that determines which messages will cause a push notification to
           be sent to this client. The channel name must start with a letter and contain only
           letters, numbers, dashes, and underscores.<DD><CODE>cls</CODE> - This should be a subclass of Activity. An instance of this Activity is started when
-          the user responds to this push notification. If you are not sure what to use here,
+          the userDB responds to this push notification. If you are not sure what to use here,
           just use your application's main Activity subclass.
 <DT><B>Throws:</B>
 <DD><CODE><A target="_top" HREF="http://developer.android.com/reference/java/lang/IllegalArgumentException.html?is-external=true" title="class or interface in java.lang">IllegalArgumentException</A></CODE> - if the channel name is not valid.</DL>
@@ -388,12 +388,12 @@ public static void <B>subscribe</B>(<A target="_top" HREF="http://developer.andr
                              <A target="_top" HREF="http://developer.android.com/reference/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</A>&lt;? extends <A target="_top" HREF="http://developer.android.com/reference/android/app/Activity.html?is-external=true" title="class or interface in android.app">Activity</A>&gt;&nbsp;cls,
                              int&nbsp;icon)</PRE>
 <DL>
-<DD>Call this function when the user should be subscribed to a new push channel. When push
+<DD>Call this function when the userDB should be subscribed to a new push channel. When push
  notifications are sent out on this channel subsequently, this device will display a "toast"
  notification in the system tray. This function returns immediately, even when there is no
  internet access. In that case the subscription is cached and when internet access is next
  available the client will inform the server of its subscription. This starts a PushService
- running in the background that will not permanently terminate as long as the user is subscribed
+ running in the background that will not permanently terminate as long as the userDB is subscribed
  to some channel, unless the application is uninstalled.
 <P>
 <DD><DL>
@@ -401,7 +401,7 @@ public static void <B>subscribe</B>(<A target="_top" HREF="http://developer.andr
           be a viable context.<DD><CODE>channel</CODE> - A string identifier that determines which messages will cause a push notification to
           be sent to this client. The channel name must start with a letter and contain only
           letters, numbers, dashes, and underscores.<DD><CODE>cls</CODE> - This should be a subclass of Activity. An instance of this Activity is started when
-          the user responds to this push notification. If you are not sure what to use here,
+          the userDB responds to this push notification. If you are not sure what to use here,
           just use your application's main Activity subclass.<DD><CODE>icon</CODE> - The icon to show for the notification.
 <DT><B>Throws:</B>
 <DD><CODE><A target="_top" HREF="http://developer.android.com/reference/java/lang/IllegalArgumentException.html?is-external=true" title="class or interface in java.lang">IllegalArgumentException</A></CODE> - if the channel name is not valid.</DL>
@@ -415,7 +415,7 @@ unsubscribe</H3>
 public static void <B>unsubscribe</B>(<A target="_top" HREF="http://developer.android.com/reference/android/content/Context.html?is-external=true" title="class or interface in android.content">Context</A>&nbsp;context,
                                <A target="_top" HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;channel)</PRE>
 <DL>
-<DD>Cancels a previous call to subscribe. If the user is not subscribed to this channel, this is a
+<DD>Cancels a previous call to subscribe. If the userDB is not subscribed to this channel, this is a
  no-op. This call does not require internet access. It returns without blocking.
 <P>
 <DD><DL>
@@ -438,7 +438,7 @@ public static void <B>setDefaultPushCallback</B>(<A target="_top" HREF="http://d
 <DD><DL>
 <DT><B>Parameters:</B><DD><CODE>context</CODE> - This is used to access local storage to cache the subscription, so it must currently
           be a viable context.<DD><CODE>cls</CODE> - This should be a subclass of Activity. An instance of this Activity is started when
-          the user responds to this push notification. If you are not sure what to use here,
+          the userDB responds to this push notification. If you are not sure what to use here,
           just use your application's main Activity subclass.</DL>
 </DD>
 </DL>
@@ -459,7 +459,7 @@ public static void <B>setDefaultPushCallback</B>(<A target="_top" HREF="http://d
 <DD><DL>
 <DT><B>Parameters:</B><DD><CODE>context</CODE> - This is used to access local storage to cache the subscription, so it must currently
           be a viable context.<DD><CODE>cls</CODE> - This should be a subclass of Activity. An instance of this Activity is started when
-          the user responds to this push notification. If you are not sure what to use here,
+          the userDB responds to this push notification. If you are not sure what to use here,
           just use your application's main Activity subclass.<DD><CODE>icon</CODE> - The icon to show for the notification.</DL>
 </DD>
 </DL>

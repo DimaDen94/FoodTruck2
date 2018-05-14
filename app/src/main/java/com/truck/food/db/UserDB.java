@@ -4,19 +4,24 @@ import com.orm.SugarRecord;
 import com.orm.dsl.Unique;
 
 /**
- * Created by Dmitry on 04.05.2018.
+ * Created by Dmitry on 11.05.2018.
  */
 
-public class User extends SugarRecord {
+
+public class UserDB extends SugarRecord {
+    private String email;
+
+
     @Unique
     private String fName;
-    private String lName;
-    private String phoneNumber;
     private String facility;
-    private String email;
+    private String lName;
     private boolean last;
+    private String phoneNumber;
 
-    public User(String fName, String lName, String phoneNumber, String facility, String email, boolean last) {
+    public UserDB() {
+    }
+    public UserDB(String fName, String lName, String phoneNumber, String facility, String email, boolean last) {
         this.fName = fName;
         this.lName = lName;
         this.phoneNumber = phoneNumber;
@@ -25,20 +30,16 @@ public class User extends SugarRecord {
         this.last = last;
     }
 
-    public User() {
-    }
-
-
-
     public boolean isLast() {
-        return last;
+        return this.last;
     }
 
     public void setLast(boolean last) {
         this.last = last;
     }
+
     public String getfName() {
-        return fName;
+        return this.fName;
     }
 
     public void setfName(String fName) {
@@ -46,7 +47,7 @@ public class User extends SugarRecord {
     }
 
     public String getlName() {
-        return lName;
+        return this.lName;
     }
 
     public void setlName(String lName) {
@@ -54,7 +55,7 @@ public class User extends SugarRecord {
     }
 
     public String getPhoneNumber() {
-        return phoneNumber;
+        return this.phoneNumber;
     }
 
     public void setPhoneNumber(String phoneNumber) {
@@ -62,7 +63,7 @@ public class User extends SugarRecord {
     }
 
     public String getFacility() {
-        return facility;
+        return this.facility;
     }
 
     public void setFacility(String facility) {
@@ -70,7 +71,7 @@ public class User extends SugarRecord {
     }
 
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     public void setEmail(String email) {

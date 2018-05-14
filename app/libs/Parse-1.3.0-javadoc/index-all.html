@@ -83,7 +83,7 @@ function windowTitle()
 <DL>
 <DT><A HREF="./com/parse/ParseException.html#ACCOUNT_ALREADY_LINKED"><B>ACCOUNT_ALREADY_LINKED</B></A> - 
 Static variable in exception com.parse.<A HREF="./com/parse/ParseException.html" title="class in com.parse">ParseException</A>
-<DD>Error code indicating that an an account being linked is already linked to another user.
+<DD>Error code indicating that an an account being linked is already linked to another userDB.
 <DT><A HREF="./com/parse/ParseObject.html#add(java.lang.String, java.lang.Object)"><B>add(String, Object)</B></A> - 
 Method in class com.parse.<A HREF="./com/parse/ParseObject.html" title="class in com.parse">ParseObject</A>
 <DD>Atomically adds an object to the end of the array associated with a given key.
@@ -268,13 +268,13 @@ Static variable in exception com.parse.<A HREF="./com/parse/ParseException.html"
 <DD>Error code indicating that the email is missing, but must be specified.
 <DT><A HREF="./com/parse/ParseException.html#EMAIL_NOT_FOUND"><B>EMAIL_NOT_FOUND</B></A> - 
 Static variable in exception com.parse.<A HREF="./com/parse/ParseException.html" title="class in com.parse">ParseException</A>
-<DD>Error code indicating that a user with the specified email was not found.
+<DD>Error code indicating that a userDB with the specified email was not found.
 <DT><A HREF="./com/parse/ParseException.html#EMAIL_TAKEN"><B>EMAIL_TAKEN</B></A> - 
 Static variable in exception com.parse.<A HREF="./com/parse/ParseException.html" title="class in com.parse">ParseException</A>
 <DD>Error code indicating that the email has already been taken.
 <DT><A HREF="./com/parse/ParseUser.html#enableAutomaticUser()"><B>enableAutomaticUser()</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>
-<DD>Enables automatic creation of anonymous users.
+<DD>Enables automatic creation of anonymous userDBs.
 <DT><A HREF="./com/parse/ParseException.html#EXCEEDED_QUOTA"><B>EXCEEDED_QUOTA</B></A> - 
 Static variable in exception com.parse.<A HREF="./com/parse/ParseException.html" title="class in com.parse">ParseException</A>
 <DD>Error code indicating that an application quota was exceeded.
@@ -386,11 +386,11 @@ Static method in class com.parse.<A HREF="./com/parse/ParseInstallation.html" ti
 <DD>&nbsp;
 <DT><A HREF="./com/parse/ParseGeoPoint.html#getCurrentLocationInBackground(long, com.parse.LocationCallback)"><B>getCurrentLocationInBackground(long, LocationCallback)</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseGeoPoint.html" title="class in com.parse">ParseGeoPoint</A>
-<DD>Fetches the user's current location and returns a new ParseGeoPoint via the provided
+<DD>Fetches the userDB's current location and returns a new ParseGeoPoint via the provided
  LocationCallback.
 <DT><A HREF="./com/parse/ParseGeoPoint.html#getCurrentLocationInBackground(long, android.location.Criteria, com.parse.LocationCallback)"><B>getCurrentLocationInBackground(long, Criteria, LocationCallback)</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseGeoPoint.html" title="class in com.parse">ParseGeoPoint</A>
-<DD>Fetches the user's current location and returns a new ParseGeoPoint via the provided
+<DD>Fetches the userDB's current location and returns a new ParseGeoPoint via the provided
  LocationCallback.
 <DT><A HREF="./com/parse/ParseUser.html#getCurrentUser()"><B>getCurrentUser()</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>
@@ -518,37 +518,37 @@ Static method in class com.parse.<A HREF="./com/parse/ParseUser.html" title="cla
 <DD>Constructs a query for ParseUsers.
 <DT><A HREF="./com/parse/ParseACL.html#getReadAccess(java.lang.String)"><B>getReadAccess(String)</B></A> - 
 Method in class com.parse.<A HREF="./com/parse/ParseACL.html" title="class in com.parse">ParseACL</A>
-<DD>Get whether the given user id is *explicitly* allowed to read this object.
+<DD>Get whether the given userDB id is *explicitly* allowed to read this object.
 <DT><A HREF="./com/parse/ParseACL.html#getReadAccess(com.parse.ParseUser)"><B>getReadAccess(ParseUser)</B></A> - 
 Method in class com.parse.<A HREF="./com/parse/ParseACL.html" title="class in com.parse">ParseACL</A>
-<DD>Get whether the given user id is *explicitly* allowed to read this object.
+<DD>Get whether the given userDB id is *explicitly* allowed to read this object.
 <DT><A HREF="./com/parse/ParseObject.html#getRelation(java.lang.String)"><B>getRelation(String)</B></A> - 
 Method in class com.parse.<A HREF="./com/parse/ParseObject.html" title="class in com.parse">ParseObject</A>
 <DD>Access or create a Relation value for a key
 <DT><A HREF="./com/parse/ParseACL.html#getRoleReadAccess(java.lang.String)"><B>getRoleReadAccess(String)</B></A> - 
 Method in class com.parse.<A HREF="./com/parse/ParseACL.html" title="class in com.parse">ParseACL</A>
-<DD>Get whether users belonging to the role with the given roleName are allowed to read this
+<DD>Get whether userDBs belonging to the role with the given roleName are allowed to read this
  object.
 <DT><A HREF="./com/parse/ParseACL.html#getRoleReadAccess(com.parse.ParseRole)"><B>getRoleReadAccess(ParseRole)</B></A> - 
 Method in class com.parse.<A HREF="./com/parse/ParseACL.html" title="class in com.parse">ParseACL</A>
-<DD>Get whether users belonging to the given role are allowed to read this object.
+<DD>Get whether userDBs belonging to the given role are allowed to read this object.
 <DT><A HREF="./com/parse/ParseRole.html#getRoles()"><B>getRoles()</B></A> - 
 Method in class com.parse.<A HREF="./com/parse/ParseRole.html" title="class in com.parse">ParseRole</A>
 <DD>Gets the <A HREF="./com/parse/ParseRelation.html" title="class in com.parse"><CODE>ParseRelation</CODE></A> for the <A HREF="./com/parse/ParseRole.html" title="class in com.parse"><CODE>ParseRole</CODE></A>s that are direct children of this
  role.
 <DT><A HREF="./com/parse/ParseACL.html#getRoleWriteAccess(java.lang.String)"><B>getRoleWriteAccess(String)</B></A> - 
 Method in class com.parse.<A HREF="./com/parse/ParseACL.html" title="class in com.parse">ParseACL</A>
-<DD>Get whether users belonging to the role with the given roleName are allowed to write this
+<DD>Get whether userDBs belonging to the role with the given roleName are allowed to write this
  object.
 <DT><A HREF="./com/parse/ParseACL.html#getRoleWriteAccess(com.parse.ParseRole)"><B>getRoleWriteAccess(ParseRole)</B></A> - 
 Method in class com.parse.<A HREF="./com/parse/ParseACL.html" title="class in com.parse">ParseACL</A>
-<DD>Get whether users belonging to the given role are allowed to write this object.
+<DD>Get whether userDBs belonging to the given role are allowed to write this object.
 <DT><A HREF="./com/parse/ParseFacebookUtils.html#getSession()"><B>getSession()</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseFacebookUtils.html" title="class in com.parse">ParseFacebookUtils</A>
 <DD>&nbsp;
 <DT><A HREF="./com/parse/ParseUser.html#getSessionToken()"><B>getSessionToken()</B></A> - 
 Method in class com.parse.<A HREF="./com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>
-<DD>Retrieves the session token for a user, if they are logged in.
+<DD>Retrieves the session token for a userDB, if they are logged in.
 <DT><A HREF="./com/parse/ParseQuery.html#getSkip()"><B>getSkip()</B></A> - 
 Method in class com.parse.<A HREF="./com/parse/ParseQuery.html" title="class in com.parse">ParseQuery</A>
 <DD>Accessor for the skip value.
@@ -581,10 +581,10 @@ Method in class com.parse.<A HREF="./com/parse/ParseRole.html" title="class in c
  role.
 <DT><A HREF="./com/parse/ParseACL.html#getWriteAccess(java.lang.String)"><B>getWriteAccess(String)</B></A> - 
 Method in class com.parse.<A HREF="./com/parse/ParseACL.html" title="class in com.parse">ParseACL</A>
-<DD>Get whether the given user id is *explicitly* allowed to write this object.
+<DD>Get whether the given userDB id is *explicitly* allowed to write this object.
 <DT><A HREF="./com/parse/ParseACL.html#getWriteAccess(com.parse.ParseUser)"><B>getWriteAccess(ParseUser)</B></A> - 
 Method in class com.parse.<A HREF="./com/parse/ParseACL.html" title="class in com.parse">ParseACL</A>
-<DD>Get whether the given user id is *explicitly* allowed to write this object.
+<DD>Get whether the given userDB id is *explicitly* allowed to write this object.
 </DL>
 <HR>
 <A NAME="_H_"><!-- --></A><H2>
@@ -651,7 +651,7 @@ Static variable in exception com.parse.<A HREF="./com/parse/ParseException.html"
 <DD>Error code indicating an invalid key name.
 <DT><A HREF="./com/parse/ParseException.html#INVALID_LINKED_SESSION"><B>INVALID_LINKED_SESSION</B></A> - 
 Static variable in exception com.parse.<A HREF="./com/parse/ParseException.html" title="class in com.parse">ParseException</A>
-<DD>Error code indicating that a user with a linked (e.g.
+<DD>Error code indicating that a userDB with a linked (e.g.
 <DT><A HREF="./com/parse/ParseException.html#INVALID_NESTED_KEY"><B>INVALID_NESTED_KEY</B></A> - 
 Static variable in exception com.parse.<A HREF="./com/parse/ParseException.html" title="class in com.parse">ParseException</A>
 <DD>Error code indicating that an invalid key was used in a nested JSONObject.
@@ -679,13 +679,13 @@ Method in class com.parse.<A HREF="./com/parse/ParseFile.html" title="class in c
 <DD>Whether the file still needs to be saved.
 <DT><A HREF="./com/parse/ParseAnonymousUtils.html#isLinked(com.parse.ParseUser)"><B>isLinked(ParseUser)</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseAnonymousUtils.html" title="class in com.parse">ParseAnonymousUtils</A>
-<DD>Whether the user is logged in anonymously.
+<DD>Whether the userDB is logged in anonymously.
 <DT><A HREF="./com/parse/ParseFacebookUtils.html#isLinked(com.parse.ParseUser)"><B>isLinked(ParseUser)</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseFacebookUtils.html" title="class in com.parse">ParseFacebookUtils</A>
-<DD>Returns <code>true</code> if the user is linked to a Facebook account.
+<DD>Returns <code>true</code> if the userDB is linked to a Facebook account.
 <DT><A HREF="./com/parse/ParseTwitterUtils.html#isLinked(com.parse.ParseUser)"><B>isLinked(ParseUser)</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseTwitterUtils.html" title="class in com.parse">ParseTwitterUtils</A>
-<DD>Returns <code>true</code> if the user is linked to a Twitter account.
+<DD>Returns <code>true</code> if the userDB is linked to a Twitter account.
 <DT><A HREF="./com/parse/ParseUser.html#isNew()"><B>isNew()</B></A> - 
 Method in class com.parse.<A HREF="./com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>
 <DD>Indicates whether this <code>ParseUser</code> was created during this session through a call to
@@ -709,14 +709,14 @@ Static method in class com.parse.<A HREF="./com/parse/ParseFacebookUtils.html" t
 <DT><A HREF="./com/parse/ParseFacebookUtils.html#link(com.parse.ParseUser, java.lang.String, java.lang.String, java.util.Date, com.parse.SaveCallback)"><B>link(ParseUser, String, String, Date, SaveCallback)</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseFacebookUtils.html" title="class in com.parse">ParseFacebookUtils</A>
 <DD>Links a ParseUser to a Facebook account, allowing you to use Facebook for authentication, and
- providing access to Facebook data for the user.
+ providing access to Facebook data for the userDB.
 <DT><A HREF="./com/parse/ParseFacebookUtils.html#link(com.parse.ParseUser, java.util.Collection, android.app.Activity, int, com.parse.SaveCallback)"><B>link(ParseUser, Collection&lt;String&gt;, Activity, int, SaveCallback)</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseFacebookUtils.html" title="class in com.parse">ParseFacebookUtils</A>
 <DD>Links a ParseUser to a Facebook account, allowing you to use Facebook for authentication, and
- providing access to Facebook data for the user.
+ providing access to Facebook data for the userDB.
 <DT><A HREF="./com/parse/ParseFacebookUtils.html#link(com.parse.ParseUser, java.util.Collection, android.app.Activity, com.parse.SaveCallback)"><B>link(ParseUser, Collection&lt;String&gt;, Activity, SaveCallback)</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseFacebookUtils.html" title="class in com.parse">ParseFacebookUtils</A>
-<DD>Links a user using the default activity code if single sign-on is enabled.
+<DD>Links a userDB using the default activity code if single sign-on is enabled.
 <DT><A HREF="./com/parse/ParseFacebookUtils.html#link(com.parse.ParseUser, java.util.Collection, android.app.Activity, int)"><B>link(ParseUser, Collection&lt;String&gt;, Activity, int)</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseFacebookUtils.html" title="class in com.parse">ParseFacebookUtils</A>
 <DD>&nbsp;
@@ -741,17 +741,17 @@ Static method in class com.parse.<A HREF="./com/parse/ParseTwitterUtils.html" ti
 <DT><A HREF="./com/parse/ParseTwitterUtils.html#link(com.parse.ParseUser, android.content.Context, com.parse.SaveCallback)"><B>link(ParseUser, Context, SaveCallback)</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseTwitterUtils.html" title="class in com.parse">ParseTwitterUtils</A>
 <DD>Links a ParseUser to a Twitter account, allowing you to use Twitter for authentication, and
- providing access to Twitter data for the user.
+ providing access to Twitter data for the userDB.
 <DT><A HREF="./com/parse/ParseTwitterUtils.html#link(com.parse.ParseUser, java.lang.String, java.lang.String, java.lang.String, java.lang.String)"><B>link(ParseUser, String, String, String, String)</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseTwitterUtils.html" title="class in com.parse">ParseTwitterUtils</A>
 <DD>&nbsp;
 <DT><A HREF="./com/parse/ParseTwitterUtils.html#link(com.parse.ParseUser, java.lang.String, java.lang.String, java.lang.String, java.lang.String, com.parse.SaveCallback)"><B>link(ParseUser, String, String, String, String, SaveCallback)</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseTwitterUtils.html" title="class in com.parse">ParseTwitterUtils</A>
 <DD>Links a ParseUser to a Twitter account, allowing you to use Twitter for authentication, and
- providing access to Twitter data for the user.
+ providing access to Twitter data for the userDB.
 <DT><A HREF="./com/parse/ParseException.html#LINKED_ID_MISSING"><B>LINKED_ID_MISSING</B></A> - 
 Static variable in exception com.parse.<A HREF="./com/parse/ParseException.html" title="class in com.parse">ParseException</A>
-<DD>Error code indicating that a user cannot be linked to an account because that account's id
+<DD>Error code indicating that a userDB cannot be linked to an account because that account's id
  could not be found.
 <DT><A HREF="./com/parse/PushCallback.html#localData"><B>localData</B></A> - 
 Variable in class com.parse.<A HREF="./com/parse/PushCallback.html" title="class in com.parse">PushCallback</A>
@@ -780,7 +780,7 @@ Static variable in class com.parse.<A HREF="./com/parse/Parse.html" title="class
 <DD>&nbsp;
 <DT><A HREF="./com/parse/ParseAnonymousUtils.html#logIn(com.parse.LogInCallback)"><B>logIn(LogInCallback)</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseAnonymousUtils.html" title="class in com.parse">ParseAnonymousUtils</A>
-<DD>Creates an anonymous user.
+<DD>Creates an anonymous userDB.
 <DT><A HREF="./com/parse/ParseFacebookUtils.html#logIn(java.lang.String, java.lang.String, java.util.Date, com.parse.LogInCallback)"><B>logIn(String, String, Date, LogInCallback)</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseFacebookUtils.html" title="class in com.parse">ParseFacebookUtils</A>
 <DD>Logs in a ParseUser using Facebook for authentication.
@@ -792,7 +792,7 @@ Static method in class com.parse.<A HREF="./com/parse/ParseFacebookUtils.html" t
 <DD>&nbsp;
 <DT><A HREF="./com/parse/ParseFacebookUtils.html#logIn(java.util.Collection, android.app.Activity, com.parse.LogInCallback)"><B>logIn(Collection&lt;String&gt;, Activity, LogInCallback)</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseFacebookUtils.html" title="class in com.parse">ParseFacebookUtils</A>
-<DD>Logs in a user using the default activity code if single sign-on is enabled.
+<DD>Logs in a userDB using the default activity code if single sign-on is enabled.
 <DT><A HREF="./com/parse/ParseFacebookUtils.html#logIn(android.app.Activity, com.parse.LogInCallback)"><B>logIn(Activity, LogInCallback)</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseFacebookUtils.html" title="class in com.parse">ParseFacebookUtils</A>
 <DD>&nbsp;
@@ -804,16 +804,16 @@ Static method in class com.parse.<A HREF="./com/parse/ParseTwitterUtils.html" ti
 <DD>Logs in a ParseUser using Twitter for authentication.
 <DT><A HREF="./com/parse/ParseUser.html#logIn(java.lang.String, java.lang.String)"><B>logIn(String, String)</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>
-<DD>Logs in a user with a username and password.
-<DT><A HREF="./com/parse/LogInCallback.html" title="class in com.parse"><B>LogInCallback</B></A> - Class in <A HREF="./com/parse/package-summary.html">com.parse</A><DD>A LogInCallback is used to run code after logging in a user.<DT><A HREF="./com/parse/LogInCallback.html#LogInCallback()"><B>LogInCallback()</B></A> - 
+<DD>Logs in a userDB with a username and password.
+<DT><A HREF="./com/parse/LogInCallback.html" title="class in com.parse"><B>LogInCallback</B></A> - Class in <A HREF="./com/parse/package-summary.html">com.parse</A><DD>A LogInCallback is used to run code after logging in a userDB.<DT><A HREF="./com/parse/LogInCallback.html#LogInCallback()"><B>LogInCallback()</B></A> -
 Constructor for class com.parse.<A HREF="./com/parse/LogInCallback.html" title="class in com.parse">LogInCallback</A>
 <DD>&nbsp;
 <DT><A HREF="./com/parse/ParseUser.html#logInInBackground(java.lang.String, java.lang.String, com.parse.LogInCallback)"><B>logInInBackground(String, String, LogInCallback)</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>
-<DD>Logs in a user with a username and password.
+<DD>Logs in a userDB with a username and password.
 <DT><A HREF="./com/parse/ParseUser.html#logOut()"><B>logOut()</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>
-<DD>Logs out the currently logged in user session.
+<DD>Logs out the currently logged in userDB session.
 </DL>
 <HR>
 <A NAME="_M_"><!-- --></A><H2>
@@ -824,7 +824,7 @@ Static variable in exception com.parse.<A HREF="./com/parse/ParseException.html"
 <DD>Error code indicating an unspecified object id.
 <DT><A HREF="./com/parse/ParseException.html#MUST_CREATE_USER_THROUGH_SIGNUP"><B>MUST_CREATE_USER_THROUGH_SIGNUP</B></A> - 
 Static variable in exception com.parse.<A HREF="./com/parse/ParseException.html" title="class in com.parse">ParseException</A>
-<DD>Error code indicating that a user can only be created through signup.
+<DD>Error code indicating that a userDB can only be created through signup.
 </DL>
 <HR>
 <A NAME="_N_"><!-- --></A><H2>
@@ -873,17 +873,17 @@ Static variable in exception com.parse.<A HREF="./com/parse/ParseException.html"
 <A NAME="_P_"><!-- --></A><H2>
 <B>P</B></H2>
 <DL>
-<DT><A HREF="./com/parse/Parse.html" title="class in com.parse"><B>Parse</B></A> - Class in <A HREF="./com/parse/package-summary.html">com.parse</A><DD>The Parse class contains static functions that handle global configuration for the Parse library.<DT><A HREF="./com/parse/ParseACL.html" title="class in com.parse"><B>ParseACL</B></A> - Class in <A HREF="./com/parse/package-summary.html">com.parse</A><DD>A ParseACL is used to control which users can access or modify a particular object.<DT><A HREF="./com/parse/ParseACL.html#ParseACL()"><B>ParseACL()</B></A> - 
+<DT><A HREF="./com/parse/Parse.html" title="class in com.parse"><B>Parse</B></A> - Class in <A HREF="./com/parse/package-summary.html">com.parse</A><DD>The Parse class contains static functions that handle global configuration for the Parse library.<DT><A HREF="./com/parse/ParseACL.html" title="class in com.parse"><B>ParseACL</B></A> - Class in <A HREF="./com/parse/package-summary.html">com.parse</A><DD>A ParseACL is used to control which userDBs can access or modify a particular object.<DT><A HREF="./com/parse/ParseACL.html#ParseACL()"><B>ParseACL()</B></A> -
 Constructor for class com.parse.<A HREF="./com/parse/ParseACL.html" title="class in com.parse">ParseACL</A>
 <DD>Creates an ACL with no permissions granted.
 <DT><A HREF="./com/parse/ParseACL.html#ParseACL(com.parse.ParseUser)"><B>ParseACL(ParseUser)</B></A> - 
 Constructor for class com.parse.<A HREF="./com/parse/ParseACL.html" title="class in com.parse">ParseACL</A>
-<DD>Creates an ACL where only the provided user has access.
+<DD>Creates an ACL where only the provided userDB has access.
 <DT><A HREF="./com/parse/ParseAnalytics.html" title="class in com.parse"><B>ParseAnalytics</B></A> - Class in <A HREF="./com/parse/package-summary.html">com.parse</A><DD>The ParseAnalytics class provides an interface to Parse's logging and
  analytics backend.<DT><A HREF="./com/parse/ParseAnalytics.html#ParseAnalytics()"><B>ParseAnalytics()</B></A> - 
 Constructor for class com.parse.<A HREF="./com/parse/ParseAnalytics.html" title="class in com.parse">ParseAnalytics</A>
 <DD>&nbsp;
-<DT><A HREF="./com/parse/ParseAnonymousUtils.html" title="class in com.parse"><B>ParseAnonymousUtils</B></A> - Class in <A HREF="./com/parse/package-summary.html">com.parse</A><DD>Provides utility functions for working with Anonymously logged-in users.<DT><A HREF="./com/parse/ParseClassName.html" title="annotation in com.parse"><B>ParseClassName</B></A> - Annotation Type in <A HREF="./com/parse/package-summary.html">com.parse</A><DD>Associates a class name for a subclass of ParseObject.<DT><A HREF="./com/parse/ParseCloud.html" title="class in com.parse"><B>ParseCloud</B></A> - Class in <A HREF="./com/parse/package-summary.html">com.parse</A><DD>The ParseCloud class defines provides methods for interacting with Parse Cloud Functions.<DT><A HREF="./com/parse/ParseCloud.html#ParseCloud()"><B>ParseCloud()</B></A> - 
+<DT><A HREF="./com/parse/ParseAnonymousUtils.html" title="class in com.parse"><B>ParseAnonymousUtils</B></A> - Class in <A HREF="./com/parse/package-summary.html">com.parse</A><DD>Provides utility functions for working with Anonymously logged-in userDBs.<DT><A HREF="./com/parse/ParseClassName.html" title="annotation in com.parse"><B>ParseClassName</B></A> - Annotation Type in <A HREF="./com/parse/package-summary.html">com.parse</A><DD>Associates a class name for a subclass of ParseObject.<DT><A HREF="./com/parse/ParseCloud.html" title="class in com.parse"><B>ParseCloud</B></A> - Class in <A HREF="./com/parse/package-summary.html">com.parse</A><DD>The ParseCloud class defines provides methods for interacting with Parse Cloud Functions.<DT><A HREF="./com/parse/ParseCloud.html#ParseCloud()"><B>ParseCloud()</B></A> -
 Constructor for class com.parse.<A HREF="./com/parse/ParseCloud.html" title="class in com.parse">ParseCloud</A>
 <DD>&nbsp;
 <DT><A HREF="./com/parse/ParseException.html" title="class in com.parse"><B>ParseException</B></A> - Exception in <A HREF="./com/parse/package-summary.html">com.parse</A><DD>A ParseException gets raised whenever a <A HREF="./com/parse/ParseObject.html" title="class in com.parse"><CODE>ParseObject</CODE></A> issues an invalid request, such as
@@ -1003,14 +1003,14 @@ Method in class com.parse.<A HREF="./com/parse/ParseObject.html" title="class in
 <DT><A HREF="./com/parse/ParseUser.html#requestPasswordReset(java.lang.String)"><B>requestPasswordReset(String)</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>
 <DD>Requests a password reset email to be sent to the specified email address associated with the
- user account.
-<DT><A HREF="./com/parse/RequestPasswordResetCallback.html" title="class in com.parse"><B>RequestPasswordResetCallback</B></A> - Class in <A HREF="./com/parse/package-summary.html">com.parse</A><DD>A RequestPasswordResetCallback is used to run code requesting a password reset for a user.<DT><A HREF="./com/parse/RequestPasswordResetCallback.html#RequestPasswordResetCallback()"><B>RequestPasswordResetCallback()</B></A> - 
+ userDB account.
+<DT><A HREF="./com/parse/RequestPasswordResetCallback.html" title="class in com.parse"><B>RequestPasswordResetCallback</B></A> - Class in <A HREF="./com/parse/package-summary.html">com.parse</A><DD>A RequestPasswordResetCallback is used to run code requesting a password reset for a userDB.<DT><A HREF="./com/parse/RequestPasswordResetCallback.html#RequestPasswordResetCallback()"><B>RequestPasswordResetCallback()</B></A> -
 Constructor for class com.parse.<A HREF="./com/parse/RequestPasswordResetCallback.html" title="class in com.parse">RequestPasswordResetCallback</A>
 <DD>&nbsp;
 <DT><A HREF="./com/parse/ParseUser.html#requestPasswordResetInBackground(java.lang.String, com.parse.RequestPasswordResetCallback)"><B>requestPasswordResetInBackground(String, RequestPasswordResetCallback)</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>
 <DD>Requests a password reset email to be sent in a background thread to the specified email
- address associated with the user account.
+ address associated with the userDB account.
 <DT><A HREF="./com/parse/StandardPushCallback.html#run()"><B>run()</B></A> - 
 Method in class com.parse.<A HREF="./com/parse/StandardPushCallback.html" title="class in com.parse">StandardPushCallback</A>
 <DD>&nbsp;
@@ -1065,7 +1065,7 @@ Method in class com.parse.<A HREF="./com/parse/ParseObject.html" title="class in
 <DD>Saves this object to the server in a background thread.
 <DT><A HREF="./com/parse/ParseFacebookUtils.html#saveLatestSessionData(com.parse.ParseUser, com.parse.SaveCallback)"><B>saveLatestSessionData(ParseUser, SaveCallback)</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseFacebookUtils.html" title="class in com.parse">ParseFacebookUtils</A>
-<DD>Saves the latest session data to the user.
+<DD>Saves the latest session data to the userDB.
 <DT><A HREF="./com/parse/ParseFacebookUtils.html#saveLatestSessionData(com.parse.ParseUser)"><B>saveLatestSessionData(ParseUser)</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseFacebookUtils.html" title="class in com.parse">ParseFacebookUtils</A>
 <DD>&nbsp;
@@ -1105,7 +1105,7 @@ Variable in class com.parse.<A HREF="./com/parse/PushCallback.html" title="class
 <DD>&nbsp;
 <DT><A HREF="./com/parse/ParseException.html#SESSION_MISSING"><B>SESSION_MISSING</B></A> - 
 Static variable in exception com.parse.<A HREF="./com/parse/ParseException.html" title="class in com.parse">ParseException</A>
-<DD>Error code indicating that a user object without a valid session could not be altered.
+<DD>Error code indicating that a userDB object without a valid session could not be altered.
 <DT><A HREF="./com/parse/ParseObject.html#setACL(com.parse.ParseACL)"><B>setACL(ParseACL)</B></A> - 
 Method in class com.parse.<A HREF="./com/parse/ParseObject.html" title="class in com.parse">ParseObject</A>
 <DD>Set the ParseACL governing this object.
@@ -1192,24 +1192,24 @@ Method in class com.parse.<A HREF="./com/parse/ParsePush.html" title="class in c
 <DD>Sets the query for this push for which this push notification will be sent.
 <DT><A HREF="./com/parse/ParseACL.html#setReadAccess(java.lang.String, boolean)"><B>setReadAccess(String, boolean)</B></A> - 
 Method in class com.parse.<A HREF="./com/parse/ParseACL.html" title="class in com.parse">ParseACL</A>
-<DD>Set whether the given user id is allowed to read this object.
+<DD>Set whether the given userDB id is allowed to read this object.
 <DT><A HREF="./com/parse/ParseACL.html#setReadAccess(com.parse.ParseUser, boolean)"><B>setReadAccess(ParseUser, boolean)</B></A> - 
 Method in class com.parse.<A HREF="./com/parse/ParseACL.html" title="class in com.parse">ParseACL</A>
-<DD>Set whether the given user is allowed to read this object.
+<DD>Set whether the given userDB is allowed to read this object.
 <DT><A HREF="./com/parse/ParseACL.html#setRoleReadAccess(java.lang.String, boolean)"><B>setRoleReadAccess(String, boolean)</B></A> - 
 Method in class com.parse.<A HREF="./com/parse/ParseACL.html" title="class in com.parse">ParseACL</A>
-<DD>Set whether users belonging to the role with the given roleName are allowed to read this
+<DD>Set whether userDBs belonging to the role with the given roleName are allowed to read this
  object.
 <DT><A HREF="./com/parse/ParseACL.html#setRoleReadAccess(com.parse.ParseRole, boolean)"><B>setRoleReadAccess(ParseRole, boolean)</B></A> - 
 Method in class com.parse.<A HREF="./com/parse/ParseACL.html" title="class in com.parse">ParseACL</A>
-<DD>Set whether users belonging to the given role are allowed to read this object.
+<DD>Set whether userDBs belonging to the given role are allowed to read this object.
 <DT><A HREF="./com/parse/ParseACL.html#setRoleWriteAccess(java.lang.String, boolean)"><B>setRoleWriteAccess(String, boolean)</B></A> - 
 Method in class com.parse.<A HREF="./com/parse/ParseACL.html" title="class in com.parse">ParseACL</A>
-<DD>Set whether users belonging to the role with the given roleName are allowed to write this
+<DD>Set whether userDBs belonging to the role with the given roleName are allowed to write this
  object.
 <DT><A HREF="./com/parse/ParseACL.html#setRoleWriteAccess(com.parse.ParseRole, boolean)"><B>setRoleWriteAccess(ParseRole, boolean)</B></A> - 
 Method in class com.parse.<A HREF="./com/parse/ParseACL.html" title="class in com.parse">ParseACL</A>
-<DD>Set whether users belonging to the given role are allowed to write this object.
+<DD>Set whether userDBs belonging to the given role are allowed to write this object.
 <DT><A HREF="./com/parse/PushCallback.html#setService(android.app.Service)"><B>setService(Service)</B></A> - 
 Method in class com.parse.<A HREF="./com/parse/PushCallback.html" title="class in com.parse">PushCallback</A>
 <DD>&nbsp;
@@ -1224,22 +1224,22 @@ Method in class com.parse.<A HREF="./com/parse/ParseUser.html" title="class in c
 <DD>Sets the username.
 <DT><A HREF="./com/parse/ParseACL.html#setWriteAccess(java.lang.String, boolean)"><B>setWriteAccess(String, boolean)</B></A> - 
 Method in class com.parse.<A HREF="./com/parse/ParseACL.html" title="class in com.parse">ParseACL</A>
-<DD>Set whether the given user id is allowed to write this object.
+<DD>Set whether the given userDB id is allowed to write this object.
 <DT><A HREF="./com/parse/ParseACL.html#setWriteAccess(com.parse.ParseUser, boolean)"><B>setWriteAccess(ParseUser, boolean)</B></A> - 
 Method in class com.parse.<A HREF="./com/parse/ParseACL.html" title="class in com.parse">ParseACL</A>
-<DD>Set whether the given user is allowed to write this object.
+<DD>Set whether the given userDB is allowed to write this object.
 <DT><A HREF="./com/parse/ParseFacebookUtils.html#shouldExtendAccessToken(com.parse.ParseUser)"><B>shouldExtendAccessToken(ParseUser)</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseFacebookUtils.html" title="class in com.parse">ParseFacebookUtils</A>
 <DD><B>Deprecated.</B>&nbsp;
 <DT><A HREF="./com/parse/ParseUser.html#signUp()"><B>signUp()</B></A> - 
 Method in class com.parse.<A HREF="./com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>
-<DD>Signs up a new user.
+<DD>Signs up a new userDB.
 <DT><A HREF="./com/parse/SignUpCallback.html" title="class in com.parse"><B>SignUpCallback</B></A> - Class in <A HREF="./com/parse/package-summary.html">com.parse</A><DD>A SignUpCallback is used to run code after signing up a <A HREF="./com/parse/ParseUser.html" title="class in com.parse"><CODE>ParseUser</CODE></A> in a background thread.<DT><A HREF="./com/parse/SignUpCallback.html#SignUpCallback()"><B>SignUpCallback()</B></A> - 
 Constructor for class com.parse.<A HREF="./com/parse/SignUpCallback.html" title="class in com.parse">SignUpCallback</A>
 <DD>&nbsp;
 <DT><A HREF="./com/parse/ParseUser.html#signUpInBackground(com.parse.SignUpCallback)"><B>signUpInBackground(SignUpCallback)</B></A> - 
 Method in class com.parse.<A HREF="./com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>
-<DD>Signs up a new user.
+<DD>Signs up a new userDB.
 <DT><A HREF="./com/parse/StandardPushCallback.html" title="class in com.parse"><B>StandardPushCallback</B></A> - Class in <A HREF="./com/parse/package-summary.html">com.parse</A><DD>&nbsp;<DT><A HREF="./com/parse/StandardPushCallback.html#StandardPushCallback()"><B>StandardPushCallback()</B></A> - 
 Constructor for class com.parse.<A HREF="./com/parse/StandardPushCallback.html" title="class in com.parse">StandardPushCallback</A>
 <DD>&nbsp;
@@ -1251,7 +1251,7 @@ Static method in class com.parse.<A HREF="./com/parse/PushService.html" title="c
 <DD>Helper function to subscribe to push notifications with the default application icon.
 <DT><A HREF="./com/parse/PushService.html#subscribe(android.content.Context, java.lang.String, java.lang.Class, int)"><B>subscribe(Context, String, Class&lt;? extends Activity&gt;, int)</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/PushService.html" title="class in com.parse">PushService</A>
-<DD>Call this function when the user should be subscribed to a new push channel.
+<DD>Call this function when the userDB should be subscribed to a new push channel.
 </DL>
 <HR>
 <A NAME="_T_"><!-- --></A><H2>
@@ -1263,7 +1263,7 @@ Static variable in exception com.parse.<A HREF="./com/parse/ParseException.html"
 <DT><A HREF="./com/parse/ParseAnalytics.html#trackAppOpened(android.content.Intent)"><B>trackAppOpened(Intent)</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseAnalytics.html" title="class in com.parse">ParseAnalytics</A>
 <DD>Tracks this application being launched (and if this happened as the
- result of the user opening a push notification, this method sends along
+ result of the userDB opening a push notification, this method sends along
  information to correlate this open with that push).
 </DL>
 <HR>
@@ -1272,22 +1272,22 @@ Static method in class com.parse.<A HREF="./com/parse/ParseAnalytics.html" title
 <DL>
 <DT><A HREF="./com/parse/ParseFacebookUtils.html#unlink(com.parse.ParseUser)"><B>unlink(ParseUser)</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseFacebookUtils.html" title="class in com.parse">ParseFacebookUtils</A>
-<DD>Unlinks a user from a Facebook account.
+<DD>Unlinks a userDB from a Facebook account.
 <DT><A HREF="./com/parse/ParseTwitterUtils.html#unlink(com.parse.ParseUser)"><B>unlink(ParseUser)</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseTwitterUtils.html" title="class in com.parse">ParseTwitterUtils</A>
-<DD>Unlinks a user from a Twitter account.
+<DD>Unlinks a userDB from a Twitter account.
 <DT><A HREF="./com/parse/ParseFacebookUtils.html#unlinkInBackground(com.parse.ParseUser)"><B>unlinkInBackground(ParseUser)</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseFacebookUtils.html" title="class in com.parse">ParseFacebookUtils</A>
 <DD>&nbsp;
 <DT><A HREF="./com/parse/ParseFacebookUtils.html#unlinkInBackground(com.parse.ParseUser, com.parse.SaveCallback)"><B>unlinkInBackground(ParseUser, SaveCallback)</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseFacebookUtils.html" title="class in com.parse">ParseFacebookUtils</A>
-<DD>Unlinks a user from a Facebook account in the background.
+<DD>Unlinks a userDB from a Facebook account in the background.
 <DT><A HREF="./com/parse/ParseTwitterUtils.html#unlinkInBackground(com.parse.ParseUser)"><B>unlinkInBackground(ParseUser)</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseTwitterUtils.html" title="class in com.parse">ParseTwitterUtils</A>
 <DD>&nbsp;
 <DT><A HREF="./com/parse/ParseTwitterUtils.html#unlinkInBackground(com.parse.ParseUser, com.parse.SaveCallback)"><B>unlinkInBackground(ParseUser, SaveCallback)</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/ParseTwitterUtils.html" title="class in com.parse">ParseTwitterUtils</A>
-<DD>Unlinks a user from a Twitter account in the background.
+<DD>Unlinks a userDB from a Twitter account in the background.
 <DT><A HREF="./com/parse/PushService.html#unsubscribe(android.content.Context, java.lang.String)"><B>unsubscribe(Context, String)</B></A> - 
 Static method in class com.parse.<A HREF="./com/parse/PushService.html" title="class in com.parse">PushService</A>
 <DD>Cancels a previous call to subscribe.

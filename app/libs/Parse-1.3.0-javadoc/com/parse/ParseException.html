@@ -130,7 +130,7 @@ A ParseException gets raised whenever a <A HREF="../../com/parse/ParseObject.htm
 <TD><CODE><B><A HREF="../../com/parse/ParseException.html#ACCOUNT_ALREADY_LINKED">ACCOUNT_ALREADY_LINKED</A></B></CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Error code indicating that an an account being linked is already linked to another user.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Error code indicating that an an account being linked is already linked to another userDB.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -179,7 +179,7 @@ A ParseException gets raised whenever a <A HREF="../../com/parse/ParseObject.htm
 <TD><CODE><B><A HREF="../../com/parse/ParseException.html#EMAIL_NOT_FOUND">EMAIL_NOT_FOUND</A></B></CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Error code indicating that a user with the specified email was not found.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Error code indicating that a userDB with the specified email was not found.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -283,7 +283,7 @@ A ParseException gets raised whenever a <A HREF="../../com/parse/ParseObject.htm
 <TD><CODE><B><A HREF="../../com/parse/ParseException.html#INVALID_LINKED_SESSION">INVALID_LINKED_SESSION</A></B></CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Error code indicating that a user with a linked (e.g.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Error code indicating that a userDB with a linked (e.g.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -324,7 +324,7 @@ A ParseException gets raised whenever a <A HREF="../../com/parse/ParseObject.htm
 <TD><CODE><B><A HREF="../../com/parse/ParseException.html#LINKED_ID_MISSING">LINKED_ID_MISSING</A></B></CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Error code indicating that a user cannot be linked to an account because that account's id
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Error code indicating that a userDB cannot be linked to an account because that account's id
  could not be found.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
@@ -341,7 +341,7 @@ A ParseException gets raised whenever a <A HREF="../../com/parse/ParseObject.htm
 <TD><CODE><B><A HREF="../../com/parse/ParseException.html#MUST_CREATE_USER_THROUGH_SIGNUP">MUST_CREATE_USER_THROUGH_SIGNUP</A></B></CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Error code indicating that a user can only be created through signup.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Error code indicating that a userDB can only be created through signup.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -413,7 +413,7 @@ A ParseException gets raised whenever a <A HREF="../../com/parse/ParseObject.htm
 <TD><CODE><B><A HREF="../../com/parse/ParseException.html#SESSION_MISSING">SESSION_MISSING</A></B></CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Error code indicating that a user object without a valid session could not be altered.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Error code indicating that a userDB object without a valid session could not be altered.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -957,7 +957,7 @@ EMAIL_NOT_FOUND</H3>
 <PRE>
 public static final int <B>EMAIL_NOT_FOUND</B></PRE>
 <DL>
-<DD>Error code indicating that a user with the specified email was not found.
+<DD>Error code indicating that a userDB with the specified email was not found.
 <P>
 <DL>
 <DT><B>See Also:</B><DD><A HREF="../../constant-values.html#com.parse.ParseException.EMAIL_NOT_FOUND">Constant Field Values</A></DL>
@@ -969,7 +969,7 @@ SESSION_MISSING</H3>
 <PRE>
 public static final int <B>SESSION_MISSING</B></PRE>
 <DL>
-<DD>Error code indicating that a user object without a valid session could not be altered.
+<DD>Error code indicating that a userDB object without a valid session could not be altered.
 <P>
 <DL>
 <DT><B>See Also:</B><DD><A HREF="../../constant-values.html#com.parse.ParseException.SESSION_MISSING">Constant Field Values</A></DL>
@@ -981,7 +981,7 @@ MUST_CREATE_USER_THROUGH_SIGNUP</H3>
 <PRE>
 public static final int <B>MUST_CREATE_USER_THROUGH_SIGNUP</B></PRE>
 <DL>
-<DD>Error code indicating that a user can only be created through signup.
+<DD>Error code indicating that a userDB can only be created through signup.
 <P>
 <DL>
 <DT><B>See Also:</B><DD><A HREF="../../constant-values.html#com.parse.ParseException.MUST_CREATE_USER_THROUGH_SIGNUP">Constant Field Values</A></DL>
@@ -993,7 +993,7 @@ ACCOUNT_ALREADY_LINKED</H3>
 <PRE>
 public static final int <B>ACCOUNT_ALREADY_LINKED</B></PRE>
 <DL>
-<DD>Error code indicating that an an account being linked is already linked to another user.
+<DD>Error code indicating that an an account being linked is already linked to another userDB.
 <P>
 <DL>
 <DT><B>See Also:</B><DD><A HREF="../../constant-values.html#com.parse.ParseException.ACCOUNT_ALREADY_LINKED">Constant Field Values</A></DL>
@@ -1005,7 +1005,7 @@ LINKED_ID_MISSING</H3>
 <PRE>
 public static final int <B>LINKED_ID_MISSING</B></PRE>
 <DL>
-<DD>Error code indicating that a user cannot be linked to an account because that account's id
+<DD>Error code indicating that a userDB cannot be linked to an account because that account's id
  could not be found.
 <P>
 <DL>
@@ -1018,7 +1018,7 @@ INVALID_LINKED_SESSION</H3>
 <PRE>
 public static final int <B>INVALID_LINKED_SESSION</B></PRE>
 <DL>
-<DD>Error code indicating that a user with a linked (e.g. Facebook) account has an invalid session.
+<DD>Error code indicating that a userDB with a linked (e.g. Facebook) account has an invalid session.
 <P>
 <DL>
 <DT><B>See Also:</B><DD><A HREF="../../constant-values.html#com.parse.ParseException.INVALID_LINKED_SESSION">Constant Field Values</A></DL>

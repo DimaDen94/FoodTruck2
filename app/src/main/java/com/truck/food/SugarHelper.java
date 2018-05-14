@@ -1,6 +1,6 @@
 package com.truck.food;
 
-import com.truck.food.db.Dish;
+import com.truck.food.db.DishDB;
 
 import java.util.List;
 
@@ -10,19 +10,22 @@ import java.util.List;
 
 public class SugarHelper {
     public static int getDishCount() {
-        List<Dish> dishes = Dish.listAll(Dish.class);
+        List<DishDB> dishDBs = DishDB.listAll(DishDB.class);
         int c = 0;
-        for (Dish dish : dishes) {
-            c += dish.getCount();
+        if(dishDBs.size()>0) {
+
+            for (DishDB dishDB : dishDBs) {
+                c += dishDB.getCount();
+            }
         }
         return c;
     }
     public static int getTotal(){
-        List<Dish> dishes = Dish.listAll(Dish.class);
+        List<DishDB> dishDBs = DishDB.listAll(DishDB.class);
         int t = 0;
-        for (int i = 0; i < dishes.size(); i++) {
-            Dish dish = dishes.get(i);
-            t += Double.parseDouble(dish.getPrice())*dish.getCount();
+        for (int i = 0; i < dishDBs.size(); i++) {
+            DishDB dishDB = dishDBs.get(i);
+            t += Double.parseDouble(dishDB.getPrice())* dishDB.getCount();
         }
         return t;
     }

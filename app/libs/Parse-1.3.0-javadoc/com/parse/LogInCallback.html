@@ -100,23 +100,23 @@ Class LogInCallback</H2>
 </PRE>
 
 <P>
-A LogInCallback is used to run code after logging in a user.
+A LogInCallback is used to run code after logging in a userDB.
  <p>
  The easiest way to use a LogInCallback is through an anonymous inner class. Override the
  <code>done</code> function to specify what the callback should do after the login is complete.
  The <code>done</code> function will be run in the UI thread, while the login happens in a
  background thread. This ensures that the UI does not freeze while the save happens.
  <p>
- For example, this sample code logs in a user and calls a different function depending on whether
+ For example, this sample code logs in a userDB and calls a different function depending on whether
  the login succeeded or not.
  <p>
  
  <pre>
  ParseUser.logInInBackground(&quot;username&quot;, &quot;password&quot;, new LogInCallback() {
-   public void done(ParseUser user, ParseException e) {
-     if (e == null &amp;&amp; user != null) {
+   public void done(ParseUser userDB, ParseException e) {
+     if (e == null &amp;&amp; userDB != null) {
        loginSuccessful();
-     } else if (user == null) {
+     } else if (userDB == null) {
        usernameOrPasswordIsInvalid();
      } else {
        somethingWentWrong();
@@ -158,7 +158,7 @@ A LogInCallback is used to run code after logging in a user.
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>abstract &nbsp;void</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../com/parse/LogInCallback.html#done(com.parse.ParseUser, com.parse.ParseException)">done</A></B>(<A HREF="../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user,
+<TD><CODE><B><A HREF="../../com/parse/LogInCallback.html#done(com.parse.ParseUser, com.parse.ParseException)">done</A></B>(<A HREF="../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB,
      <A HREF="../../com/parse/ParseException.html" title="class in com.parse">ParseException</A>&nbsp;e)</CODE>
 
 <BR>
@@ -207,13 +207,13 @@ public <B>LogInCallback</B>()</PRE>
 <A NAME="done(com.parse.ParseUser, com.parse.ParseException)"><!-- --></A><H3>
 done</H3>
 <PRE>
-public abstract void <B>done</B>(<A HREF="../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user,
+public abstract void <B>done</B>(<A HREF="../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB,
                           <A HREF="../../com/parse/ParseException.html" title="class in com.parse">ParseException</A>&nbsp;e)</PRE>
 <DL>
 <DD>Override this function with the code you want to run after the save is complete.
 <P>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>user</CODE> - The user that logged in, if the username and password is valid.<DD><CODE>e</CODE> - The exception raised by the login.</DL>
+<DT><B>Parameters:</B><DD><CODE>userDB</CODE> - The userDB that logged in, if the username and password is valid.<DD><CODE>e</CODE> - The exception raised by the login.</DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->

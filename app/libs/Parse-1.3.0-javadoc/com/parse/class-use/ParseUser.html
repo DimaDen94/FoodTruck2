@@ -136,7 +136,7 @@ Uses of <A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">P
       <A target="_top" HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;password)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Logs in a user with a username and password.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Logs in a userDB with a username and password.</TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -182,7 +182,7 @@ Uses of <A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">P
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>abstract &nbsp;void</CODE></FONT></TD>
-<TD><CODE><B>LogInCallback.</B><B><A HREF="../../../com/parse/LogInCallback.html#done(com.parse.ParseUser, com.parse.ParseException)">done</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user,
+<TD><CODE><B>LogInCallback.</B><B><A HREF="../../../com/parse/LogInCallback.html#done(com.parse.ParseUser, com.parse.ParseException)">done</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB,
      <A HREF="../../../com/parse/ParseException.html" title="class in com.parse">ParseException</A>&nbsp;e)</CODE>
 
 <BR>
@@ -191,7 +191,7 @@ Uses of <A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">P
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#extendAccessToken(com.parse.ParseUser, android.content.Context, com.parse.SaveCallback)">extendAccessToken</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user,
+<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#extendAccessToken(com.parse.ParseUser, android.content.Context, com.parse.SaveCallback)">extendAccessToken</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB,
                   <A target="_top" HREF="http://developer.android.com/reference/android/content/Context.html?is-external=true" title="class or interface in android.content">Context</A>&nbsp;context,
                   <A HREF="../../../com/parse/SaveCallback.html" title="class in com.parse">SaveCallback</A>&nbsp;callback)</CODE>
 
@@ -201,7 +201,7 @@ Uses of <A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">P
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;boolean</CODE></FONT></TD>
-<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#extendAccessTokenIfNeeded(com.parse.ParseUser, android.content.Context, com.parse.SaveCallback)">extendAccessTokenIfNeeded</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user,
+<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#extendAccessTokenIfNeeded(com.parse.ParseUser, android.content.Context, com.parse.SaveCallback)">extendAccessTokenIfNeeded</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB,
                           <A target="_top" HREF="http://developer.android.com/reference/android/content/Context.html?is-external=true" title="class or interface in android.content">Context</A>&nbsp;context,
                           <A HREF="../../../com/parse/SaveCallback.html" title="class in com.parse">SaveCallback</A>&nbsp;callback)</CODE>
 
@@ -211,47 +211,47 @@ Uses of <A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">P
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;boolean</CODE></FONT></TD>
-<TD><CODE><B>ParseACL.</B><B><A HREF="../../../com/parse/ParseACL.html#getReadAccess(com.parse.ParseUser)">getReadAccess</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user)</CODE>
+<TD><CODE><B>ParseACL.</B><B><A HREF="../../../com/parse/ParseACL.html#getReadAccess(com.parse.ParseUser)">getReadAccess</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get whether the given user id is *explicitly* allowed to read this object.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get whether the given userDB id is *explicitly* allowed to read this object.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;boolean</CODE></FONT></TD>
-<TD><CODE><B>ParseACL.</B><B><A HREF="../../../com/parse/ParseACL.html#getWriteAccess(com.parse.ParseUser)">getWriteAccess</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user)</CODE>
+<TD><CODE><B>ParseACL.</B><B><A HREF="../../../com/parse/ParseACL.html#getWriteAccess(com.parse.ParseUser)">getWriteAccess</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get whether the given user id is *explicitly* allowed to write this object.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get whether the given userDB id is *explicitly* allowed to write this object.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;boolean</CODE></FONT></TD>
-<TD><CODE><B>ParseTwitterUtils.</B><B><A HREF="../../../com/parse/ParseTwitterUtils.html#isLinked(com.parse.ParseUser)">isLinked</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user)</CODE>
+<TD><CODE><B>ParseTwitterUtils.</B><B><A HREF="../../../com/parse/ParseTwitterUtils.html#isLinked(com.parse.ParseUser)">isLinked</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns <code>true</code> if the user is linked to a Twitter account.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns <code>true</code> if the userDB is linked to a Twitter account.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;boolean</CODE></FONT></TD>
-<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#isLinked(com.parse.ParseUser)">isLinked</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user)</CODE>
+<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#isLinked(com.parse.ParseUser)">isLinked</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns <code>true</code> if the user is linked to a Facebook account.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns <code>true</code> if the userDB is linked to a Facebook account.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;boolean</CODE></FONT></TD>
-<TD><CODE><B>ParseAnonymousUtils.</B><B><A HREF="../../../com/parse/ParseAnonymousUtils.html#isLinked(com.parse.ParseUser)">isLinked</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user)</CODE>
+<TD><CODE><B>ParseAnonymousUtils.</B><B><A HREF="../../../com/parse/ParseAnonymousUtils.html#isLinked(com.parse.ParseUser)">isLinked</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Whether the user is logged in anonymously.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Whether the userDB is logged in anonymously.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#link(com.parse.ParseUser, android.app.Activity)">link</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user,
+<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#link(com.parse.ParseUser, android.app.Activity)">link</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB,
      <A target="_top" HREF="http://developer.android.com/reference/android/app/Activity.html?is-external=true" title="class or interface in android.app">Activity</A>&nbsp;activity)</CODE>
 
 <BR>
@@ -260,7 +260,7 @@ Uses of <A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">P
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#link(com.parse.ParseUser, android.app.Activity, int)">link</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user,
+<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#link(com.parse.ParseUser, android.app.Activity, int)">link</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB,
      <A target="_top" HREF="http://developer.android.com/reference/android/app/Activity.html?is-external=true" title="class or interface in android.app">Activity</A>&nbsp;activity,
      int&nbsp;activityCode)</CODE>
 
@@ -270,7 +270,7 @@ Uses of <A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">P
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#link(com.parse.ParseUser, android.app.Activity, int, com.parse.SaveCallback)">link</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user,
+<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#link(com.parse.ParseUser, android.app.Activity, int, com.parse.SaveCallback)">link</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB,
      <A target="_top" HREF="http://developer.android.com/reference/android/app/Activity.html?is-external=true" title="class or interface in android.app">Activity</A>&nbsp;activity,
      int&nbsp;activityCode,
      <A HREF="../../../com/parse/SaveCallback.html" title="class in com.parse">SaveCallback</A>&nbsp;callback)</CODE>
@@ -281,7 +281,7 @@ Uses of <A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">P
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#link(com.parse.ParseUser, android.app.Activity, com.parse.SaveCallback)">link</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user,
+<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#link(com.parse.ParseUser, android.app.Activity, com.parse.SaveCallback)">link</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB,
      <A target="_top" HREF="http://developer.android.com/reference/android/app/Activity.html?is-external=true" title="class or interface in android.app">Activity</A>&nbsp;activity,
      <A HREF="../../../com/parse/SaveCallback.html" title="class in com.parse">SaveCallback</A>&nbsp;callback)</CODE>
 
@@ -291,7 +291,7 @@ Uses of <A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">P
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#link(com.parse.ParseUser, java.util.Collection, android.app.Activity)">link</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user,
+<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#link(com.parse.ParseUser, java.util.Collection, android.app.Activity)">link</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB,
      <A target="_top" HREF="http://developer.android.com/reference/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</A>&lt;<A target="_top" HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;&nbsp;permissions,
      <A target="_top" HREF="http://developer.android.com/reference/android/app/Activity.html?is-external=true" title="class or interface in android.app">Activity</A>&nbsp;activity)</CODE>
 
@@ -301,7 +301,7 @@ Uses of <A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">P
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#link(com.parse.ParseUser, java.util.Collection, android.app.Activity, int)">link</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user,
+<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#link(com.parse.ParseUser, java.util.Collection, android.app.Activity, int)">link</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB,
      <A target="_top" HREF="http://developer.android.com/reference/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</A>&lt;<A target="_top" HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;&nbsp;permissions,
      <A target="_top" HREF="http://developer.android.com/reference/android/app/Activity.html?is-external=true" title="class or interface in android.app">Activity</A>&nbsp;activity,
      int&nbsp;activityCode)</CODE>
@@ -312,7 +312,7 @@ Uses of <A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">P
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#link(com.parse.ParseUser, java.util.Collection, android.app.Activity, int, com.parse.SaveCallback)">link</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user,
+<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#link(com.parse.ParseUser, java.util.Collection, android.app.Activity, int, com.parse.SaveCallback)">link</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB,
      <A target="_top" HREF="http://developer.android.com/reference/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</A>&lt;<A target="_top" HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;&nbsp;permissions,
      <A target="_top" HREF="http://developer.android.com/reference/android/app/Activity.html?is-external=true" title="class or interface in android.app">Activity</A>&nbsp;activity,
      int&nbsp;activityCode,
@@ -320,23 +320,23 @@ Uses of <A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">P
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Links a ParseUser to a Facebook account, allowing you to use Facebook for authentication, and
- providing access to Facebook data for the user.</TD>
+ providing access to Facebook data for the userDB.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#link(com.parse.ParseUser, java.util.Collection, android.app.Activity, com.parse.SaveCallback)">link</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user,
+<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#link(com.parse.ParseUser, java.util.Collection, android.app.Activity, com.parse.SaveCallback)">link</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB,
      <A target="_top" HREF="http://developer.android.com/reference/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</A>&lt;<A target="_top" HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;&nbsp;permissions,
      <A target="_top" HREF="http://developer.android.com/reference/android/app/Activity.html?is-external=true" title="class or interface in android.app">Activity</A>&nbsp;activity,
      <A HREF="../../../com/parse/SaveCallback.html" title="class in com.parse">SaveCallback</A>&nbsp;callback)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Links a user using the default activity code if single sign-on is enabled.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Links a userDB using the default activity code if single sign-on is enabled.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B>ParseTwitterUtils.</B><B><A HREF="../../../com/parse/ParseTwitterUtils.html#link(com.parse.ParseUser, android.content.Context)">link</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user,
+<TD><CODE><B>ParseTwitterUtils.</B><B><A HREF="../../../com/parse/ParseTwitterUtils.html#link(com.parse.ParseUser, android.content.Context)">link</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB,
      <A target="_top" HREF="http://developer.android.com/reference/android/content/Context.html?is-external=true" title="class or interface in android.content">Context</A>&nbsp;context)</CODE>
 
 <BR>
@@ -345,18 +345,18 @@ Uses of <A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">P
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B>ParseTwitterUtils.</B><B><A HREF="../../../com/parse/ParseTwitterUtils.html#link(com.parse.ParseUser, android.content.Context, com.parse.SaveCallback)">link</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user,
+<TD><CODE><B>ParseTwitterUtils.</B><B><A HREF="../../../com/parse/ParseTwitterUtils.html#link(com.parse.ParseUser, android.content.Context, com.parse.SaveCallback)">link</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB,
      <A target="_top" HREF="http://developer.android.com/reference/android/content/Context.html?is-external=true" title="class or interface in android.content">Context</A>&nbsp;context,
      <A HREF="../../../com/parse/SaveCallback.html" title="class in com.parse">SaveCallback</A>&nbsp;callback)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Links a ParseUser to a Twitter account, allowing you to use Twitter for authentication, and
- providing access to Twitter data for the user.</TD>
+ providing access to Twitter data for the userDB.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#link(com.parse.ParseUser, java.lang.String, java.lang.String, java.util.Date)">link</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user,
+<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#link(com.parse.ParseUser, java.lang.String, java.lang.String, java.util.Date)">link</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB,
      <A target="_top" HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;facebookId,
      <A target="_top" HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;accessToken,
      <A target="_top" HREF="http://developer.android.com/reference/java/util/Date.html?is-external=true" title="class or interface in java.util">Date</A>&nbsp;expirationDate)</CODE>
@@ -367,7 +367,7 @@ Uses of <A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">P
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#link(com.parse.ParseUser, java.lang.String, java.lang.String, java.util.Date, com.parse.SaveCallback)">link</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user,
+<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#link(com.parse.ParseUser, java.lang.String, java.lang.String, java.util.Date, com.parse.SaveCallback)">link</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB,
      <A target="_top" HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;facebookId,
      <A target="_top" HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;accessToken,
      <A target="_top" HREF="http://developer.android.com/reference/java/util/Date.html?is-external=true" title="class or interface in java.util">Date</A>&nbsp;expirationDate,
@@ -375,12 +375,12 @@ Uses of <A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">P
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Links a ParseUser to a Facebook account, allowing you to use Facebook for authentication, and
- providing access to Facebook data for the user.</TD>
+ providing access to Facebook data for the userDB.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B>ParseTwitterUtils.</B><B><A HREF="../../../com/parse/ParseTwitterUtils.html#link(com.parse.ParseUser, java.lang.String, java.lang.String, java.lang.String, java.lang.String)">link</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user,
+<TD><CODE><B>ParseTwitterUtils.</B><B><A HREF="../../../com/parse/ParseTwitterUtils.html#link(com.parse.ParseUser, java.lang.String, java.lang.String, java.lang.String, java.lang.String)">link</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB,
      <A target="_top" HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;twitterId,
      <A target="_top" HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;screenName,
      <A target="_top" HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;authToken,
@@ -392,7 +392,7 @@ Uses of <A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">P
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B>ParseTwitterUtils.</B><B><A HREF="../../../com/parse/ParseTwitterUtils.html#link(com.parse.ParseUser, java.lang.String, java.lang.String, java.lang.String, java.lang.String, com.parse.SaveCallback)">link</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user,
+<TD><CODE><B>ParseTwitterUtils.</B><B><A HREF="../../../com/parse/ParseTwitterUtils.html#link(com.parse.ParseUser, java.lang.String, java.lang.String, java.lang.String, java.lang.String, com.parse.SaveCallback)">link</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB,
      <A target="_top" HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;twitterId,
      <A target="_top" HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;screenName,
      <A target="_top" HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;authToken,
@@ -401,12 +401,12 @@ Uses of <A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">P
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Links a ParseUser to a Twitter account, allowing you to use Twitter for authentication, and
- providing access to Twitter data for the user.</TD>
+ providing access to Twitter data for the userDB.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#saveLatestSessionData(com.parse.ParseUser)">saveLatestSessionData</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user)</CODE>
+<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#saveLatestSessionData(com.parse.ParseUser)">saveLatestSessionData</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
@@ -414,34 +414,34 @@ Uses of <A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">P
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#saveLatestSessionData(com.parse.ParseUser, com.parse.SaveCallback)">saveLatestSessionData</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user,
+<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#saveLatestSessionData(com.parse.ParseUser, com.parse.SaveCallback)">saveLatestSessionData</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB,
                       <A HREF="../../../com/parse/SaveCallback.html" title="class in com.parse">SaveCallback</A>&nbsp;callback)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Saves the latest session data to the user.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Saves the latest session data to the userDB.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B>ParseACL.</B><B><A HREF="../../../com/parse/ParseACL.html#setReadAccess(com.parse.ParseUser, boolean)">setReadAccess</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user,
+<TD><CODE><B>ParseACL.</B><B><A HREF="../../../com/parse/ParseACL.html#setReadAccess(com.parse.ParseUser, boolean)">setReadAccess</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB,
               boolean&nbsp;allowed)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set whether the given user is allowed to read this object.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set whether the given userDB is allowed to read this object.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B>ParseACL.</B><B><A HREF="../../../com/parse/ParseACL.html#setWriteAccess(com.parse.ParseUser, boolean)">setWriteAccess</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user,
+<TD><CODE><B>ParseACL.</B><B><A HREF="../../../com/parse/ParseACL.html#setWriteAccess(com.parse.ParseUser, boolean)">setWriteAccess</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB,
                boolean&nbsp;allowed)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set whether the given user is allowed to write this object.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set whether the given userDB is allowed to write this object.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;boolean</CODE></FONT></TD>
-<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#shouldExtendAccessToken(com.parse.ParseUser)">shouldExtendAccessToken</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user)</CODE>
+<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#shouldExtendAccessToken(com.parse.ParseUser)">shouldExtendAccessToken</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;</TD>
@@ -449,23 +449,23 @@ Uses of <A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">P
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B>ParseTwitterUtils.</B><B><A HREF="../../../com/parse/ParseTwitterUtils.html#unlink(com.parse.ParseUser)">unlink</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user)</CODE>
+<TD><CODE><B>ParseTwitterUtils.</B><B><A HREF="../../../com/parse/ParseTwitterUtils.html#unlink(com.parse.ParseUser)">unlink</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unlinks a user from a Twitter account.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unlinks a userDB from a Twitter account.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#unlink(com.parse.ParseUser)">unlink</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user)</CODE>
+<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#unlink(com.parse.ParseUser)">unlink</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unlinks a user from a Facebook account.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unlinks a userDB from a Facebook account.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B>ParseTwitterUtils.</B><B><A HREF="../../../com/parse/ParseTwitterUtils.html#unlinkInBackground(com.parse.ParseUser)">unlinkInBackground</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user)</CODE>
+<TD><CODE><B>ParseTwitterUtils.</B><B><A HREF="../../../com/parse/ParseTwitterUtils.html#unlinkInBackground(com.parse.ParseUser)">unlinkInBackground</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
@@ -473,7 +473,7 @@ Uses of <A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">P
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#unlinkInBackground(com.parse.ParseUser)">unlinkInBackground</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user)</CODE>
+<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#unlinkInBackground(com.parse.ParseUser)">unlinkInBackground</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
@@ -481,20 +481,20 @@ Uses of <A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">P
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B>ParseTwitterUtils.</B><B><A HREF="../../../com/parse/ParseTwitterUtils.html#unlinkInBackground(com.parse.ParseUser, com.parse.SaveCallback)">unlinkInBackground</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user,
+<TD><CODE><B>ParseTwitterUtils.</B><B><A HREF="../../../com/parse/ParseTwitterUtils.html#unlinkInBackground(com.parse.ParseUser, com.parse.SaveCallback)">unlinkInBackground</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB,
                    <A HREF="../../../com/parse/SaveCallback.html" title="class in com.parse">SaveCallback</A>&nbsp;callback)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unlinks a user from a Twitter account in the background.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unlinks a userDB from a Twitter account in the background.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#unlinkInBackground(com.parse.ParseUser, com.parse.SaveCallback)">unlinkInBackground</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user,
+<TD><CODE><B>ParseFacebookUtils.</B><B><A HREF="../../../com/parse/ParseFacebookUtils.html#unlinkInBackground(com.parse.ParseUser, com.parse.SaveCallback)">unlinkInBackground</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB,
                    <A HREF="../../../com/parse/SaveCallback.html" title="class in com.parse">SaveCallback</A>&nbsp;callback)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unlinks a user from a Facebook account in the background.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unlinks a userDB from a Facebook account in the background.</TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -508,7 +508,7 @@ Uses of <A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">P
 <TD><CODE><B><A HREF="../../../com/parse/ParseACL.html#ParseACL(com.parse.ParseUser)">ParseACL</A></B>(<A HREF="../../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;owner)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates an ACL where only the provided user has access.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates an ACL where only the provided userDB has access.</TD>
 </TR>
 </TABLE>
 &nbsp;

@@ -24,7 +24,7 @@ import com.truck.food.App;
 import com.truck.food.SugarHelper;
 import com.truck.food.Constant;
 import com.truck.food.R;
-import com.truck.food.db.Dish;
+import com.truck.food.db.DishDB;
 import com.truck.food.model.menu_detail.MenuDetail;
 import com.truck.food.model.menu_detail.PDMenuDatail;
 
@@ -110,7 +110,7 @@ public class ActivityMenuDetail extends AppCompatActivity {
                 // TODO Auto-generated method stub
                 // show input dialog
                 if (Integer.parseInt(menuDetail.getQuantity()) >= numberOfServings) {
-                    Dish dish = new Dish(menuDetail.getDescription(),
+                    DishDB dishDB = new DishDB(menuDetail.getDescription(),
                             menuDetail.getServeFor(),
                             menuDetail.getQuantity(),
                             menuDetail.getMenuImage(),
@@ -118,7 +118,7 @@ public class ActivityMenuDetail extends AppCompatActivity {
                             menuDetail.getPrice(),
                             menuDetail.getMenuName(),
                             numberOfServings);
-                    dish.save();
+                    dishDB.save();
                     Snackbar snackbar = Snackbar.make(content, "Ваш заказ добавлен в корзину", Snackbar.LENGTH_SHORT);
                     View sbView = snackbar.getView();
                     sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));

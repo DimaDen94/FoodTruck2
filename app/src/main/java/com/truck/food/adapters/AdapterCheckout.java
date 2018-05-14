@@ -7,17 +7,17 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.truck.food.R;
-import com.truck.food.db.Dish;
+import com.truck.food.db.DishDB;
 
 import java.util.List;
 
 // adapter class for custom order list
 public class AdapterCheckout extends RecyclerView.Adapter<AdapterCheckout.MyViewHolder> {
-    private List<Dish> dishes;
+    private List<DishDB> dishDBs;
     private String currency;
 
-    public AdapterCheckout(List<Dish> dishes, String currency) {
-        this.dishes = dishes;
+    public AdapterCheckout(List<DishDB> dishDBs, String currency) {
+        this.dishDBs = dishDBs;
         this.currency = currency;
 
     }
@@ -46,16 +46,16 @@ public class AdapterCheckout extends RecyclerView.Adapter<AdapterCheckout.MyView
     @Override
     public void onBindViewHolder(AdapterCheckout.MyViewHolder holder, final int position) {
 
-        final Dish dish = dishes.get(position);
+        final DishDB dishDB = dishDBs.get(position);
 
-        holder.titleOrder.setText(dish.getMenuName());
-        holder.countXPrice.setText(dish.getCount() + " x " + dish.getPrice() + " " + currency);
+        holder.titleOrder.setText(dishDB.getMenuName());
+        holder.countXPrice.setText(dishDB.getCount() + " x " + dishDB.getPrice() + " " + currency);
 
     }
 
     @Override
     public int getItemCount() {
-        return dishes.size();
+        return dishDBs.size();
     }
 
 }

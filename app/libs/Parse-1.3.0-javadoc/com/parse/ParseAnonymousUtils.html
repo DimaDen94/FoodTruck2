@@ -100,22 +100,22 @@ Class ParseAnonymousUtils</H2>
 </PRE>
 
 <P>
-Provides utility functions for working with Anonymously logged-in users. Anonymous users have
+Provides utility functions for working with Anonymously logged-in userDBs. Anonymous userDBs have
  some unique characteristics:
  <ul>
- <li>Anonymous users don't need a user name or password.</li>
- <li>Once logged out, an anonymous user cannot be recovered.</li>
- <li>When the current user is anonymous, the following methods can be used to switch to a
- different user or convert the anonymous user into a regular one:
+ <li>Anonymous userDBs don't need a userDB name or password.</li>
+ <li>Once logged out, an anonymous userDB cannot be recovered.</li>
+ <li>When the current userDB is anonymous, the following methods can be used to switch to a
+ different userDB or convert the anonymous userDB into a regular one:
  <ul>
- <li>signUp converts an anonymous user to a standard user with the given username and password.
- Data associated with the anonymous user is retained.</li>
- <li>logIn switches users without converting the anonymous user. Data associated with the
- anonymous user will be lost.</li>
- <li>Service logIn (e.g. Facebook, Twitter) will attempt to convert the anonymous user into a
- standard user by linking it to the service. If a user already exists that is linked to the
- service, it will instead switch to the existing user.</li>
- <li>Service linking (e.g. Facebook, Twitter) will convert the anonymous user into a standard user
+ <li>signUp converts an anonymous userDB to a standard userDB with the given username and password.
+ Data associated with the anonymous userDB is retained.</li>
+ <li>logIn switches userDBs without converting the anonymous userDB. Data associated with the
+ anonymous userDB will be lost.</li>
+ <li>Service logIn (e.g. Facebook, Twitter) will attempt to convert the anonymous userDB into a
+ standard userDB by linking it to the service. If a userDB already exists that is linked to the
+ service, it will instead switch to the existing userDB.</li>
+ <li>Service linking (e.g. Facebook, Twitter) will convert the anonymous userDB into a standard userDB
  by linking it to the service.</li>
  </ul>
  </ul>
@@ -137,10 +137,10 @@ Provides utility functions for working with Anonymously logged-in users. Anonymo
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;boolean</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../com/parse/ParseAnonymousUtils.html#isLinked(com.parse.ParseUser)">isLinked</A></B>(<A HREF="../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user)</CODE>
+<TD><CODE><B><A HREF="../../com/parse/ParseAnonymousUtils.html#isLinked(com.parse.ParseUser)">isLinked</A></B>(<A HREF="../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Whether the user is logged in anonymously.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Whether the userDB is logged in anonymously.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -148,7 +148,7 @@ Provides utility functions for working with Anonymously logged-in users. Anonymo
 <TD><CODE><B><A HREF="../../com/parse/ParseAnonymousUtils.html#logIn(com.parse.LogInCallback)">logIn</A></B>(<A HREF="../../com/parse/LogInCallback.html" title="class in com.parse">LogInCallback</A>&nbsp;callback)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates an anonymous user.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates an anonymous userDB.</TD>
 </TR>
 </TABLE>
 &nbsp;<A NAME="methods_inherited_from_class_Object"><!-- --></A>
@@ -176,13 +176,13 @@ Provides utility functions for working with Anonymously logged-in users. Anonymo
 <A NAME="isLinked(com.parse.ParseUser)"><!-- --></A><H3>
 isLinked</H3>
 <PRE>
-public static boolean <B>isLinked</B>(<A HREF="../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;user)</PRE>
+public static boolean <B>isLinked</B>(<A HREF="../../com/parse/ParseUser.html" title="class in com.parse">ParseUser</A>&nbsp;userDB)</PRE>
 <DL>
-<DD>Whether the user is logged in anonymously.
+<DD>Whether the userDB is logged in anonymously.
 <P>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>user</CODE> - User to check for anonymity. The user must be logged in on this device.
-<DT><B>Returns:</B><DD>True if the user is anonymous. False if the user is not the current user or is not
+<DT><B>Parameters:</B><DD><CODE>userDB</CODE> - User to check for anonymity. The userDB must be logged in on this device.
+<DT><B>Returns:</B><DD>True if the userDB is anonymous. False if the userDB is not the current userDB or is not
          anonymous.</DL>
 </DD>
 </DL>
@@ -193,10 +193,10 @@ logIn</H3>
 <PRE>
 public static void <B>logIn</B>(<A HREF="../../com/parse/LogInCallback.html" title="class in com.parse">LogInCallback</A>&nbsp;callback)</PRE>
 <DL>
-<DD>Creates an anonymous user.
+<DD>Creates an anonymous userDB.
 <P>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>callback</CODE> - The callback to execute when anonymous user creation is complete.</DL>
+<DT><B>Parameters:</B><DD><CODE>callback</CODE> - The callback to execute when anonymous userDB creation is complete.</DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->

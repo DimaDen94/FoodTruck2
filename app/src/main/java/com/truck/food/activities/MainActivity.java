@@ -13,7 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,10 +20,9 @@ import com.truck.food.Constant;
 import com.truck.food.GridViewItem;
 import com.truck.food.R;
 import com.truck.food.adapters.AdapterGridView;
-import com.truck.food.db.User;
+import com.truck.food.db.UserDB;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @SuppressLint("NewApi")
@@ -130,12 +128,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     private void setLastUser() {
-        List<User> users = User.listAll(User.class);
-        if (users.size() != 0) {
-            for (User user : users) {
-                if (user.isLast()) {
-                    name.setText(user.getfName());
-                    email.setText(user.getPhoneNumber());
+        List<UserDB> userDBs = UserDB.listAll(UserDB.class);
+        if (userDBs.size() != 0) {
+            for (UserDB userDB : userDBs) {
+                if (userDB.isLast()) {
+                    name.setText(userDB.getfName());
+                    email.setText(userDB.getPhoneNumber());
                     break;
                 }
             }
@@ -145,7 +143,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
         if (position == 0) {
             startActivity(new Intent(this, ActivityCategoryList.class));
             overridePendingTransition(R.anim.open_next, R.anim.close_next);

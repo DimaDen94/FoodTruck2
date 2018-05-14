@@ -14,13 +14,14 @@ import com.bumptech.glide.Glide;
 import com.truck.food.Constant;
 import com.truck.food.R;
 import com.truck.food.activities.ActivityMenuList;
+
 import com.truck.food.model.category.PDCategory;
 
 // adapter class for custom category list
 public class AdapterCategoryList extends RecyclerView.Adapter<AdapterCategoryList.MyViewHolder> {
 
     private Context context;
-    private PDCategory pDataCategory;
+    private PDCategory pCategory;
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -37,7 +38,7 @@ public class AdapterCategoryList extends RecyclerView.Adapter<AdapterCategoryLis
 
     public AdapterCategoryList(Context context, PDCategory pDataCategory) {
         this.context = context;
-        this.pDataCategory = pDataCategory;
+        this.pCategory = pDataCategory;
 
     }
 
@@ -57,7 +58,7 @@ public class AdapterCategoryList extends RecyclerView.Adapter<AdapterCategoryLis
             public void onClick(View v) {
 
                 Intent iMenuList = new Intent(context, ActivityMenuList.class);
-                iMenuList.putExtra("category_id", pDataCategory.getData().get(position).getCategory().getCategoryId());
+                iMenuList.putExtra("category_id", pCategory.getData().get(position).getCategory().getCategoryId());
                 Activity activity = (Activity) context;
                 context.startActivity(iMenuList);
                 activity.overridePendingTransition(R.anim.open_next, R.anim.close_next);
@@ -66,18 +67,18 @@ public class AdapterCategoryList extends RecyclerView.Adapter<AdapterCategoryLis
 
 
         Glide.with(context)
-                .load(Constant.AdminPageURL + pDataCategory.getData().get(position).getCategory().getCategoryImage())
+                .load(Constant.AdminPageURL + pCategory.getData().get(position).getCategory().getCategoryImage())
                 .thumbnail(0.01f)
                 .crossFade()
                 .into(holder.thumbnail);
 
-        holder.title.setText(pDataCategory.getData().get(position).getCategory().getCategoryName());
+        holder.title.setText(pCategory.getData().get(position).getCategory().getCategoryName());
 
     }
 
     @Override
     public int getItemCount() {
-        return pDataCategory.getData().size();
+        return pCategory.getData().size();
     }
 
 

@@ -135,7 +135,7 @@ Class ParseUser</H2>
 <TD><CODE><B><A HREF="../../com/parse/ParseUser.html#enableAutomaticUser()">enableAutomaticUser</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enables automatic creation of anonymous users.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enables automatic creation of anonymous userDBs.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -184,7 +184,7 @@ Class ParseUser</H2>
 <TD><CODE><B><A HREF="../../com/parse/ParseUser.html#getSessionToken()">getSessionToken</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Retrieves the session token for a user, if they are logged in.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Retrieves the session token for a userDB, if they are logged in.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -218,7 +218,7 @@ Class ParseUser</H2>
       <A target="_top" HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;password)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Logs in a user with a username and password.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Logs in a userDB with a username and password.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -228,7 +228,7 @@ Class ParseUser</H2>
                   <A HREF="../../com/parse/LogInCallback.html" title="class in com.parse">LogInCallback</A>&nbsp;callback)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Logs in a user with a username and password.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Logs in a userDB with a username and password.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -236,7 +236,7 @@ Class ParseUser</H2>
 <TD><CODE><B><A HREF="../../com/parse/ParseUser.html#logOut()">logOut</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Logs out the currently logged in user session.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Logs out the currently logged in userDB session.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -262,7 +262,7 @@ Class ParseUser</H2>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Requests a password reset email to be sent to the specified email address associated with the
- user account.</TD>
+ userDB account.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -272,7 +272,7 @@ Class ParseUser</H2>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Requests a password reset email to be sent in a background thread to the specified email
- address associated with the user account.</TD>
+ address associated with the userDB account.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -304,7 +304,7 @@ Class ParseUser</H2>
 <TD><CODE><B><A HREF="../../com/parse/ParseUser.html#signUp()">signUp</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Signs up a new user.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Signs up a new userDB.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -312,7 +312,7 @@ Class ParseUser</H2>
 <TD><CODE><B><A HREF="../../com/parse/ParseUser.html#signUpInBackground(com.parse.SignUpCallback)">signUpInBackground</A></B>(<A HREF="../../com/parse/SignUpCallback.html" title="class in com.parse">SignUpCallback</A>&nbsp;callback)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Signs up a new user.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Signs up a new userDB.</TD>
 </TR>
 </TABLE>
 &nbsp;<A NAME="methods_inherited_from_class_com.parse.ParseObject"><!-- --></A>
@@ -488,7 +488,7 @@ getSessionToken</H3>
 <PRE>
 public <A target="_top" HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A> <B>getSessionToken</B>()</PRE>
 <DL>
-<DD>Retrieves the session token for a user, if they are logged in.
+<DD>Retrieves the session token for a userDB, if they are logged in.
 <P>
 <DD><DL>
 </DL>
@@ -524,9 +524,9 @@ signUp</H3>
 public void <B>signUp</B>()
             throws <A HREF="../../com/parse/ParseException.html" title="class in com.parse">ParseException</A></PRE>
 <DL>
-<DD>Signs up a new user. You should call this instead of <A HREF="../../com/parse/ParseObject.html#save()"><CODE>ParseObject.save()</CODE></A> for new ParseUsers. This
+<DD>Signs up a new userDB. You should call this instead of <A HREF="../../com/parse/ParseObject.html#save()"><CODE>ParseObject.save()</CODE></A> for new ParseUsers. This
  will create a new ParseUser on the server, and also persist the session on disk so that you can
- access the user using <A HREF="../../com/parse/ParseUser.html#getCurrentUser()"><CODE>ParseUser.getCurrentUser()</CODE></A>.
+ access the userDB using <A HREF="../../com/parse/ParseUser.html#getCurrentUser()"><CODE>ParseUser.getCurrentUser()</CODE></A>.
  <p>
  A username and password must be set before calling signUp.
  </p>
@@ -549,9 +549,9 @@ signUpInBackground</H3>
 <PRE>
 public void <B>signUpInBackground</B>(<A HREF="../../com/parse/SignUpCallback.html" title="class in com.parse">SignUpCallback</A>&nbsp;callback)</PRE>
 <DL>
-<DD>Signs up a new user. You should call this instead of <A HREF="../../com/parse/ParseObject.html#save()"><CODE>ParseObject.save()</CODE></A> for new ParseUsers. This
+<DD>Signs up a new userDB. You should call this instead of <A HREF="../../com/parse/ParseObject.html#save()"><CODE>ParseObject.save()</CODE></A> for new ParseUsers. This
  will create a new ParseUser on the server, and also persist the session on disk so that you can
- access the user using <A HREF="../../com/parse/ParseUser.html#getCurrentUser()"><CODE>ParseUser.getCurrentUser()</CODE></A>.
+ access the userDB using <A HREF="../../com/parse/ParseUser.html#getCurrentUser()"><CODE>ParseUser.getCurrentUser()</CODE></A>.
  <p>
  A username and password must be set before calling signUp.
  </p>
@@ -560,7 +560,7 @@ public void <B>signUpInBackground</B>(<A HREF="../../com/parse/SignUpCallback.ht
  background thread.
 <P>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>callback</CODE> - callback.done(user, e) is called when the signUp completes.
+<DT><B>Parameters:</B><DD><CODE>callback</CODE> - callback.done(userDB, e) is called when the signUp completes.
 <DT><B>Throws:</B>
 <DD><CODE><A HREF="../../com/parse/ParseException.html" title="class in com.parse">ParseException</A></CODE> - Throws an exception if the server is inaccessible, or if the username has already
            been taken.</DL>
@@ -575,8 +575,8 @@ public static <A HREF="../../com/parse/ParseUser.html" title="class in com.parse
                               <A target="_top" HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;password)
                        throws <A HREF="../../com/parse/ParseException.html" title="class in com.parse">ParseException</A></PRE>
 <DL>
-<DD>Logs in a user with a username and password. On success, this saves the session to disk, so you
- can retrieve the currently logged in user using <A HREF="../../com/parse/ParseUser.html#getCurrentUser()"><CODE>ParseUser.getCurrentUser()</CODE></A>
+<DD>Logs in a userDB with a username and password. On success, this saves the session to disk, so you
+ can retrieve the currently logged in userDB using <A HREF="../../com/parse/ParseUser.html#getCurrentUser()"><CODE>ParseUser.getCurrentUser()</CODE></A>
  <p>
  Typically, you should use <A HREF="../../com/parse/ParseUser.html#logInInBackground(java.lang.String, java.lang.String, com.parse.LogInCallback)"><CODE>ParseUser.logInInBackground(java.lang.String, java.lang.String, com.parse.LogInCallback)</CODE></A> instead of this, unless you are managing
  your own threading.
@@ -584,7 +584,7 @@ public static <A HREF="../../com/parse/ParseUser.html" title="class in com.parse
 <P>
 <DD><DL>
 <DT><B>Parameters:</B><DD><CODE>username</CODE> - The username to log in with.<DD><CODE>password</CODE> - The password to log in with.
-<DT><B>Returns:</B><DD>The user if the login was successful.
+<DT><B>Returns:</B><DD>The userDB if the login was successful.
 <DT><B>Throws:</B>
 <DD><CODE><A HREF="../../com/parse/ParseException.html" title="class in com.parse">ParseException</A></CODE> - Throws an exception if the login was unsuccessful.</DL>
 </DD>
@@ -598,15 +598,15 @@ public static void <B>logInInBackground</B>(<A target="_top" HREF="http://develo
                                      <A target="_top" HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;password,
                                      <A HREF="../../com/parse/LogInCallback.html" title="class in com.parse">LogInCallback</A>&nbsp;callback)</PRE>
 <DL>
-<DD>Logs in a user with a username and password. On success, this saves the session to disk, so you
- can retrieve the currently logged in user using <A HREF="../../com/parse/ParseUser.html#getCurrentUser()"><CODE>ParseUser.getCurrentUser()</CODE></A>
+<DD>Logs in a userDB with a username and password. On success, this saves the session to disk, so you
+ can retrieve the currently logged in userDB using <A HREF="../../com/parse/ParseUser.html#getCurrentUser()"><CODE>ParseUser.getCurrentUser()</CODE></A>
  <p>
  This is preferable to using <A HREF="../../com/parse/ParseUser.html#logIn(java.lang.String, java.lang.String)"><CODE>ParseUser.logIn(java.lang.String, java.lang.String)</CODE></A>, unless your code is already running from a
  background thread.
  </p>
 <P>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>username</CODE> - The username to log in with.<DD><CODE>password</CODE> - The password to log in with.<DD><CODE>callback</CODE> - callback.done(user, e) is called when the login completes.</DL>
+<DT><B>Parameters:</B><DD><CODE>username</CODE> - The username to log in with.<DD><CODE>password</CODE> - The password to log in with.<DD><CODE>callback</CODE> - callback.done(userDB, e) is called when the login completes.</DL>
 </DD>
 </DL>
 <HR>
@@ -631,7 +631,7 @@ logOut</H3>
 <PRE>
 public static void <B>logOut</B>()</PRE>
 <DL>
-<DD>Logs out the currently logged in user session. This will remove the session from disk, log out
+<DD>Logs out the currently logged in userDB session. This will remove the session from disk, log out
  of linked services, and future calls to <A HREF="../../com/parse/ParseUser.html#getCurrentUser()"><CODE>ParseUser.getCurrentUser()</CODE></A> will return null.
 <P>
 <DD><DL>
@@ -647,14 +647,14 @@ public static void <B>requestPasswordReset</B>(<A target="_top" HREF="http://dev
                                  throws <A HREF="../../com/parse/ParseException.html" title="class in com.parse">ParseException</A></PRE>
 <DL>
 <DD>Requests a password reset email to be sent to the specified email address associated with the
- user account. This email allows the user to securely reset their password on the Parse site.
+ userDB account. This email allows the userDB to securely reset their password on the Parse site.
  <p>
  Typically, you should use <A HREF="../../com/parse/ParseUser.html#requestPasswordResetInBackground(java.lang.String, com.parse.RequestPasswordResetCallback)"><CODE>ParseUser.requestPasswordResetInBackground(java.lang.String, com.parse.RequestPasswordResetCallback)</CODE></A> instead of this, unless you
  are managing your own threading.
  </p>
 <P>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>email</CODE> - The email address associated with the user that forgot their password.
+<DT><B>Parameters:</B><DD><CODE>email</CODE> - The email address associated with the userDB that forgot their password.
 <DT><B>Throws:</B>
 <DD><CODE><A HREF="../../com/parse/ParseException.html" title="class in com.parse">ParseException</A></CODE> - Throws an exception if the server is inaccessible, or if an account with that email
            doesn't exist.</DL>
@@ -669,7 +669,7 @@ public static void <B>requestPasswordResetInBackground</B>(<A target="_top" HREF
                                                     <A HREF="../../com/parse/RequestPasswordResetCallback.html" title="class in com.parse">RequestPasswordResetCallback</A>&nbsp;callback)</PRE>
 <DL>
 <DD>Requests a password reset email to be sent in a background thread to the specified email
- address associated with the user account. This email allows the user to securely reset their
+ address associated with the userDB account. This email allows the userDB to securely reset their
  password on the Parse site.
  <p>
  This is preferable to using requestPasswordReset(), unless your code is already running from a
@@ -677,7 +677,7 @@ public static void <B>requestPasswordResetInBackground</B>(<A target="_top" HREF
  </p>
 <P>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>email</CODE> - The email address associated with the user that forgot their password.<DD><CODE>callback</CODE> - callback.done(e) is called when the request completes.</DL>
+<DT><B>Parameters:</B><DD><CODE>email</CODE> - The email address associated with the userDB that forgot their password.<DD><CODE>callback</CODE> - callback.done(e) is called when the request completes.</DL>
 </DD>
 </DL>
 <HR>
@@ -723,11 +723,11 @@ enableAutomaticUser</H3>
 <PRE>
 public static void <B>enableAutomaticUser</B>()</PRE>
 <DL>
-<DD>Enables automatic creation of anonymous users. After calling this method,
- <A HREF="../../com/parse/ParseUser.html#getCurrentUser()"><CODE>ParseUser.getCurrentUser()</CODE></A> will always have a value. The user will only be created on
- the server once the user has been saved, or once an object with a relation to that user or an
- ACL that refers to the user has been saved. Note: saveEventually will not work if an item being
- saved has a relation to an automatic user that has never been saved.
+<DD>Enables automatic creation of anonymous userDBs. After calling this method,
+ <A HREF="../../com/parse/ParseUser.html#getCurrentUser()"><CODE>ParseUser.getCurrentUser()</CODE></A> will always have a value. The userDB will only be created on
+ the server once the userDB has been saved, or once an object with a relation to that userDB or an
+ ACL that refers to the userDB has been saved. Note: saveEventually will not work if an item being
+ saved has a relation to an automatic userDB that has never been saved.
 <P>
 <DD><DL>
 </DL>

@@ -12,20 +12,20 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.truck.food.Constant;
 import com.truck.food.R;
-import com.truck.food.db.Dish;
+import com.truck.food.db.DishDB;
 
 import java.util.List;
 
 // adapter class for custom order list
 public class AdapterCart extends RecyclerView.Adapter<AdapterCart.MyViewHolder> {
-    private List<Dish> dishes;
+    private List<DishDB> dishDBs;
     private Context context;
     private TextView txtTotal;
     private String currency;
 
-    public AdapterCart(Context context, List<Dish> dishes, TextView txtTotal, String currency) {
+    public AdapterCart(Context context, List<DishDB> dishDBs, TextView txtTotal, String currency) {
         this.context = context;
-        this.dishes = dishes;
+        this.dishDBs = dishDBs;
         this.txtTotal = txtTotal;
         this.currency = currency;
     }
@@ -61,24 +61,24 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.MyViewHolder> 
     @Override
     public void onBindViewHolder(AdapterCart.MyViewHolder holder, final int position) {
 
-        final Dish dish = dishes.get(position);
+        final DishDB dishDB = dishDBs.get(position);
 
         Glide.with(context)
-                .load(Constant.AdminPageURL + dish.getMenuImage())
+                .load(Constant.AdminPageURL + dishDB.getMenuImage())
                 .thumbnail(0.01f)
                 .crossFade()
                 .into(holder.img);
 
 
-        holder.titleOrder.setText(dish.getMenuName());
-        holder.priceOrder.setText(dish.getPrice() + " " + currency);
-        holder.dCount.setText(String.valueOf(dish.getCount()));
+        holder.titleOrder.setText(dishDB.getMenuName());
+        holder.priceOrder.setText(dishDB.getPrice() + " " + currency);
+        holder.dCount.setText(String.valueOf(dishDB.getCount()));
 
         holder.plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dish.setCount(dish.getCount() + 1);
-                dish.save();
+                dishDB.setCount(dishDB.getCount() + 1);
+                dishDB.save();
                 txtTotal.setText(getTotal() + " " + currency);
                 notifyDataSetChanged();
             }
@@ -86,19 +86,19 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.MyViewHolder> 
         holder.min.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (dish.getCount() > 1) {
-                    dish.setCount(dish.getCount() - 1);
-                    dish.save();
+                if (dishDB.getCount() > 1) {
+                    dishDB.setCount(dishDB.getCount() - 1);
+                    dishDB.save();
                     txtTotal.setText(getTotal() + " " + currency);
                     notifyDataSetChanged();
                 }else {
 
-                    dishes.remove(dish);
-                    dish.delete();
+                    dishDBs.remove(dishDB);
+                    dishDB.delete();
                     //notifyDataSetChanged();
                     txtTotal.setText(getTotal() + " " + currency);
                     notifyItemRemoved(position);
-                    notifyItemRangeChanged(position,dishes.size());
+                    notifyItemRangeChanged(position, dishDBs.size());
 
                 }
             }
@@ -108,16 +108,16 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.MyViewHolder> 
     int getTotal(){
         int t = 0;
         // store data to arraylist variables
-        for (int i = 0; i < dishes.size(); i++) {
-            Dish dish = dishes.get(i);
-            t += Double.parseDouble(dish.getPrice())*dish.getCount();
+        for (int i = 0; i < dishDBs.size(); i++) {
+            DishDB dishDB = dishDBs.get(i);
+            t += Double.parseDouble(dishDB.getPrice())* dishDB.getCount();
         }
         return t;
     }
 
     @Override
     public int getItemCount() {
-        return dishes.size();
+        return dishDBs.size();
     }
 
 }

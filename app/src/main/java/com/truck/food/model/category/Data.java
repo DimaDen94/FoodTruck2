@@ -4,7 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by Dmitry on 13.04.2018.
+ * Created by Dmitry on 11.05.2018.
  */
 
 public class Data {
