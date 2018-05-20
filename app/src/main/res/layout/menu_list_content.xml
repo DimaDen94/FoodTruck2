@@ -3,11 +3,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
+
+
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/menu_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
         android:background="@color/primary_light"/>
+    <ProgressBar
+        android:id="@+id/prgLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
 
+    <TextView
+        android:id="@+id/txtAlert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/alert"
+        android:textSize="14sp"
+        android:visibility="gone" />
 </RelativeLayout>

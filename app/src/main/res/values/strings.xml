@@ -141,9 +141,10 @@
     <string name="about_title">О программе</string>
     <string name="call_us_title">Связь с нами</string>
     <string name="currency"> грн</string>
-    <string name="cleaning">Очистить</string>
+    <string name="cleaning">Очистить список пользователей</string>
     <string name="remove_users">Вы действительно ходите удалить всех пользователей</string>
     <string name="contact_info">Введите контактную информацию</string>
 	<string name="your_order">Ваш заказ</string>
+	<string name="time_l">Извените, но заказы сегодня уже не принимаем</string>
 
 </resources>

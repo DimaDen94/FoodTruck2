@@ -22,7 +22,7 @@
         android:title="Заказы" />
     <item
         android:id="@+id/about"
-        android:icon="@drawable/ic_about"
+        android:icon="@drawable/ic_info"
         android:orderInCategory="5"
         android:title="О программе" />
     <item

@@ -16,6 +16,7 @@ public class Constant {
 	public static final String AllTheDishesAPI = "/panel/api/take-all-the-dishes.php";
 	public static final String MenuDetailAPI = "panel/api/get-menu-detail.php";
 	public static final String AdminPageURL = "https://www.foodtruck8.info/panel/";
+	public static final String CheckNotification = "/panel/api/check-notification.php";
 
 	//public static final String SendDataAPI = "/panel/api/get-re.php";
 	public static final String SendDataAPI = "/panel/api/add_user.php";

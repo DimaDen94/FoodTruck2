@@ -32,5 +32,8 @@ public interface APIService {
     @GET(Constant.SendOrderAPI)
     Call<Object> sendOrder(@QueryMap Map<String, String> map);
 
+    @GET(Constant.CheckNotification)
+    Call<Object> checkNotification();
+
 
 }

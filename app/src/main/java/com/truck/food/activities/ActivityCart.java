@@ -122,8 +122,9 @@ public class ActivityCart extends AppCompatActivity {
 
     // method to create dialog
     void showClearDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this,R.style.AlertDialogCustom);
         builder.setTitle(R.string.confirm);
+
 
         builder.setMessage(getString(R.string.clear_all_order));
 
@@ -142,7 +143,7 @@ public class ActivityCart extends AppCompatActivity {
             }
         });
 
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Нет", new DialogInterface.OnClickListener() {
 
             public void onClick(DialogInterface dialog, int which) {
                 // TODO Auto-generated method stub

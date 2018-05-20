@@ -27,7 +27,7 @@ public class ActivityConfirmMessage extends AppCompatActivity {
     @Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
+
 		return true;
 	}
 	
@@ -60,6 +60,4 @@ public class ActivityConfirmMessage extends AppCompatActivity {
 		startActivity(intent);
 		overridePendingTransition(R.anim.open_main, R.anim.close_next);
     }
-
-    
 }

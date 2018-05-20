@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,17 +14,25 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.truck.food.App;
 import com.truck.food.Constant;
 import com.truck.food.GridViewItem;
 import com.truck.food.R;
 import com.truck.food.adapters.AdapterGridView;
+import com.truck.food.db.DishDB;
 import com.truck.food.db.UserDB;
+import com.truck.food.model.Dish;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 @SuppressLint("NewApi")
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
@@ -55,6 +64,31 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
 
         initGridView();
+        checkNotification();
+    }
+
+    private void checkNotification() {
+        // TODO Auto-generated method stub
+
+        final LinearLayout linearLayout = (LinearLayout) findViewById(R.id.notification_layout);
+        final TextView textView = (TextView) findViewById(R.id.notification_tv);
+
+        App.getApi().checkNotification().enqueue(new Callback<Object>() {
+            @Override
+            public void onResponse(Call<Object> call, Response<Object> response) {
+                if (response.body().equals("")) {
+                    linearLayout.setVisibility(View.GONE);
+                } else {
+                    linearLayout.setVisibility(View.VISIBLE);
+                    textView.setText(response.body().toString());
+                }
+            }
+            @Override
+            public void onFailure(Call<Object> call, Throwable t) {
+                linearLayout.setVisibility(View.GONE);
+            }
+        });
+
     }
 
     private void initGridView() {
@@ -63,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         data.add(new GridViewItem(getResources().getString(R.string.menu_product), getResources().getDrawable(R.drawable.ic_product)));
         data.add(new GridViewItem(getResources().getString(R.string.menu_cart), getResources().getDrawable(R.drawable.ic_cart)));
         data.add(new GridViewItem(getResources().getString(R.string.menu_checkout), getResources().getDrawable(R.drawable.ic_checkout)));
-        data.add(new GridViewItem(getResources().getString(R.string.menu_profile), getResources().getDrawable(R.drawable.ic_profile)));
+        data.add(new GridViewItem(getResources().getString(R.string.menu_profile), getResources().getDrawable(R.drawable.ic_info)));
         gridviewAdapter = new AdapterGridView(this, R.layout.main_grid_item, data);
         gridview.setAdapter(gridviewAdapter);
     }
@@ -82,10 +116,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation);
 
-        View header=navigationView.getHeaderView(0);
-/*View view=navigationView.inflateHeaderView(R.layout.nav_header_main);*/
-        name = (TextView)header.findViewById(R.id.nav_name);
-        email = (TextView)header.findViewById(R.id.nav_phone_number);
+        View header = navigationView.getHeaderView(0);
+        name = (TextView) header.findViewById(R.id.nav_name);
+        email = (TextView) header.findViewById(R.id.nav_phone_number);
 
         setLastUser();
 
@@ -94,7 +127,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 drawer.closeDrawers();
-                switch (menuItem.getItemId()){
+                switch (menuItem.getItemId()) {
                     case R.id.home:
                         break;
                     case R.id.product:
@@ -118,7 +151,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                         overridePendingTransition(R.anim.open_next, R.anim.close_next);
                         break;
                     case R.id.exit:
-                        MainActivity.this.finish();
+                        finish();
                         overridePendingTransition(R.anim.open_next, R.anim.close_next);
                         break;
                 }

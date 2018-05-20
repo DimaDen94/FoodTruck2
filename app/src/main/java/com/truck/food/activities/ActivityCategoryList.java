@@ -117,6 +117,7 @@ public class ActivityCategoryList extends AppCompatActivity {
 
                     adapterCategoryList = new AdapterCategoryList(ActivityCategoryList.this, response.body());
                     listCategory.setVisibility(View.VISIBLE);
+                    prgLoading.setVisibility(View.GONE);
                     listCategory.setAdapter(adapterCategoryList);
 
                 } else {
@@ -126,7 +127,8 @@ public class ActivityCategoryList extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<PDCategory> call, Throwable t) {
-
+                prgLoading.setVisibility(View.GONE);
+                txtAlert.setVisibility(View.VISIBLE);
             }
         });
     }

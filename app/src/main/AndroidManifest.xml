@@ -75,7 +75,8 @@
             android:name="com.truck.food.activities.ActivityCheckout"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="adjustPan"
+            />
         <activity
             android:name="com.truck.food.activities.ActivityConfirmMessage"
             android:screenOrientation="portrait" />

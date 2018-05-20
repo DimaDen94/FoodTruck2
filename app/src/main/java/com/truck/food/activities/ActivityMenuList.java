@@ -135,6 +135,7 @@ public class ActivityMenuList extends AppCompatActivity {
                 // otherwise, show alert text
                 if (response.isSuccessful()) {
                     mla = new AdapterMenuList(ActivityMenuList.this, response.body(), getString(R.string.currency));
+                    prgLoading.setVisibility(View.GONE);
                     listMenu.setVisibility(View.VISIBLE);
                     listMenu.setAdapter(mla);
 
@@ -145,7 +146,8 @@ public class ActivityMenuList extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<PDMenu> call, Throwable t) {
-
+                prgLoading.setVisibility(View.GONE);
+                txtAlert.setVisibility(View.VISIBLE);
             }
         });
     }

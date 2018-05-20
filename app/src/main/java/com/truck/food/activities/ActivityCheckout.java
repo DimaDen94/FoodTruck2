@@ -98,6 +98,7 @@ public class ActivityCheckout extends AppCompatActivity {
         initViews();
         setLastUser();
     }
+
     private void initToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.about_title);
@@ -110,7 +111,7 @@ public class ActivityCheckout extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.delete_users:
-                        AlertDialog.Builder builder = new AlertDialog.Builder(ActivityCheckout.this);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(ActivityCheckout.this, R.style.AlertDialogCustom);
                         builder.setTitle(R.string.remove_users);
 
                         builder.setCancelable(false);
@@ -140,7 +141,7 @@ public class ActivityCheckout extends AppCompatActivity {
             }
         });
     }
-    
+
     private void initViews() {
         listCheckout = (RecyclerView) findViewById(R.id.listCheckout);
         edtFName = (AutoCompleteTextView) findViewById(R.id.edtFName);
@@ -245,7 +246,7 @@ public class ActivityCheckout extends AppCompatActivity {
         });
         txtTotal.setText("Итого: " + SugarHelper.getTotal() + " " + getString(R.string.currency));
     }
-    
+
     private void setLastUser() {
         if (userDBs.size() != 0) {
             for (UserDB userDB : userDBs) {
@@ -275,6 +276,7 @@ public class ActivityCheckout extends AppCompatActivity {
             }
         }
     }
+
     private void checkAvailabilitySendUserCollectAllDishAndSendOrder(final View content) {
 
         Map<String, String> map = new HashMap<String, String>();
@@ -288,20 +290,19 @@ public class ActivityCheckout extends AppCompatActivity {
                     PDMenuForAv pdMenu = response.body();
                     ArrayList<DataForAv> datas = pdMenu.getData();
 
-                    for(DataForAv data: datas){
+                    for (DataForAv data : datas) {
                         DishForAv dish = data.getDish();
-                        for(DishDB dishDB: dishDBs){
-                            if(dish.getMenuId().equals(dishDB.getMenuId())){
-                                if(Integer.parseInt(dish.getQuantity())<dishDB.getCount()){
-                                    list = list  + dishDB.getMenuName()+ " осталось всего: " + Integer.parseInt(dish.getQuantity()) + "\n";
+                        for (DishDB dishDB : dishDBs) {
+                            if (dish.getMenuId().equals(dishDB.getMenuId())) {
+                                if (Integer.parseInt(dish.getQuantity()) < dishDB.getCount()) {
+                                    list = list + dishDB.getMenuName() + " осталось всего: " + Integer.parseInt(dish.getQuantity()) + "\n";
                                 }
                             }
                         }
                     }
-                    if(list.equals("")){
+                    if (list.equals("")) {
                         sendUserCollectAllDishAndSendOrder(content);
-                    }
-                    else {
+                    } else {
                         Snackbar snackbar = Snackbar.make(content, list, Snackbar.LENGTH_SHORT);
                         View sbView = snackbar.getView();
                         sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
@@ -314,6 +315,7 @@ public class ActivityCheckout extends AppCompatActivity {
                     snackbar.show();
                 }
             }
+
             @Override
             public void onFailure(Call<PDMenuForAv> call, Throwable t) {
                 Snackbar snackbar = Snackbar.make(content, R.string.failed_alert, Snackbar.LENGTH_SHORT);
@@ -330,10 +332,11 @@ public class ActivityCheckout extends AppCompatActivity {
             @Override
             public void onResponse(Call<Object> call, Response<Object> response) {
                 saveUser(user);
-                double res =  Double.valueOf(response.body().toString());
+                double res = Double.valueOf(response.body().toString());
                 int userId = (int) res;
                 collectAllDishAndSendOrder(userId);
             }
+
             @Override
             public void onFailure(Call<Object> call, Throwable t) {
                 Snackbar snackbar = Snackbar.make(content, R.string.failed_alert, Snackbar.LENGTH_SHORT);
@@ -368,9 +371,21 @@ public class ActivityCheckout extends AppCompatActivity {
         App.getApi().sendOrder(getOrderMap(dish)).enqueue(new Callback<Object>() {
             @Override
             public void onResponse(Call<Object> call, Response<Object> response) {
-                resultAlert("OK");
-                dishDBs.clear();
-                DishDB.deleteAll(DishDB.class);
+                if (response.body().equals("OK")) {
+                    resultAlert("OK");
+                    dishDBs.clear();
+                    DishDB.deleteAll(DishDB.class);
+                } else if (response.body().equals("time")) {
+                    Snackbar snackbar = Snackbar.make(content, R.string.time_l, Snackbar.LENGTH_SHORT);
+                    View sbView = snackbar.getView();
+                    sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
+                    snackbar.show();
+                } else {
+                    Snackbar snackbar = Snackbar.make(content, "Упс! Что-то пошло не так", Snackbar.LENGTH_SHORT);
+                    View sbView = snackbar.getView();
+                    sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
+                    snackbar.show();
+                }
             }
 
             @Override
@@ -494,6 +509,7 @@ public class ActivityCheckout extends AppCompatActivity {
         if (notifCount != null)
             notifCount.setText(String.valueOf(SugarHelper.getDishCount()));
     }
+
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();

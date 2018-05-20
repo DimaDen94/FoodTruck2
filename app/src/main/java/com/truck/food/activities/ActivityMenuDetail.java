@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.view.ScrollingView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
@@ -17,6 +18,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -44,9 +46,9 @@ public class ActivityMenuDetail extends AppCompatActivity {
     private Button btnMin;
     private TextView txtSubText, txtDescription, txtNumbeOfServings;
     private FloatingActionButton btnAdd;
-    private LinearLayout sclDetail;
     private ProgressBar prgLoading;
     private TextView txtAlert;
+    private ScrollView scrollingView;
 
     private int numberOfServings;
 
@@ -85,6 +87,7 @@ public class ActivityMenuDetail extends AppCompatActivity {
     }
 
     private void initViews() {
+        scrollingView = (ScrollView) findViewById(R.id.sclDetail);
         numberOfServings = 1;
         txtNumbeOfServings = (TextView) findViewById(R.id.d_count);
         txtNumbeOfServings.setText(String.valueOf(numberOfServings));
@@ -97,7 +100,6 @@ public class ActivityMenuDetail extends AppCompatActivity {
         btnPlus = (Button) findViewById(R.id.btn_i_count);
         btnMin = (Button) findViewById(R.id.btn_d_count);
 
-        sclDetail = (LinearLayout) findViewById(R.id.lytContent);
         prgLoading = (ProgressBar) findViewById(R.id.prgLoading);
         txtAlert = (TextView) findViewById(R.id.txtAlert);
 
@@ -204,7 +206,7 @@ public class ActivityMenuDetail extends AppCompatActivity {
 
                     double price = Double.valueOf(menuDetail.getPrice());
 
-                    sclDetail.setVisibility(View.VISIBLE);
+                   scrollingView.setVisibility(View.VISIBLE);
 
                     Glide.with(ActivityMenuDetail.this)
                             .load(Constant.AdminPageURL + menuDetail.getMenuImage())
@@ -219,13 +221,15 @@ public class ActivityMenuDetail extends AppCompatActivity {
                     txtDescription.setText(Html.fromHtml(menuDetail.getDescription()).toString());
 
                 } else {
+                    prgLoading.setVisibility(View.GONE);
                     txtAlert.setVisibility(View.VISIBLE);
                 }
             }
 
             @Override
             public void onFailure(Call<PDMenuDatail> call, Throwable t) {
-
+                prgLoading.setVisibility(View.GONE);
+                txtAlert.setVisibility(View.VISIBLE);
             }
         });
     }

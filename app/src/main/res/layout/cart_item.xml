@@ -33,11 +33,13 @@
             android:layout_alignBottom="@+id/photo_order"
             android:layout_alignLeft="@+id/title_order"
             android:layout_alignStart="@+id/title_order"
+            android:ellipsize="end"
             android:gravity="right"
-            android:text="TextView"
+            android:layout_toRightOf="@drawable/ic_inc"
             android:textColor="@color/secondary_text"
             android:textSize="24sp"
-            android:textStyle="bold|italic" />
+            android:textStyle="bold|italic"
+            android:maxLength="9"/>
 
         <TextView
             android:id="@+id/title_order"
@@ -47,13 +49,13 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:layout_margin="5dp"
-            android:layout_toRightOf="@+id/photo_order"
+            android:layout_toRightOf="@drawable/ic_inc"
             android:gravity="center"
-            android:text="TextView"
             android:textColor="@color/text"
             android:textSize="18sp" />
 
         <android.support.v7.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/price_order"
@@ -87,6 +89,8 @@
                     android:layout_marginBottom="10dp"
                     android:layout_toEndOf="@+id/btn_d_count"
                     android:layout_toRightOf="@+id/btn_d_count"
+                    android:fontFamily="sans-serif"
+                    android:maxLength="1"
                     android:text="112"
                     android:textColor="@color/primary_text"
                     android:textSize="30sp" />
