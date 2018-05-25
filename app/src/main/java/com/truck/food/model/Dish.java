@@ -9,39 +9,32 @@ import com.google.gson.annotations.SerializedName;
 
 public class Dish {
 
-    @SerializedName("user_id")
+    @SerializedName("order_id")
     @Expose
-    private int userId;
+    private int orderId;
     @SerializedName("dish_id")
     @Expose
     private int dishId;
     @SerializedName("count")
     @Expose
     private int count;
-    @SerializedName("date")
-    @Expose
-    private String date;
-    @SerializedName("comment")
-    @Expose
-    private String comment;
+
 
     public Dish() {
     }
 
-    public Dish(int userId, int dishId, int count, String date, String comment) {
-        this.userId = userId;
+    public Dish(int orderId, int dishId, int count) {
+        this.orderId = orderId;
         this.dishId = dishId;
         this.count = count;
-        this.date = date;
-        this.comment = comment;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getOrderId() {
+        return orderId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setOrderId(int userId) {
+        this.orderId = userId;
     }
 
     public int getDishId() {
@@ -60,19 +53,4 @@ public class Dish {
         this.count = count;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
 }

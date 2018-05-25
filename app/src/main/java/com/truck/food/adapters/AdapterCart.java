@@ -77,10 +77,12 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.MyViewHolder> 
         holder.plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dishDB.setCount(dishDB.getCount() + 1);
-                dishDB.save();
-                txtTotal.setText(getTotal() + " " + currency);
-                notifyDataSetChanged();
+                if (dishDB.getCount() < 9) {
+                    dishDB.setCount(dishDB.getCount() + 1);
+                    dishDB.save();
+                    txtTotal.setText(getTotal() + " " + currency);
+                    notifyDataSetChanged();
+                }
             }
         });
         holder.min.setOnClickListener(new View.OnClickListener() {

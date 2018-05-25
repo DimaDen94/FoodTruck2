@@ -4,71 +4,44 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by Dmitry on 15.04.2018.
+ * Created by Dmitry on 10.05.2018.
  */
 
 public class Order {
-    @SerializedName("facility")
+    @SerializedName("user_id")
     @Expose
-    private String facility;
-    @SerializedName("fname")
+    private int userId;
+    @SerializedName("date")
     @Expose
-    private String fName;
-    @SerializedName("lname")
-    @Expose
-    private String lName;
-    @SerializedName("phone")
-    @Expose
-    private String phone;
-    @SerializedName("order_list")
-    @Expose
-    private String orderList;
+    private String date;
     @SerializedName("comment")
     @Expose
     private String comment;
-    @SerializedName("email")
-    @Expose
-    private String email;
 
-    public String getFacility() {
-        return facility;
+    public Order() {
     }
 
-    public void setFacility(String facility) {
-        this.facility = facility;
+    public Order(int userId, String date, String comment) {
+        this.userId = userId;
+        this.date = date;
+        this.comment = comment;
     }
 
-    public String getfName() {
-        return fName;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setfName(String fName) {
-        this.fName = fName;
-    }
-
-    public String getlName() {
-        return lName;
-    }
-
-    public void setlName(String lName) {
-        this.lName = lName;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
 
-    public String getPhone() {
-        return phone;
+    public String getDate() {
+        return date;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getOrderList() {
-        return orderList;
-    }
-
-    public void setOrderList(String orderList) {
-        this.orderList = orderList;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getComment() {
@@ -77,13 +50,5 @@ public class Order {
 
     public void setComment(String comment) {
         this.comment = comment;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 }

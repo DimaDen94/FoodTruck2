@@ -114,10 +114,9 @@ public class ActivityCategoryList extends AppCompatActivity {
                 // if internet connection and data available show data on list
                 // otherwise, show alert text
                 if (response.isSuccessful()) {
-
                     adapterCategoryList = new AdapterCategoryList(ActivityCategoryList.this, response.body());
-                    listCategory.setVisibility(View.VISIBLE);
                     prgLoading.setVisibility(View.GONE);
+                    listCategory.setVisibility(View.VISIBLE);
                     listCategory.setAdapter(adapterCategoryList);
 
                 } else {

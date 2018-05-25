@@ -6,8 +6,8 @@
 
     <include layout="@layout/toolbar"/>
 
-    <include layout="@layout/menu_list_content"
+    <include
+        layout="@layout/menu_list_content"
         android:background="@color/primary_light"/>
-
 </android.support.design.widget.AppBarLayout>
 

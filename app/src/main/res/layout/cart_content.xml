@@ -9,7 +9,7 @@
         android:id="@+id/lytTotal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/primary"
+        android:background="@color/primary_dark"
         android:padding="5dp">
 
         <TextView
@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:textColor="@color/text"
+            android:textColor="@color/primary_text"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:textColor="@color/text"
+            android:textColor="@color/primary_text"
             android:textSize="18sp"
             android:textStyle="bold" />
     </RelativeLayout>

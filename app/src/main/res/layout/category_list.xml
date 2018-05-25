@@ -1,8 +1,11 @@
 <android.support.design.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/category_list"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:fitsSystemWindows="true">
+
     <include layout="@layout/toolbar" />
+
     <include
         layout="@layout/category_list_content"
         android:background="@color/primary_light" />

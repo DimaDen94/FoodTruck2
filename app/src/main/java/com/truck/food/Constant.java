@@ -18,9 +18,11 @@ public class Constant {
 	public static final String AdminPageURL = "https://www.foodtruck8.info/panel/";
 	public static final String CheckNotification = "/panel/api/check-notification.php";
 
-	//public static final String SendDataAPI = "/panel/api/get-re.php";
-	public static final String SendDataAPI = "/panel/api/add_user.php";
-	public static final String SendOrderAPI = "/panel/api/add_order.php";
+	//public static final String SendUserAPI = "/panel/api/get-re.php";
+	public static final String SendUserAPI = "/panel/api/add_user.php";
+	public static final String ObjectsAPI = "/panel/api/get_objects.php";
+	public static final String SendOrderAPI = "/panel/api/add_new_order.php";
+	public static final String SendOrderListAPI = "/panel/api/add_dish.php";
 
 
 	// accesskey in admin panel for security reason

@@ -191,7 +191,7 @@ public class ActivityMenuDetail extends AppCompatActivity {
 
         prgLoading.setVisibility(View.VISIBLE);
         txtAlert.setVisibility(View.GONE);
-
+        scrollingView.setVisibility(View.GONE);
         App.getApi().getMenuDetail(map).enqueue(new Callback<PDMenuDatail>() {
             @Override
             public void onResponse(Call<PDMenuDatail> call, Response<PDMenuDatail> response) {
@@ -221,6 +221,7 @@ public class ActivityMenuDetail extends AppCompatActivity {
                     txtDescription.setText(Html.fromHtml(menuDetail.getDescription()).toString());
 
                 } else {
+                    scrollingView.setVisibility(View.GONE);
                     prgLoading.setVisibility(View.GONE);
                     txtAlert.setVisibility(View.VISIBLE);
                 }
@@ -228,6 +229,7 @@ public class ActivityMenuDetail extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<PDMenuDatail> call, Throwable t) {
+                scrollingView.setVisibility(View.GONE);
                 prgLoading.setVisibility(View.GONE);
                 txtAlert.setVisibility(View.VISIBLE);
             }

@@ -38,8 +38,11 @@ import com.truck.food.R;
 import com.truck.food.adapters.AdapterCheckout;
 import com.truck.food.adapters.SimpleDividerItemDecoration;
 import com.truck.food.db.DishDB;
+import com.truck.food.db.FacilitiesDB;
 import com.truck.food.db.UserDB;
 import com.truck.food.model.Dish;
+import com.truck.food.model.Facilities;
+import com.truck.food.model.Order;
 import com.truck.food.model.User;
 import com.truck.food.model.dishes_for_av.DataForAv;
 import com.truck.food.model.dishes_for_av.DishForAv;
@@ -74,8 +77,11 @@ public class ActivityCheckout extends AppCompatActivity {
     private AdapterCheckout adapterCheckout;
     private List<DishDB> dishDBs;
     private List<UserDB> userDBs;
-    private ArrayAdapter<CharSequence> adapter;
-    private String Result;
+    private List<FacilitiesDB> facilitiesDBs;
+    private ArrayAdapter<String> adapter;
+    private boolean result;
+
+    private List<String> facilities;
 
     private User user;
 
@@ -94,6 +100,12 @@ public class ActivityCheckout extends AppCompatActivity {
         //it's sugar, baby
         dishDBs = DishDB.listAll(DishDB.class);
         userDBs = UserDB.listAll(UserDB.class);
+        facilitiesDBs = FacilitiesDB.listAll(FacilitiesDB.class);
+        facilities = new ArrayList<>();
+
+        for (FacilitiesDB f :facilitiesDBs){
+            facilities.add(f.getObject());
+        }
         findAllNames();
         initViews();
         setLastUser();
@@ -101,7 +113,7 @@ public class ActivityCheckout extends AppCompatActivity {
 
     private void initToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.about_title);
+        toolbar.setTitle(R.string.your_order);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -144,6 +156,7 @@ public class ActivityCheckout extends AppCompatActivity {
 
     private void initViews() {
         listCheckout = (RecyclerView) findViewById(R.id.listCheckout);
+        listCheckout.setNestedScrollingEnabled(false);
         edtFName = (AutoCompleteTextView) findViewById(R.id.edtFName);
         edtLName = (EditText) findViewById(R.id.edtLName);
         edtPhone = (EditText) findViewById(R.id.edtPhone);
@@ -157,8 +170,7 @@ public class ActivityCheckout extends AppCompatActivity {
         btnSend = (FloatingActionButton) findViewById(R.id.btnSend);
 
         // Create an ArrayAdapter using the string array and a default spinner layout
-        adapter = ArrayAdapter.createFromResource(this,
-                R.array.facilities, R.layout.spinner_item);
+        adapter = new ArrayAdapter<String>(this, R.layout.spinner_item,  facilities.toArray(new String[facilities.size()]));
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(R.layout.spinner_item);
         // Apply the adapter to the spinner
@@ -185,9 +197,10 @@ public class ActivityCheckout extends AppCompatActivity {
                     edtPhone.setText(userDBs.get(position).getPhoneNumber());
                     if (userDBs.get(position).getEmail() != null)
                         edtEmail.setText(userDBs.get(position).getEmail());
-                    ArrayList<String> listOfFacilities = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.facilities)));
 
-                    if (listOfFacilities.contains(userDBs.get(position).getFacility())) {
+                    List<String> listOfFacilities = facilities;
+
+                    if (listOfFacilities.size() != 0 && listOfFacilities.contains(userDBs.get(position).getFacility())) {
                         int spinnerPosition = adapter.getPosition(userDBs.get(position).getFacility());
                         spinFacility.setSelection(spinnerPosition);
                     }
@@ -211,6 +224,7 @@ public class ActivityCheckout extends AppCompatActivity {
                 getApplicationContext()
         ));
 
+
         btnSend.setOnClickListener(new OnClickListener() {
 
             public void onClick(View arg0) {
@@ -220,8 +234,13 @@ public class ActivityCheckout extends AppCompatActivity {
 
                 takeUser();
                 final View content = findViewById(R.id.coordinator);
-
-                if (user.getFacility().equalsIgnoreCase("") ||
+                if (user.getPhone().length() < 10 || user.getPhone().length() > 13) {
+                    dialog.dismiss();
+                    Snackbar snackbar = Snackbar.make(content, R.string.not_valid_number, Snackbar.LENGTH_SHORT);
+                    View sbView = snackbar.getView();
+                    sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
+                    snackbar.show();
+                } else if (user.getFacility().equalsIgnoreCase("") ||
                         user.getfName().equalsIgnoreCase("") ||
                         user.getlName().equalsIgnoreCase("") ||
                         user.getPhone().equalsIgnoreCase("")) {
@@ -247,6 +266,9 @@ public class ActivityCheckout extends AppCompatActivity {
         txtTotal.setText("Итого: " + SugarHelper.getTotal() + " " + getString(R.string.currency));
     }
 
+
+
+
     private void setLastUser() {
         if (userDBs.size() != 0) {
             for (UserDB userDB : userDBs) {
@@ -256,12 +278,11 @@ public class ActivityCheckout extends AppCompatActivity {
                     edtPhone.setText(userDB.getPhoneNumber());
                     if (userDB.getEmail() != null)
                         edtEmail.setText(userDB.getEmail());
-                    ArrayList<String> listOfFacilities = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.facilities)));
-
-                    if (listOfFacilities.contains(userDB.getFacility())) {
+                    if (facilities.size() != 0 && facilities.contains(userDB.getFacility())) {
                         int spinnerPosition = adapter.getPosition(userDB.getFacility());
                         spinFacility.setSelection(spinnerPosition);
                     }
+
                     break;
                 }
             }
@@ -278,7 +299,7 @@ public class ActivityCheckout extends AppCompatActivity {
     }
 
     private void checkAvailabilitySendUserCollectAllDishAndSendOrder(final View content) {
-
+        btnSend.hide();
         Map<String, String> map = new HashMap<String, String>();
         map.put(Constant.AccessKeyParam, Constant.AccessKeyValue);
 
@@ -307,12 +328,14 @@ public class ActivityCheckout extends AppCompatActivity {
                         View sbView = snackbar.getView();
                         sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
                         snackbar.show();
+                        btnSend.show();
                     }
                 } else {
                     Snackbar snackbar = Snackbar.make(content, R.string.failed_alert, Snackbar.LENGTH_SHORT);
                     View sbView = snackbar.getView();
                     sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
                     snackbar.show();
+                    btnSend.show();
                 }
             }
 
@@ -334,11 +357,12 @@ public class ActivityCheckout extends AppCompatActivity {
                 saveUser(user);
                 double res = Double.valueOf(response.body().toString());
                 int userId = (int) res;
-                collectAllDishAndSendOrder(userId);
+                sendOrder(userId);
             }
 
             @Override
             public void onFailure(Call<Object> call, Throwable t) {
+                btnSend.show();
                 Snackbar snackbar = Snackbar.make(content, R.string.failed_alert, Snackbar.LENGTH_SHORT);
                 View sbView = snackbar.getView();
                 sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
@@ -348,39 +372,79 @@ public class ActivityCheckout extends AppCompatActivity {
 
     }
 
-    private void collectAllDishAndSendOrder(int userId) {
+    private void sendOrder(int userId) {
+        // TODO Auto-generated method stub
+
+        final View content = findViewById(R.id.coordinator);
         String date = new SimpleDateFormat("yyyy.MM.dd  hh:mm:ss").format(Calendar.getInstance().getTime());
+        Order order = new Order();
+        order.setUserId(userId);
+        order.setDate(date);
+        order.setComment(edtComment.getText().toString());
+
+
+        App.getApi().sendOrder(getOrderMap(order)).enqueue(new Callback<Object>() {
+            @Override
+            public void onResponse(Call<Object> call, Response<Object> response) {
+                if (response.isSuccessful()) {
+                    if (response.body().equals("time")) {
+                        Snackbar snackbar = Snackbar.make(content, R.string.time_l, Snackbar.LENGTH_SHORT);
+                        View sbView = snackbar.getView();
+                        sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
+                        snackbar.show();
+                        btnSend.show();
+                    } else {
+                        double res = Double.valueOf(response.body().toString());
+                        int orderId = (int) res;
+                        collectAllDishAndSendOrder(orderId);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Object> call, Throwable t) {
+                Snackbar snackbar = Snackbar.make(content, R.string.failed_alert, Snackbar.LENGTH_SHORT);
+                View sbView = snackbar.getView();
+                sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
+                snackbar.show();
+                btnSend.show();
+            }
+        });
+
+    }
+
+    private void collectAllDishAndSendOrder(int orderId) {
+        result = true;
         if (dishDBs.size() != 0) {
             for (DishDB dishDB : dishDBs) {
                 Dish dish = new Dish();
-                dish.setUserId(userId);
+                dish.setOrderId(orderId);
                 dish.setDishId(Integer.parseInt(dishDB.getMenuId()));
                 dish.setCount(dishDB.getCount());
-                dish.setDate(date);
-                dish.setComment(edtComment.getText().toString());
-                sendOrder(dish);
+                sendDish(dish);
             }
+        }
+        btnSend.show();
+        if (result) {
+            resultAlert("OK");
+            dishDBs.clear();
+            DishDB.deleteAll(DishDB.class);
         }
     }
 
-    private void sendOrder(Dish dish) {
+    private int sendDish(Dish dish) {
         // TODO Auto-generated method stub
 
         final View content = findViewById(R.id.coordinator);
 
-        App.getApi().sendOrder(getOrderMap(dish)).enqueue(new Callback<Object>() {
+        App.getApi().sendOrderList(getOrderListMap(dish)).enqueue(new Callback<Object>() {
             @Override
             public void onResponse(Call<Object> call, Response<Object> response) {
-                if (response.body().equals("OK")) {
-                    resultAlert("OK");
-                    dishDBs.clear();
-                    DishDB.deleteAll(DishDB.class);
-                } else if (response.body().equals("time")) {
-                    Snackbar snackbar = Snackbar.make(content, R.string.time_l, Snackbar.LENGTH_SHORT);
-                    View sbView = snackbar.getView();
-                    sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
-                    snackbar.show();
+
+                if (response.isSuccessful() && response.body() != null && response.body().equals("OK")) {
+
                 } else {
+                    result = false;
                     Snackbar snackbar = Snackbar.make(content, "Упс! Что-то пошло не так", Snackbar.LENGTH_SHORT);
                     View sbView = snackbar.getView();
                     sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
@@ -394,8 +458,10 @@ public class ActivityCheckout extends AppCompatActivity {
                 View sbView = snackbar.getView();
                 sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
                 snackbar.show();
+                btnSend.show();
             }
         });
+        return 0;
 
     }
 
@@ -427,13 +493,19 @@ public class ActivityCheckout extends AppCompatActivity {
         return map;
     }
 
-    private Map<String, String> getOrderMap(Dish dish) {
+    private Map<String, String> getOrderMap(Order order) {
         Map<String, String> map = new HashMap<String, String>();
-        map.put("user_id", String.valueOf(dish.getUserId()));
+        map.put("user_id", String.valueOf(order.getUserId()));
+        map.put("date", order.getDate());
+        map.put("comment", order.getComment());
+        return map;
+    }
+
+    private Map<String, String> getOrderListMap(Dish dish) {
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("order_id", String.valueOf(dish.getOrderId()));
         map.put("dish_id", String.valueOf(dish.getDishId()));
         map.put("count", String.valueOf(dish.getCount()));
-        map.put("date", dish.getDate());
-        map.put("comment", dish.getComment());
         return map;
     }
 

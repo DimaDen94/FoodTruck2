@@ -5,7 +5,7 @@
     <!--  App About Information -->
     <string name="app_version">Версия 1.0.0</string>
     <string name="copyright">Copyright &#169; FOOD TRUCK \n All rights reserved</string>
-    <string name="email_address">dmitrydlj@gmail.com</string>
+    <string name="email_address">foodtruckodessa@gmail.com</string>
 
 	<!-- Parse push notification -->
 	<string name="parse_application_id">V0c7q2d6VCVuc0LXZmk3ZZbUjI4UMhIrgWmekZxP</string>
@@ -76,7 +76,7 @@
     
 	<string name="menu_product">Меню</string>
 	<string name="menu_cart">Корзина</string>
-	<string name="menu_checkout">Заказы</string>
+	<string name="menu_checkout">Заказ</string>
 	<string name="menu_profile">Информация</string>
 
 
@@ -93,10 +93,7 @@
 
 	<string name="view_navigation_open">open</string>
 	<string name="view_navigation_close">clode</string>
-	<string-array name="facilities">
-		<item>Михайловская 8</item>
-		<item>Гагарина</item>
-	</string-array>
+
 
     <!-- Nav Drawer List Item Icons, keep them in order as the titles are in -->
     <array name="nav_drawer_icons">
@@ -138,7 +135,6 @@
     <string name="str_cart">Корзина</string>
 	<string name="menu_list_title">Список блюд</string>
 	<string name="category_list_title">Категория</string>
-    <string name="about_title">О программе</string>
     <string name="call_us_title">Связь с нами</string>
     <string name="currency"> грн</string>
     <string name="cleaning">Очистить список пользователей</string>
@@ -146,5 +142,7 @@
     <string name="contact_info">Введите контактную информацию</string>
 	<string name="your_order">Ваш заказ</string>
 	<string name="time_l">Извените, но заказы сегодня уже не принимаем</string>
+    <string name="about_title">Информация для клиента</string>
+    <string name="not_valid_number">Не правильно указан номер</string>
 
 </resources>

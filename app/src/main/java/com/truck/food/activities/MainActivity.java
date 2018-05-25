@@ -24,8 +24,10 @@ import com.truck.food.GridViewItem;
 import com.truck.food.R;
 import com.truck.food.adapters.AdapterGridView;
 import com.truck.food.db.DishDB;
+import com.truck.food.db.FacilitiesDB;
 import com.truck.food.db.UserDB;
 import com.truck.food.model.Dish;
+import com.truck.food.model.Facilities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         initGridView();
         checkNotification();
+        loadObjects();
     }
 
     private void checkNotification() {
@@ -83,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     textView.setText(response.body().toString());
                 }
             }
+
             @Override
             public void onFailure(Call<Object> call, Throwable t) {
                 linearLayout.setVisibility(View.GONE);
@@ -189,6 +193,31 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             startActivity(new Intent(this, ActivityAbout.class));
             overridePendingTransition(R.anim.open_next, R.anim.close_next);
         }
+    }
+
+    private void loadObjects() {
+
+        App.getApi().getObjects().enqueue(new Callback<Facilities>() {
+            @Override
+            public void onResponse(Call<Facilities> call, Response<Facilities> response) {
+                if (response.isSuccessful()) {
+                    String[] facilities = response.body().getObjects();
+                    FacilitiesDB.deleteAll(FacilitiesDB.class);
+                    for (String f : facilities) {
+                        FacilitiesDB fac = new FacilitiesDB(f);
+                        FacilitiesDB.save(fac);
+                    }
+
+                } else {
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Facilities> call, Throwable t) {
+
+            }
+        });
     }
 
     @Override
