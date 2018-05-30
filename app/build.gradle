@@ -5,9 +5,9 @@ android {
     buildToolsVersion '25.0.0'
     defaultConfig {
         applicationId 'com.truck.food'
-        minSdkVersion 14
+        minSdkVersion 15
         targetSdkVersion 25
-        versionCode 9
+        versionCode 17
         versionName "1.0"
         multiDexEnabled true
     }
@@ -38,5 +38,6 @@ dependencies {
 
     compile 'com.github.satyan:sugar:1.4'
     compile 'com.mikepenz.actionitembadge:library:2.1.0'
+    compile 'com.dmitrymalkovich.android:progress-fab:1.6'
 
 }

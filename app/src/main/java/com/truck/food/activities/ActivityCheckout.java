@@ -27,6 +27,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -66,6 +67,7 @@ import retrofit2.Response;
 public class ActivityCheckout extends AppCompatActivity {
 
     private FloatingActionButton btnSend;
+    private ProgressBar progressBar;
     private RecyclerView listCheckout;
     private AutoCompleteTextView edtFName;
     private EditText edtLName;
@@ -105,6 +107,11 @@ public class ActivityCheckout extends AppCompatActivity {
 
         for (FacilitiesDB f :facilitiesDBs){
             facilities.add(f.getObject());
+        }
+        if(facilities.size()==0){
+            facilities.add("Четыре сезона");
+            facilities.add("Омега");
+            facilities.add("Михайловский городок");
         }
         findAllNames();
         initViews();
@@ -168,6 +175,7 @@ public class ActivityCheckout extends AppCompatActivity {
         spinFacility = (Spinner) findViewById(R.id.spinner);
 
         btnSend = (FloatingActionButton) findViewById(R.id.btnSend);
+        progressBar = (ProgressBar) findViewById(R.id.progressBarSend);
 
         // Create an ArrayAdapter using the string array and a default spinner layout
         adapter = new ArrayAdapter<String>(this, R.layout.spinner_item,  facilities.toArray(new String[facilities.size()]));
@@ -228,14 +236,11 @@ public class ActivityCheckout extends AppCompatActivity {
         btnSend.setOnClickListener(new OnClickListener() {
 
             public void onClick(View arg0) {
-                ProgressDialog dialog;
-                dialog = ProgressDialog.show(ActivityCheckout.this, "",
-                        getString(R.string.sending_alert), true);
+
 
                 takeUser();
                 final View content = findViewById(R.id.coordinator);
                 if (user.getPhone().length() < 10 || user.getPhone().length() > 13) {
-                    dialog.dismiss();
                     Snackbar snackbar = Snackbar.make(content, R.string.not_valid_number, Snackbar.LENGTH_SHORT);
                     View sbView = snackbar.getView();
                     sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
@@ -244,20 +249,17 @@ public class ActivityCheckout extends AppCompatActivity {
                         user.getfName().equalsIgnoreCase("") ||
                         user.getlName().equalsIgnoreCase("") ||
                         user.getPhone().equalsIgnoreCase("")) {
-                    dialog.dismiss();
 
                     Snackbar snackbar = Snackbar.make(content, R.string.form_alert, Snackbar.LENGTH_SHORT);
                     View sbView = snackbar.getView();
                     sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
                     snackbar.show();
                 } else if ((dishDBs.size() == 0)) {
-                    dialog.dismiss();
                     Snackbar snackbar = Snackbar.make(content, R.string.order_alert, Snackbar.LENGTH_SHORT);
                     View sbView = snackbar.getView();
                     sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
                     snackbar.show();
                 } else {
-                    dialog.dismiss();
                     checkAvailabilitySendUserCollectAllDishAndSendOrder(content);
                     //sendUserCollectAllDishAndSendOrder(content);
                 }
@@ -299,7 +301,7 @@ public class ActivityCheckout extends AppCompatActivity {
     }
 
     private void checkAvailabilitySendUserCollectAllDishAndSendOrder(final View content) {
-        btnSend.hide();
+        progressBar.setVisibility(View.VISIBLE);
         Map<String, String> map = new HashMap<String, String>();
         map.put(Constant.AccessKeyParam, Constant.AccessKeyValue);
 
@@ -328,14 +330,14 @@ public class ActivityCheckout extends AppCompatActivity {
                         View sbView = snackbar.getView();
                         sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
                         snackbar.show();
-                        btnSend.show();
+                        progressBar.setVisibility(View.INVISIBLE);
                     }
                 } else {
                     Snackbar snackbar = Snackbar.make(content, R.string.failed_alert, Snackbar.LENGTH_SHORT);
                     View sbView = snackbar.getView();
                     sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
                     snackbar.show();
-                    btnSend.show();
+                    progressBar.setVisibility(View.INVISIBLE);
                 }
             }
 
@@ -345,6 +347,7 @@ public class ActivityCheckout extends AppCompatActivity {
                 View sbView = snackbar.getView();
                 sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
                 snackbar.show();
+                progressBar.setVisibility(View.INVISIBLE);
             }
         });
     }
@@ -362,11 +365,12 @@ public class ActivityCheckout extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Object> call, Throwable t) {
-                btnSend.show();
+                progressBar.setVisibility(View.GONE);
                 Snackbar snackbar = Snackbar.make(content, R.string.failed_alert, Snackbar.LENGTH_SHORT);
                 View sbView = snackbar.getView();
                 sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
                 snackbar.show();
+                progressBar.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -392,7 +396,7 @@ public class ActivityCheckout extends AppCompatActivity {
                         View sbView = snackbar.getView();
                         sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
                         snackbar.show();
-                        btnSend.show();
+                        progressBar.setVisibility(View.INVISIBLE);
                     } else {
                         double res = Double.valueOf(response.body().toString());
                         int orderId = (int) res;
@@ -407,7 +411,7 @@ public class ActivityCheckout extends AppCompatActivity {
                 View sbView = snackbar.getView();
                 sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
                 snackbar.show();
-                btnSend.show();
+                progressBar.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -424,7 +428,7 @@ public class ActivityCheckout extends AppCompatActivity {
                 sendDish(dish);
             }
         }
-        btnSend.show();
+        progressBar.setVisibility(View.INVISIBLE);
         if (result) {
             resultAlert("OK");
             dishDBs.clear();
@@ -449,6 +453,7 @@ public class ActivityCheckout extends AppCompatActivity {
                     View sbView = snackbar.getView();
                     sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
                     snackbar.show();
+                    progressBar.setVisibility(View.INVISIBLE);
                 }
             }
 
@@ -458,7 +463,7 @@ public class ActivityCheckout extends AppCompatActivity {
                 View sbView = snackbar.getView();
                 sbView.setBackgroundColor(getResources().getColor(R.color.primary_dark));
                 snackbar.show();
-                btnSend.show();
+                progressBar.setVisibility(View.INVISIBLE);
             }
         });
         return 0;

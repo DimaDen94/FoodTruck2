@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.truck.food.Constant;
 import com.truck.food.R;
 import com.truck.food.activities.ActivityMenuDetail;
@@ -73,6 +74,7 @@ public class AdapterMenuList extends RecyclerView.Adapter<AdapterMenuList.ViewHo
         holder.txtPrice.setText(menu.getData().get(position).getDish().getPrice() + " " + currency);
         Glide.with(context)
                 .load(Constant.AdminPageURL + menu.getData().get(position).getDish().getMenuImage())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .thumbnail(0.01f)
                 .crossFade()
                 .into(holder.menuImageView);

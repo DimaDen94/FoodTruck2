@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.truck.food.Constant;
 import com.truck.food.R;
 import com.truck.food.activities.ActivityMenuList;
@@ -68,6 +69,7 @@ public class AdapterCategoryList extends RecyclerView.Adapter<AdapterCategoryLis
 
         Glide.with(context)
                 .load(Constant.AdminPageURL + pCategory.getData().get(position).getCategory().getCategoryImage())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .thumbnail(0.01f)
                 .crossFade()
                 .into(holder.thumbnail);

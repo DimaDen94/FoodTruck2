@@ -22,6 +22,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.truck.food.App;
 import com.truck.food.SugarHelper;
 import com.truck.food.Constant;
@@ -210,6 +211,7 @@ public class ActivityMenuDetail extends AppCompatActivity {
 
                     Glide.with(ActivityMenuDetail.this)
                             .load(Constant.AdminPageURL + menuDetail.getMenuImage())
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
                             .thumbnail(0.01f)
                             .crossFade()
                             .into(imgPreview);

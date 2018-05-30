@@ -75,7 +75,6 @@ public class ActivityCart extends AppCompatActivity {
         txtTotal = (TextView) findViewById(R.id.txtTotal);
         txtAlert = (TextView) findViewById(R.id.txtAlert);
 
-
         listOrder.setLayoutManager(mLayoutManager);
         listOrder.setItemAnimator(new DefaultItemAnimator());
 
